@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tutorial_cs
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: cs
+  m_SharedData: {fileID: 11400000, guid: d8777f38384378e41a2daece02c448e9, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 11085119488
+    m_Localized: "V\xEDtej v tutorialu na ovl\xE1d\xE1n\xED postavi\u010Dky. Prvn\xED
+      krok je dotknout se prost\u0159edku obrazovky a posunout tento prst t\u0159eba
+      doprava."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10101229977600
+    m_Localized: "V\xFDborn\xFD, pohyb ses nau\u010Dil. Dal\u0161\xED je skr\u010Den\xED
+      se. To funguje na stejn\xE9 b\xE1zi, jenom s t\xEDm, \u017Ee prstem mus\xED\u0161
+      posunout dolu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10244884889600
+    m_Localized: "Gratuluji, otev\u0159el jsi dve\u0159e. Co takhle vyt\xE1hnout
+      svoji boucha\u010Dku?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256158346084352
+    m_Localized: "Tak m\u016F\u017Ee\u0161 vyst\u0159elit, teda pokud se v\u016Fbec
+      tref\xED\u0161."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256361392340992
+    m_Localized: "Nab\xED pistol tak, \u017Ee klikne\u0161 na ikonku s n\xE1boji."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256455374110720
+    m_Localized: "Zvl\xE1dl jsi tutorial."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 257028903239680
+    m_Localized: "Tak nau\u010Dit se otev\xEDrat dve\u0159e je t\u011B\u017Ek\xE9,
+      tak\u017Ee jdi doleva a otev\u0159i dve\u0159e stisknut\xEDm ruky."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

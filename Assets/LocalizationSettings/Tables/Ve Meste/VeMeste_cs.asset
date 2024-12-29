@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: VeMeste_cs
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: cs
+  m_SharedData: {fileID: 11400000, guid: acff6993ed8ac41469e23e5d5b337e94, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 64466026496
+    m_Localized: "J\xE1: Nest\u0159\xEDlej pros\xEDm, jsem \u010Dlov\u011Bk. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 580520607744
+    m_Localized: "On: P\u0159\xEDkaz zn\u011Bl zast\u0159elit v\u0161e \u017Eive."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348605206069248
+    m_Localized: "On: Tvoje slab\xE1 zbra\u0148 je na nic proti voj\xE1k\u016Fm."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350499710271488
+    m_Localized: "On: Vid\xEDm kanaliza\u010Dn\xED poklop, tudy ute\u010Deme."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

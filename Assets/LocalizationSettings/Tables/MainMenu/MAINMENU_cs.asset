@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MAINMENU_cs
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: cs
+  m_SharedData: {fileID: 11400000, guid: fdf84da7728d9c846b2fe3735e7789b7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 55653163008
+    m_Localized: "HR\xC1T"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140189360128
+    m_Localized: "NOV\xC1 HRA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 289074569216
+    m_Localized: "NASTAVEN\xCD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 408167636992
+    m_Localized: "ODEJ\xCDT"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 593115471872
+    m_Localized: "HLASITOST ZVUK\u016E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 783910166528
+    m_Localized: HLASITOST HUDBY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129302712320
+    m_Localized: JAZYKY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1366050201600
+    m_Localized: "ZP\xC1TKY"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34174081269760
+    m_Localized: ANO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34305354596352
+    m_Localized: NE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34423348756480
+    m_Localized: "Opravdu chcete odej\xEDt ze hry?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36277046575104
+    m_Localized: "Jse\u0161 si jist\xFD?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37679009464320
+    m_Localized: "D\xE1le"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65549228408832
+    m_Localized: "HLAVN\xCD MENU"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89746667307008
+    m_Localized: ZNOVA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10504413910761472
+    m_Localized: "Opravdu chce\u0161 smazat sv\u016Fj dosavadn\xED postup ve h\u0159e
+      a za\u010D\xEDt odznova?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17429625378013184
+    m_Localized: "Chce\u0161 si zahr\xE1t tutorial?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17429905645600768
+    m_Localized: "Usnadn\xED v\xE1m to pr\u016Fb\u011Bh hry a budete m\xEDt lep\u0161\xED
+      hern\xED z\xE1\u017Eitek."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17430745211043840
+    m_Localized: "TUTORI\xC1L"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20993999195701248
+    m_Localized: Kredit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27146361056624640
+    m_Localized: "Na\u010D\xEDst posledn\xED \xFArove\u0148?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27146828138512384
+    m_Localized: "Chcete na\u010D\xEDst posledn\xED \xFArove\u0148, kterou jste p\u0159edt\xEDm
+      hr\xE1l?"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

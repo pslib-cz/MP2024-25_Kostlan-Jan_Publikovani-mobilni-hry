@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_GUID: 130863621400a024ba7f53073e7203a4
+  m_SerializeEntries:
+  - m_GUID: 05946013a464d574493ac90522cad0fd
+    m_Address: Assets/LocalizationSettings/Tables/DeathQuotes/DeathQuotes Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0db792be3c35ba14395f30eb1d1b3586
+    m_Address: Assets/LocalizationSettings/Tables/PublishThings/PublishThings Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2a6c7643d8d08114293741bd14decab2
+    m_Address: Assets/LocalizationSettings/Tables/Za Mestem/ZaMestem Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 38e4d76987e236f4b904436a99cc6fcc
+    m_Address: Assets/LocalizationSettings/Tables/Intro/Intro Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 789c281c5b3b45144ad624e2520dc8c7
+    m_Address: Assets/LocalizationSettings/Tables/languagesflags Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: acfc70701ec10f44c866ec3bf13fe9ca
+    m_Address: Assets/LocalizationSettings/Tables/Tables/Hospital Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: acff6993ed8ac41469e23e5d5b337e94
+    m_Address: Assets/LocalizationSettings/Tables/Ve Meste/VeMeste Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8777f38384378e41a2daece02c448e9
+    m_Address: Assets/LocalizationSettings/Tables/Tables/Tutorial Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdf84da7728d9c846b2fe3735e7789b7
+    m_Address: Assets/LocalizationSettings/Tables/MainMenu/MAINMENU Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff1947deb4c818343964a474ead9c364
+    m_Address: Assets/LocalizationSettings/Tables/Sewerage/Sewerage Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: f204535128d0ff245b537e70c77b5a49, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 151e0c2ef506262439ce6be6d05b8fc3, type: 2}
+    - {fileID: 11400000, guid: bcaea6918cb5de44d82d65b96e718a48, type: 2}

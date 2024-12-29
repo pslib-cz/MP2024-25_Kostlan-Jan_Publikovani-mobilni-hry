@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: DeathQuotes_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 05946013a464d574493ac90522cad0fd, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 107721883648
+    m_Localized: Sometimes even to live is an act of courage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 157906731008
+    m_Localized: It is more cruel to fear death constantly than to die.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218917076992
+    m_Localized: Death is not the opposite of life, but a part of it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 293957369856
+    m_Localized: Everyone dies, but not everyone truly lives.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 353424211968
+    m_Localized: Death is nothing; we fear it only because we do not know what comes
+      after.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 407367155712
+    m_Localized: Life and death are one, as the river and the sea are one.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 466599116800
+    m_Localized: Death is only the beginning.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 522081370112
+    m_Localized: Life is just a journey toward death.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 608203014144
+    m_Localized: Every death is an awakening.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 687215312896
+    m_Localized: Death is the moment when everything stops, only memories remain.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

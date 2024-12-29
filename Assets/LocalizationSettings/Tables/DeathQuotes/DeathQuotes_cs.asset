@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: DeathQuotes_cs
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: cs
+  m_SharedData: {fileID: 11400000, guid: 05946013a464d574493ac90522cad0fd, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 107721883648
+    m_Localized: "N\u011Bkdy i \u017E\xEDt je state\u010Dn\xFDm \u010Dinem."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 157906731008
+    m_Localized: "Krut\u011Bj\u0161\xED je st\xE1le se b\xE1t smrti ne\u017E zem\u0159\xEDt."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218917076992
+    m_Localized: "Smrt nen\xED opakem \u017Eivota, ale jeho sou\u010D\xE1st\xED."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 293957369856
+    m_Localized: "Ka\u017Ed\xFD um\xEDr\xE1, ale ne ka\u017Ed\xFD skute\u010Dn\u011B
+      \u017Eije."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 353424211968
+    m_Localized: "Smrt nen\xED nic, boj\xEDme se j\xED jen proto, \u017Ee nev\xEDme,
+      co p\u0159ijde."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 407367155712
+    m_Localized: "\u017Divot a smrt jsou jedno, jako jsou b\u0159ehy t\xE9\u017Ee
+      \u0159eky."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 466599116800
+    m_Localized: "Smrt je jen za\u010D\xE1tek."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 522081370112
+    m_Localized: "\u017Divot je jen cesta k smrti."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 608203014144
+    m_Localized: "Ka\u017Ed\xE1 smrt je probuzen\xEDm."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 687215312896
+    m_Localized: "Smrt je okam\u017Eik, kdy p\u0159est\xE1v\xE1 v\u0161echno, jen
+      vzpom\xEDnky z\u016Fst\xE1vaj\xED."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

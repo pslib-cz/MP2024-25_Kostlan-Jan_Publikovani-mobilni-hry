@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: cb93dd878a86945cc905413479e6fd76
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cayetano Round
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 90bae56f2419cd875bebda99100da950, type: 3}
+  - {fileID: 12800000, guid: 8553f960842e55a91a9bffe6766763db, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

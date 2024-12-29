@@ -1,0 +1,11 @@
+lastUpgrade=01101
+proj.pluginVersion=0.11.01
+proj.AppId=127468975741
+and.BundleId=com.pixeldread.com.unity.template.mobile2D
+proj.classDir=Assets
+proj.ConstantsClassName=SmokeTest.GPGSIds
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0a%3c%21--Google+Play+game+services+IDs.+Save+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.--%3e%0a%3cresources%3e%0a++%3c%21--app_id--%3e%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e127468975741%3c%2fstring%3e%0a++%3c%21--package_name--%3e%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.pixeldread.com.unity.template.mobile2D%3c%2fstring%3e%0a++%3c%21--achievement+You+Woke+Up--%3e%0a++%3cstring+name%3d%22achievement_you_woke_up%22+translatable%3d%22false%22%3eCgkI_ez47doDEAIQAQ%3c%2fstring%3e%0a++%3c%21--achievement+Finish+act+1--%3e%0a++%3cstring+name%3d%22achievement_finish_act_1%22+translatable%3d%22false%22%3eCgkI_ez47doDEAIQAw%3c%2fstring%3e%0a++%3c%21--achievement+Cute+Little+Monster--%3e%0a++%3cstring+name%3d%22achievement_cute_little_monster%22+translatable%3d%22false%22%3eCgkI_ez47doDEAIQBA%3c%2fstring%3e%0a++%3c%21--achievement+Capybara+Tutorial--%3e%0a++%3cstring+name%3d%22achievement_capybara_tutorial%22+translatable%3d%22false%22%3eCgkI_ez47doDEAIQBQ%3c%2fstring%3e%0a%3c%2fresources%3e
+and.ClientId=127468975741-pp6kkf5qa2s3jice7pf7h6fl60ui70q2.apps.googleusercontent.com
+android.SetupDone=true
+App.NearbdServiceId=127468975741
+android.NearbySetupDone=true

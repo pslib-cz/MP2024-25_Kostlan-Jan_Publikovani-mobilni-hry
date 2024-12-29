@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Bullet
+  - Enemy
+  - Interactive
+  - ChangeLayerUp
+  - Schovavani
+  - Obstacle
+  - Car
+  - Potion
+  - WireImageConnecting
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Visibility
+  - Water
+  - UI
+  - PlayerUI
+  - Box
+  - Pin
+  - Player
+  - Barier
+  - Light
+  - Enemy
+  - Ground
+  - DeathEnemy
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1053001963
+    locked: 0
+  - name: PlayerLayer
+    uniqueID: 448223085
+    locked: 0
+  - name: AfterPlayer
+    uniqueID: 1185909489
+    locked: 0
+  - name: Enemy
+    uniqueID: 3330765687
+    locked: 0
+  - name: BeforeEveryThings
+    uniqueID: 1004509583
+    locked: 0
+  m_RenderingLayers:
+  - Default

@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MAINMENU_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: fdf84da7728d9c846b2fe3735e7789b7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 55653163008
+    m_Localized: PLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140189360128
+    m_Localized: NEW GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 289074569216
+    m_Localized: SETTINGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 408167636992
+    m_Localized: EXIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 593115471872
+    m_Localized: VOLUME OF SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 783910166528
+    m_Localized: VOLUME OF MUSIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129302712320
+    m_Localized: LANGUAGES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1366050201600
+    m_Localized: BACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34174081269760
+    m_Localized: YES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34305354596352
+    m_Localized: NO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34423348756480
+    m_Localized: Do you really want to leave the game?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36277046575104
+    m_Localized: Are you sure?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37679009464320
+    m_Localized: Skip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65549228408832
+    m_Localized: MAIN MENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89746667307008
+    m_Localized: AGAIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10504413910761472
+    m_Localized: Do you really want to erase your current progress in the game and
+      start over?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17429625378013184
+    m_Localized: Want to play the tutorial?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17429905645600768
+    m_Localized: This will make it easier for you to progress through the game and
+      have a better gaming experience.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17430745211043840
+    m_Localized: TUTORIAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20993999195701248
+    m_Localized: Credit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27146361056624640
+    m_Localized: Load the last level?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27146828138512384
+    m_Localized: Want to load the last level you played before?
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

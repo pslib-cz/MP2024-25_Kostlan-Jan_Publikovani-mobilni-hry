@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tutorial_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d8777f38384378e41a2daece02c448e9, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 11085119488
+    m_Localized: Welcome to the character control tutorial.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 257028903239680
+    m_Localized: So learning to open the door is hard, so go to the left and open
+      the door with a handshake.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256455374110720
+    m_Localized: You made it through the tutorial.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256361392340992
+    m_Localized: It reloads the gun by clicking on the bullet icon.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256158346084352
+    m_Localized: Then you can take the shot, if you get a shot at all.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10244884889600
+    m_Localized: Congratulations, you opened the door. Why don't you pull out your
+      gun?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10101229977600
+    m_Localized: Good job, you learned the moves. Next is the crouch. That works
+      the same way, you just have to move your finger down.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

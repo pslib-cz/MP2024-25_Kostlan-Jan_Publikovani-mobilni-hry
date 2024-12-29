@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MAINMENU Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: MAINMENU
+  m_TableCollectionNameGuidString: fdf84da7728d9c846b2fe3735e7789b7
+  m_Entries:
+  - m_Id: 55653163008
+    m_Key: play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140189360128
+    m_Key: NEWGAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 289074569216
+    m_Key: settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 408167636992
+    m_Key: exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 593115471872
+    m_Key: volumeSFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 783910166528
+    m_Key: musicVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1129302712320
+    m_Key: languages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1366050201600
+    m_Key: backButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34174081269760
+    m_Key: yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34305354596352
+    m_Key: no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34423348756480
+    m_Key: leavingSure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36277046575104
+    m_Key: are you sure?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37679009464320
+    m_Key: skip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65549228408832
+    m_Key: mainmenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89746667307008
+    m_Key: again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10504413910761472
+    m_Key: are you sure again?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17429625378013184
+    m_Key: playtutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17429905645600768
+    m_Key: tutorialinfo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17430745211043840
+    m_Key: playtutorialbutton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20993999195701248
+    m_Key: Credit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27146361056624640
+    m_Key: levelFromServer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27146828138512384
+    m_Key: lastSceneText
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1957084107003396096
+  references:
+    version: 2
+    RefIds:
+    - rid: 1957084107003396096
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1725010656626

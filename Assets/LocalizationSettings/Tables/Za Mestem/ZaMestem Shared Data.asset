@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: ZaMestem Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: ZaMestem
+  m_TableCollectionNameGuidString: 2a6c7643d8d08114293741bd14decab2
+  m_Entries:
+  - m_Id: 73630580736
+    m_Key: zatebou
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6950162628608
+    m_Key: basicComputer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7012846501888
+    m_Key: basicMobile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42761834823680
+    m_Key: wakeup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42923529437184
+    m_Key: whatisit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42976750960640
+    m_Key: youarecrazynormal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43110180159488
+    m_Key: ihaveinnervoice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43190811459584
+    m_Key: sasek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43293542547456
+    m_Key: afterclub
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43518751506432
+    m_Key: 36
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43634505908224
+    m_Key: idonthaveneedtoadd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43719935492096
+    m_Key: korea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43763891798016
+    m_Key: shutup
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1957084109131218951
+  references:
+    version: 2
+    RefIds:
+    - rid: 1957084109131218951
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1725025346104

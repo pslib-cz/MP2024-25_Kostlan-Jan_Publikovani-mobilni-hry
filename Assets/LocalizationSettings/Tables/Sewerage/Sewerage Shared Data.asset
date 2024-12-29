@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Sewerage Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Sewerage
+  m_TableCollectionNameGuidString: ff1947deb4c818343964a474ead9c364
+  m_Entries:
+  - m_Id: 308363086364672
+    m_Key: seweragestart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 308705828110336
+    m_Key: hopesewerage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 308908404604928
+    m_Key: shit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 309528259821568
+    m_Key: seweragePipes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 310239735414784
+    m_Key: run!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 310399244795904
+    m_Key: monster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 310853177540608
+    m_Key: areyoujoke
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1957084113613619207
+  references:
+    version: 2
+    RefIds:
+    - rid: 1957084113613619207
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1725037715314

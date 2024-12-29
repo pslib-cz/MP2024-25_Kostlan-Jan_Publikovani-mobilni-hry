@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Hospital_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: acfc70701ec10f44c866ec3bf13fe9ca, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 4480681631744
+    m_Localized: Pervert!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13638819840
+    m_Localized: 'He: We managed to get out of the canal. Such a cute little monster.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196254621696
+    m_Localized: 'I: If that''s a cute monster to you, I''d rather not know what
+      a ugly monster is to you.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455454220288
+    m_Localized: 'He: even though I know you did your driving test for the third
+      time, you could manage to start the car and run over zombies.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 648304123904
+    m_Localized: 'I: I don''t give a shit about my license anyway, I don''t even
+      have a car.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1006506074112
+    m_Localized: 'He: If you didn''t drink, you''d have enough money for a car!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2283373846528
+    m_Localized: 'He: At the hospital, you can get checked out and find any other
+      information you need.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50936964702208
+    m_Localized: 'I: Great, we made it to the hospital, but it''s dark as fuck. Let''s
+      try the fuses.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51085623418880
+    m_Localized: 'He: Otherwise, to explain to you somehow what everything is needed
+      in the hospital. We need to get a document on a certain substance.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51350787317760
+    m_Localized: 'He: When we get the document, we''ll see if some of those pills
+      help.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51510133121024
+    m_Localized: 'I: Are you trying to give me some Viagra or something? I''m not
+      that old.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51696544768000
+    m_Localized: 'He: Great, you''ve got the fuses on. Take the elevator to the next
+      floor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51819450458112
+    m_Localized: 'He: Hmmmm, so we''ll try to find a lab and mix it with another
+      substance.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52063491842048
+    m_Localized: 'I: So I made the solution for the pill, but I need something to
+      wash it down.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52178403188736
+    m_Localized: 'He: You''re kidding me, you need water for a little pill like that.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52264625496064
+    m_Localized: 'I: You see, it could get stuck in my throat.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52502237011968
+    m_Localized: 'He: here''s your lotion, since you''re an idiot, you forgot the
+      solution.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52381562691584
+    m_Localized: 'He: A pill this big! You''re going to lead me to my grave!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52594427813888
+    m_Localized: 'He: Demented, you didn''t read it properly. How can you be such
+      an asshole! Now I''ll have control of your body.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52940202041344
+    m_Localized: 'He: You can''t talk, your body doesn''t listen to you. Soon I''ll
+      get rid of you for good!'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Sewerage_cs
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: cs
+  m_SharedData: {fileID: 11400000, guid: ff1947deb4c818343964a474ead9c364, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 308363086364672
+    m_Localized: "On: to je ale zaj\xEDmav\xFD den. Nejprve ses valel na lavi\u010Dce
+      jak bez\u010F\xE1k a te\u010Fka \u010Dich\xE1\u0161 sra\u010Dky v kan\xE1lu.
+      Gratuluji."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 308705828110336
+    m_Localized: "J\xE1: Douf\xE1m, \u017Ee to taky c\xEDt\xED\u0161."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 308908404604928
+    m_Localized: "On: Tebe, nebo tyhle sra\u010Dky?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 309528259821568
+    m_Localized: "J\xE1: Propojov\xE1n\xED trubek, p\u0159ipad\xE1m si jak instalat\xE9r."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 310239735414784
+    m_Localized: "J\xE1: Ty vole, co to je?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 310399244795904
+    m_Localized: "On: Takov\xE1 drobn\xE1 p\u0159\xED\u0161erka, je ne\u0161kodn\xE1."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 310853177540608
+    m_Localized: "J\xE1: ne\u0161kodn\xE1? To nem\u016F\u017Ee\u0161 ani myslet ze
+      srandy!"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

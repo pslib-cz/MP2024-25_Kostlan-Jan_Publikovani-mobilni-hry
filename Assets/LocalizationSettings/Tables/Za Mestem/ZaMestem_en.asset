@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: ZaMestem_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 2a6c7643d8d08114293741bd14decab2, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 73630580736
+    m_Localized: 'He: I''ll give you some good advice, don''t look behind you.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6950162628608
+    m_Localized: 'He: control is wasd, e is interaction, r is reload, q is weapon
+      draw. Right mouse click is shooting.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7012846501888
+    m_Localized: 'He: The control is clearly visible on the mobile phone.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42761834823680
+    m_Localized: 'He: Well, our rosehip has finally woken up.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42923529437184
+    m_Localized: 'Me: What''s that? I think I''m going nuts.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42976750960640
+    m_Localized: 'He: You''re freaking out normally, but I''m your inner voice that''s
+      gonna help you and make fun of you.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43110180159488
+    m_Localized: 'Me: So I''m going crazy and I''ve got a clown in my head.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43190811459584
+    m_Localized: 'He: I''ll give you a clown like that. As long as you slept outside
+      on the bench.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43293542547456
+    m_Localized: A lot of people look like this after the club
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43518751506432
+    m_Localized: 'He: I admit it, but not when you''re 36.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43634505908224
+    m_Localized: 'Me: I don''t think I have anything to say.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43719935492096
+    m_Localized: 'He: I saw your memories too. A year and a half ago, you were in
+      a Korean pu....'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43763891798016
+    m_Localized: 'Me: Shut up!'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
