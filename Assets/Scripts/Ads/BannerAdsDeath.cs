@@ -67,7 +67,6 @@ public class BannerAdsDeath : MonoBehaviour
 		_bannerView.LoadAd(adRequest);
 	}
 
-
 	/// <summary>
 	/// listen to events the banner view may raise.
 	/// </summary>

@@ -9,11 +9,6 @@ public class Kraken : EnemyBase
 	public PlayerController2D controller;
 	public float speed = 2f;
 
-	public override void TakeDamage(int damage)
-	{
-		//nothing
-	}
-
 	private void Awake()
 	{
 		controller = FindObjectOfType<PlayerController2D>();

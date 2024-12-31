@@ -44,6 +44,7 @@ namespace Assets.Scripts.Enemies
 			{
 				Debug.LogError("Skeleton has less than two BoxCollider2D components.");
 			}
+			rb.gravityScale = 0;
 		}
 
 		private void Update()
@@ -109,6 +110,7 @@ namespace Assets.Scripts.Enemies
 			audioSource.Play();
 			secondaryBoxCollider.enabled = true;
 			mainBoxCollider.enabled = true;
+			rb.gravityScale = 1;
 			canMove = true;
 		}
 

@@ -82,9 +82,4 @@ public class EnemyFly : EnemyBase
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
-
-	public override void TakeDamage(int damage)
-	{
-		// Nemá vůbec možnost mu snížit zdraví, ale pro snažší implementaci to tak mám takhle.
-	}
 }

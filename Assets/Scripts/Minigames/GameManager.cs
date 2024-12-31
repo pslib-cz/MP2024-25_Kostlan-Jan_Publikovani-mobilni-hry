@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Assets.Scripts.Enums;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class GameManager : MonoBehaviour
 	// možnost přidat další typy trubek.
 	/*
     public GameObject tShapePipePrefab;
-
     public GameObject cornerShapePipePrefab;
     public GameObject emptyPipePrefab;*/
 
@@ -37,12 +37,12 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField] PlayMiniGame playMiniGame;
 
-	private Color startColor = Color.blue;
-	private Color endColor = Color.red;
-	private Color pathColor = Color.green;
+	//private Color startColor = Color.blue;
+	//private Color endColor = Color.red;
+	//private Color pathColor = Color.green;
 
-	Vector2Int point1;
-	Vector2Int point2;
+	//Vector2Int point1;
+	//Vector2Int point2;
 
 	void Start()
 	{

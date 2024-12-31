@@ -9,7 +9,11 @@ namespace Assets.Scripts.Interfaces
 		internal protected AudioSource audioSource;
 		[SerializeField] protected AudioClip deathClip;
 
-		public abstract void TakeDamage(int damage);
+		public virtual void TakeDamage(int damage)
+		{
+
+		}
+
 		public bool isAttack
 		{
 			get;

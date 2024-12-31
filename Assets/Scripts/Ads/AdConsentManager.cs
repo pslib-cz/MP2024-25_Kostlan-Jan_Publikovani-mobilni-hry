@@ -1,104 +1,168 @@
 ﻿using UnityEngine;
 using GoogleMobileAds.Ump.Api;
+using GoogleMobileAds.Api;
 using UnityEngine.UI;
 
 public class AdConsentManager : MonoBehaviour
 {
-	private ConsentForm consentForm;
+    private static AdConsentManager instance;
+    private ConsentForm consentForm;
 
-	public void Start()
-	{
+    public static AdConsentManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                Debug.LogError("Přidsání instance");
+            }
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void Start()
+    {
 		RequestConsentInfoUpdate();
-		Canvas consentCanvas = GameObject.Find("ConsentForm(Clone)")?.GetComponent<Canvas>();
-		CanvasScaler scaler = consentCanvas.GetComponent<CanvasScaler>();
-		scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-		return;
+    }
+
+    private void RequestConsentInfoUpdate()
+    {
+        ConsentRequestParameters requestParameters = new ConsentRequestParameters
+        {
+            TagForUnderAgeOfConsent = false
+        };
+
+        ConsentInformation.Update(requestParameters, (formError) =>
+        {
+            if (formError != null)
+            {
+                return;
+            }
+
+            if (ConsentInformation.IsConsentFormAvailable())
+            {
+                LoadConsentForm();
+            }
+            else
+            {
+                ConfigureAds();
+            }
+        });
+
+		Canvas consentCanvas = GameObject.Find("ConsentForm(Clone)")?.GetComponent<Canvas>(); CanvasScaler scaler = consentCanvas.GetComponent<CanvasScaler>(); scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight; scaler.matchWidthOrHeight = 0.6f;
 	}
 
-	private void RequestConsentInfoUpdate()
+    private void LoadConsentForm()
+    {
+        ConsentForm.Load((loadedForm, loadError) =>
+        {
+            if (loadError != null)
+            {
+				ConfigureAds();
+				return;
+            }
+
+            consentForm = loadedForm;
+			ShowConsentForm();
+        });
+	}
+
+    private void ShowConsentForm()
+    {
+        if (consentForm == null)
+        {
+            return;
+        }
+
+        consentForm.Show((showError) =>
+        {
+            if (showError != null)
+            {
+                return;
+            }
+
+            ConfigureAds();
+        });
+    }
+
+	private void ConfigureAds()
 	{
-		// Vytvoří parametry pro požadavek na informace o souhlasu.
-		ConsentRequestParameters requestParameters = new ConsentRequestParameters
+		RequestConfiguration requestConfiguration = new RequestConfiguration
 		{
-			TagForUnderAgeOfConsent = false // Změňte na true, pokud cílíte na děti.
+			TagForUnderAgeOfConsent = TagForUnderAgeOfConsent.False,
+			MaxAdContentRating = MaxAdContentRating.G
 		};
 
-		// Aktualizuje informace o souhlasu.
-		ConsentInformation.Update(requestParameters, (formError) =>
+		if (!IsPersonalizedAdsAllowed())
 		{
-			if (formError != null)
-			{
-				Debug.LogError("Error updating consent info: " + formError.Message);
-				return;
-			}
+			requestConfiguration.MaxAdContentRating = MaxAdContentRating.G;
+		}
 
-			// Zkontroluje, zda je potřeba zobrazit formulář souhlasu.
-			if (ConsentInformation.IsConsentFormAvailable())
-			{
-				LoadConsentForm();
-			}
+		MobileAds.SetRequestConfiguration(requestConfiguration);
+		MobileAds.Initialize((InitializationStatus initStatus) =>
+		{
+
 		});
 	}
 
-	private void LoadConsentForm()
+	public bool IsPersonalizedAdsAllowed()
 	{
-		// Načte formulář souhlasu.
+		var consentStatus = ConsentInformation.ConsentStatus;
+		return consentStatus == ConsentStatus.Obtained;
+	}
+
+
+    public AdRequest GetAdRequest()
+    {
+        return new AdRequest();
+    }
+
+    public void ResetConsentInformation()
+    {
+        ConsentInformation.Reset();
+        RequestConsentInfoUpdate();
+    }
+
+	public void ShowConsentFormAgain()
+	{
 		ConsentForm.Load((loadedForm, loadError) =>
 		{
 			if (loadError != null)
 			{
-				Debug.LogError("Error loading consent form: " + loadError.Message);
+				Debug.LogError("Nepodařilo se načíst formulář: " + loadError.Message);
 				return;
 			}
 
 			consentForm = loadedForm;
 
-			// Zobrazí formulář souhlasu, pokud je k dispozici.
-			ShowConsentForm();
-		});
-	}
-
-	private void ShowConsentForm()
-	{
-		if (consentForm == null)
-		{
-			Debug.LogError("Consent form is not loaded.");
-			return;
-		}
-
-		consentForm.Show((showError) =>
-		{
-			if (showError != null)
+			if (consentForm != null)
 			{
-				Debug.LogError("Error showing consent form: " + showError.Message);
-				return;
+				consentForm.Show((showError) =>
+				{
+					if (showError != null)
+					{
+						Debug.LogError("Chyba při zobrazování formuláře: " + showError.Message);
+						return;
+					}
+
+					ConfigureAds();
+				});
 			}
-
-			// Po zobrazení formuláře se chování aplikace může změnit na základě preferencí uživatele.
-			HandleConsentDecision();
 		});
-	}
 
-	private void HandleConsentDecision()
-	{
-		if (ConsentInformation.ConsentStatus == ConsentStatus.Required)
-		{
-			Debug.Log("Consent is required but not given.");
-		}
-		else if (ConsentInformation.ConsentStatus == ConsentStatus.Obtained)
-		{
-			Debug.Log("User has given consent.");
-		}
-		else if (ConsentInformation.ConsentStatus == ConsentStatus.NotRequired)
-		{
-			Debug.Log("Consent is not required.");
-		}
-	}
-
-	public void ResetConsent()
-	{
-		// Resetuje informace o souhlasu (např. pro testování).
-		ConsentInformation.Reset();
-		Debug.Log("Consent information reset.");
+		Canvas consentCanvas = GameObject.Find("ConsentForm(Clone)")?.GetComponent<Canvas>(); CanvasScaler scaler = consentCanvas.GetComponent<CanvasScaler>(); scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight; scaler.matchWidthOrHeight = 0.6f;
 	}
 }

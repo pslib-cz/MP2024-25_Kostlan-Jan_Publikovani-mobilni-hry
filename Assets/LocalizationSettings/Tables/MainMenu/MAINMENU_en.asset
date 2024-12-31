@@ -108,6 +108,10 @@ MonoBehaviour:
     m_Localized: Want to load the last level you played before?
     m_Metadata:
       m_Items: []
+  - m_Id: 44751658243055616
+    m_Localized: Ads Settings
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

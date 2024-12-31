@@ -109,6 +109,10 @@ MonoBehaviour:
       hr\xE1l?"
     m_Metadata:
       m_Items: []
+  - m_Id: 44751658243055616
+    m_Localized: "Spr\xE1va reklam"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

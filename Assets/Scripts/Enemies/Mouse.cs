@@ -53,6 +53,7 @@ public class Mouse : EnemyBase
 			{
 				Flip();
 			}
+
 			else if (!playerIsToRight && facingRight)
 			{
 				Flip();
