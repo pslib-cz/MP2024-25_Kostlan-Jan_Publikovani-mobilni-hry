@@ -6,7 +6,15 @@ namespace Assets.Scripts.Minigames
 {
     public class WireController : MonoBehaviour, IMiniGame
     {
-        public List<Wire> leftSideWires;
+		List<Color> colorsWire = new List<Color>
+		{
+			Color.red,
+            Color.green,
+            Color.blue,
+            Color.yellow,
+            Color.magenta
+        };
+		public List<Wire> leftSideWires;
         public List<Wire> rightSideWires;
 
         public RectTransform leftSideContainer;
@@ -38,7 +46,7 @@ namespace Assets.Scripts.Minigames
         private void SetupWires()
         {
             // Generování náhodných barev drátů
-            List<Color> wireColors = GenerateRandomWireColors(numberOfWires);
+            List<Color> wireColors = GetSelectedWireColors(numberOfWires);
             wireHeight = wireHeight / numberOfWires;
 
             for (int i = 0; i < numberOfWires; i++)
@@ -73,21 +81,21 @@ namespace Assets.Scripts.Minigames
         }
 
 
-        // Generujeme náhodné barvy pro dráty
-        private List<Color> GenerateRandomWireColors(int count)
-        {
-            List<Color> colors = new List<Color>();
+		// Generujeme náhodné barvy pro dráty
+		private List<Color> GetSelectedWireColors(int count)
+		{
+			List<Color> selectedColors = new List<Color>();
 
-            for (int i = 0; i < count; i++)
-            {
-                colors.Add(Random.ColorHSV()); // Vytvoříme náhodnou barvu
-            }
+			for (int i = 0; i < count; i++)
+			{
+				selectedColors.Add(colorsWire[i % colorsWire.Count]); // Cykluje přes předem definované barvy
+			}
 
-            return colors;
-        }
+			return selectedColors;
+		}
 
-        // zamícháme dráty z vybrané strany.
-        private void ShuffleWires(List<Wire> wireList)
+		// zamícháme dráty z vybrané strany.
+		private void ShuffleWires(List<Wire> wireList)
         {
             // Zamícháme seznam drátů
             for (int i = wireList.Count - 1; i > 0; i--)
