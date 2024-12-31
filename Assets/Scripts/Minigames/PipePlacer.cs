@@ -9,7 +9,7 @@ public class PipePlacer : MonoBehaviour
 	private void Awake()
 	{
 		controls = new PlayerInputs();
-        controls.Minigames.PlacePipe.performed += ctx => OnPlacePipe();
+		controls.Minigames.PlacePipe.performed += ctx => OnPlacePipe();
 	}
 
 	private void OnEnable()

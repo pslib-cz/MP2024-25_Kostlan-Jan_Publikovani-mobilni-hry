@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 namespace Assets.Scripts.Interactives
 {
-	public class JumpInteractive: MonoBehaviour
+	public class JumpInteractive : MonoBehaviour
 	{
 		private PlayerController2D playerController;
 

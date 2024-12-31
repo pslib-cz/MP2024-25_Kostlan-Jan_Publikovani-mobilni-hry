@@ -8,7 +8,7 @@ namespace Assets.Scripts
 	{
 		public Image imageToModify;
 		public float transitionTime = 6.0f;
-		public Color originalColor = new (0f, 0f, 0f, 0.0f);
+		public Color originalColor = new(0f, 0f, 0f, 0.0f);
 
 		private void Start()
 		{

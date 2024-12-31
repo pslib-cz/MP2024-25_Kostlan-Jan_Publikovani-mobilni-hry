@@ -43,30 +43,30 @@ public class ZombieEnemy : EnemyBase
 	private Transform target;
 	private Animator animator;
 	private Rigidbody2D rb;
-    private BoxCollider2D mainBoxCollider;
-    private BoxCollider2D secondaryBoxCollider;
+	private BoxCollider2D mainBoxCollider;
+	private BoxCollider2D secondaryBoxCollider;
 
-    private void Awake()
-    {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody2D>();
+	private void Awake()
+	{
+		target = GameObject.FindGameObjectWithTag("Player").transform;
+		animator = GetComponent<Animator>();
+		audioSource = GetComponent<AudioSource>();
+		rb = GetComponent<Rigidbody2D>();
 
 
-        BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
-        if (colliders.Length > 1)
-        {
-            mainBoxCollider = colliders[0];
-            secondaryBoxCollider = colliders[1];
-        }
-        else
-        {
-            Debug.LogError("ZombieEnemy has less than two BoxCollider2D components.");
-        }
-    }
+		BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
+		if (colliders.Length > 1)
+		{
+			mainBoxCollider = colliders[0];
+			secondaryBoxCollider = colliders[1];
+		}
+		else
+		{
+			Debug.LogError("ZombieEnemy has less than two BoxCollider2D components.");
+		}
+	}
 
-    private void Update()
+	private void Update()
 	{
 		if (!dead)
 		{
@@ -183,9 +183,9 @@ public class ZombieEnemy : EnemyBase
 
 		else if (other.gameObject.CompareTag("Car") && dead == false)
 		{
-            CarController car = other.gameObject.GetComponent<CarController>();
+			CarController car = other.gameObject.GetComponent<CarController>();
 
-			if(car.speed == 0)
+			if (car.speed == 0)
 			{
 				car.EndGame();
 			}
@@ -193,15 +193,15 @@ public class ZombieEnemy : EnemyBase
 			{
 				TakeDamage(20);
 			}
-        }
+		}
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        collision.GetContact(0).normal.Normalize();
-    }
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		collision.GetContact(0).normal.Normalize();
+	}
 
-    private void OnDrawGizmosSelected()
+	private void OnDrawGizmosSelected()
 	{
 		Vector2 frontBoxPosition = (Vector2)transform.position + (mFacingRight ? Vector2.right : Vector2.left) * frontDetectionDistance / 2;
 		Vector2 backBoxPosition = (Vector2)transform.position - (mFacingRight ? Vector2.right : Vector2.left) * backDetectionDistance / 2;
@@ -219,9 +219,9 @@ public class ZombieEnemy : EnemyBase
 	{
 		animator.SetBool("Dead", true);
 		PlayDeathSound();
-        dead = true;
-        secondaryBoxCollider.enabled = false;
+		dead = true;
+		secondaryBoxCollider.enabled = false;
 
-        gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
-    }
+		gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
+	}
 }

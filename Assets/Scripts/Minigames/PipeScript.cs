@@ -1,22 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
-public enum PipeType
-{
-	Straight,
-	Corner,
-	TShape,
-	Cross
-}
-
-public enum PipeDirection
-{
-	Right = 0,
-	Up = 1,
-	Left = 2,
-	Down = 3
-}
+using Assets.Scripts.Enums;
 
 public class PipeScript : MonoBehaviour, IPointerClickHandler
 {
@@ -89,10 +74,10 @@ public class PipeScript : MonoBehaviour, IPointerClickHandler
 			case PipeType.Cross:
 				openDirections = new bool[] { true, true, true, true };
 				break;
-			//case PipeType.Empty:
-   //             openDirections = new bool[] { false, false, false, false };
-   //             break;
-        }
+				//case PipeType.Empty:
+				//             openDirections = new bool[] { false, false, false, false };
+				//             break;
+		}
 	}
 
 	public bool HasOpenDirection(PipeDirection direction)

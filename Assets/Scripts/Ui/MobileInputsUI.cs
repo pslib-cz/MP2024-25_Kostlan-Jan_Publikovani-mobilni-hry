@@ -1,26 +1,26 @@
 ﻿using UnityEngine;
-	public class MobileInputsUI : MonoBehaviour
+public class MobileInputsUI : MonoBehaviour
+{
+	void Awake()
 	{
-		void Awake()
+		if (IsMobilePlatform())
 		{
-			if (IsMobilePlatform())
-			{
-				// Zobrazte tlačítka na mobilních zařízeních
-				gameObject.SetActive(true);
-			}
-			else
-			{
-				// Skryjte tlačítka na ostatních platformách
-				gameObject.SetActive(false);
-			}
+			// Zobrazte tlačítka na mobilních zařízeních
+			gameObject.SetActive(true);
 		}
-
-		private bool IsMobilePlatform()
+		else
 		{
+			// Skryjte tlačítka na ostatních platformách
+			gameObject.SetActive(false);
+		}
+	}
+
+	private bool IsMobilePlatform()
+	{
 #if UNITY_ANDROID || UNITY_IOS
-			return true;
+		return true;
 #else
             return false;
 #endif
-		}
 	}
+}

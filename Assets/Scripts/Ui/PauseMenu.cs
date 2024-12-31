@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
 	{
 		pauseAction.action.performed += OnPause;
 		pauseAction.action.Enable();
-    }
+	}
 
 	private void OnDisable()
 	{
@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
 		pauseAction.action.Disable();
 	}
 
-    private void OnPause(InputAction.CallbackContext context)
+	private void OnPause(InputAction.CallbackContext context)
 	{
 		Debug.Log("stiknuta klavesa");
 		// Zkontroluje stav hry a podle toho přepíná mezi pauzou a obnovením
@@ -40,12 +40,12 @@ public class PauseMenu : MonoBehaviour
 	{
 		PauseMenuUI.SetActive(false);
 		SettingsMenuUI.SetActive(false);
-        AudioListener.pause = false;
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+		AudioListener.pause = false;
+		Time.timeScale = 1f;
+		GameIsPaused = false;
 		bannerAdsPause.DestroyAd();
-        bannerAdsPause.enabled = false;
-    }
+		bannerAdsPause.enabled = false;
+	}
 
 	public void Pause()
 	{
@@ -53,14 +53,14 @@ public class PauseMenu : MonoBehaviour
 		PauseMenuUI.SetActive(true);
 		Time.timeScale = 0f;
 		AudioListener.pause = true;
-        GameIsPaused = true;
+		GameIsPaused = true;
 	}
 
 	public void RestartLevel()
 	{
-        AudioListener.pause = false;
-        bannerAdsPause.DestroyAd();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		AudioListener.pause = false;
+		bannerAdsPause.DestroyAd();
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		Time.timeScale = 1f;
 	}
 
@@ -71,10 +71,10 @@ public class PauseMenu : MonoBehaviour
 
 	public void LoadMainMenu()
 	{
-        // natvrdo definovaná scéna.
-        bannerAdsPause.DestroyAd();
-        AudioListener.pause = false;
-        SceneManager.LoadScene("MainMenu");
+		// natvrdo definovaná scéna.
+		bannerAdsPause.DestroyAd();
+		AudioListener.pause = false;
+		SceneManager.LoadScene("MainMenu");
 		Time.timeScale = 1f;
 	}
 }

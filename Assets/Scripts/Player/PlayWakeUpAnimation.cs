@@ -8,7 +8,6 @@ public class PlayWakeUpAnimation : MonoBehaviour
 	public Animator animator;
 	public AnimationClip specialAnimation;
 	public AnimationClip defaultAnimation;
-
 	public float destructionTime = 5.0f;
 
 	/// <summary>

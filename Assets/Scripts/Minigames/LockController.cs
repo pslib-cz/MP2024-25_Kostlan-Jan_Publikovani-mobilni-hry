@@ -8,10 +8,10 @@ public class LockController : MonoBehaviour, IMiniGame
 	Lockpick lockpick;
 	public PlayMiniGame playMiniGame;
 
-    void Start()
+	void Start()
 	{
 		// tohle je krutý s tím findobjectinactive.
-		pins = FindObjectsByType<Pin>(FindObjectsInactive.Include,FindObjectsSortMode.None);        ResetPins();
+		pins = FindObjectsByType<Pin>(FindObjectsInactive.Include, FindObjectsSortMode.None); ResetPins();
 	}
 
 	public void ResetPins()

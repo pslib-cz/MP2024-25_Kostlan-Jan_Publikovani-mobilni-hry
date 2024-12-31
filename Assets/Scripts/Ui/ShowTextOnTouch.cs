@@ -33,8 +33,8 @@ public class ShowTextOnTouch : MonoBehaviour
 		boxCollider = GetComponent<BoxCollider2D>();
 		if (skipButton != null)
 		{
-            skipButton.onClick.AddListener(SkipText);
-        }
+			skipButton.onClick.AddListener(SkipText);
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)

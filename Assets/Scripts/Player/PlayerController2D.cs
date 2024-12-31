@@ -3,582 +3,570 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
+using Assets.Scripts.Enums;
 
 public class PlayerController2D : MonoBehaviour
 {
-    [Header("References")]
-    private Animator animator;
-    public AudioSource gunAudioSource;
-    public AudioSource footStepsAudioSource;
-    public AudioClip footstepClip;
-    public AudioClip shootClip;
-    public AudioClip reloadClip;
-    public DeathMenu DeathScreen;
-    public Text zobrazovaninaboju;
-    public Image StaminaBar;
+	[Header("References")]
+	private Animator animator;
+	public AudioSource gunAudioSource;
+	public AudioSource footStepsAudioSource;
+	public AudioClip footstepClip;
+	public AudioClip shootClip;
+	public AudioClip reloadClip;
+	public DeathMenu DeathScreen;
+	public Text zobrazovaninaboju;
+	public Image StaminaBar;
 
-    [Header("Settings")]
-    [SerializeField] private float shootDistance = 10f;
-    public float MaxStamina = 100f;
-    public int initialRounds = 3;
-    public int initialRoundsDeposit = 8;
-    [SerializeField] public bool mFacingRight = true;
+	[Header("Settings")]
+	[SerializeField] private float shootDistance = 10f;
+	public float MaxStamina = 100f;
+	public int initialRounds = 3;
+	public int initialRoundsDeposit = 8;
+	[SerializeField] public bool mFacingRight = true;
 
-    [Header("Movement Speeds")]
-    [SerializeField] private float runSpeed = 20f;
-    [SerializeField] private float walkSpeed = 10f;
-    [SerializeField] private float slowSpeed = 4f;
+	[Header("Movement Speeds")]
+	[SerializeField] private float runSpeed = 20f;
+	[SerializeField] private float walkSpeed = 10f;
+	[SerializeField] private float slowSpeed = 4f;
 
-    private Rigidbody2D rb;
-    private InteractiveObject currentInteractiveObject;
+	private Rigidbody2D rb;
+	private InteractiveObject currentInteractiveObject;
 
-    // private things
-    [NonSerialized] public bool isPlayerVisible = true;
-    private bool isRightKeyPressed;
-    private bool isLeftKeyPressed;
-    private bool crouch;
-    public bool gunout;
-    private bool run;
-    private bool reload;
-    [SerializeField]
-    private bool isHidden = false;
-    private float moveInput;
-    [SerializeField] private float speed;
-    private int rounds;
-    private int roundsDeposit;
-    private float Stamina;
-    private bool isCanGetUp = true;
-    private int speedHash = Animator.StringToHash("Speed");
+	// private things
+	[NonSerialized] public bool isPlayerVisible = true;
+	private bool isRightKeyPressed;
+	private bool isLeftKeyPressed;
+	private bool crouch;
+	public bool gunout;
+	private bool run;
+	private bool reload;
+	[SerializeField]
+	private bool isHidden = false;
+	private float moveInput;
+	[SerializeField] private float speed;
+	private int rounds;
+	private int roundsDeposit;
+	private float Stamina;
+	private bool isCanGetUp = true;
+	private int speedHash = Animator.StringToHash("Speed");
 
-    [Header("Jump Settings")]
-    [SerializeField] private float jumpForce = 3f;
-    [SerializeField] private LayerMask groundLayer;
+	[Header("Jump Settings")]
+	[SerializeField] private float jumpForce = 3f;
+	[SerializeField] private LayerMask groundLayer;
 
-    private Vector2 touchStartPosition;
-    private bool isTouching = false;
-    private float touchThreshold = 0.5f;
-    private float touchThresholdDown = 120f;
-    [SerializeField] private PlayerInputs controls;
-    [SerializeField] private bool iscanMove = true;
+	private Vector2 touchStartPosition;
+	private bool isTouching = false;
+	private float touchThreshold = 0.5f;
+	private float touchThresholdDown = 120f;
+	[SerializeField] private PlayerInputs controls;
+	[SerializeField] private bool iscanMove = true;
 
-    public enum PlayerState
-    {
-        Walking,
-        Running,
-        Crouching,
-    }
+	public PlayerState currentState;
 
-    public enum GunState
-    {
-        Hand,
-        BasicGun
-    }
+	private void Awake()
+	{
+		controls = new PlayerInputs();
+		rb = GetComponent<Rigidbody2D>();
+		rounds = initialRounds;
+		roundsDeposit = initialRoundsDeposit;
+		currentState = PlayerState.Walking;
+		AktualizovatTextovaPole();
+		animator = GetComponent<Animator>();
+	}
 
-    public PlayerState currentState;
+	private void Update()
+	{
+		HandleTouchInput();
+		moveInput = Mathf.Clamp(moveInput, -1f, 1f);
+		animator.SetFloat(speedHash, Mathf.Abs(moveInput));
 
-    private void Awake()
-    {
-        controls = new PlayerInputs();
-        rb = GetComponent<Rigidbody2D>();
-        rounds = initialRounds;
-        roundsDeposit = initialRoundsDeposit;
-        currentState = PlayerState.Walking;
-        AktualizovatTextovaPole();
-        animator = GetComponent<Animator>();
-    }
-
-    private void Update()
-    {
-        HandleTouchInput();
-        moveInput = Mathf.Clamp(moveInput, -1f, 1f);
-        animator.SetFloat(speedHash, Mathf.Abs(moveInput));
-
-        if (Mathf.Abs(moveInput) > 0 && currentState != PlayerState.Crouching && currentState != PlayerState.Running)
-        {
-            if (!gunout)
-            {
-                ChangePlayerState(PlayerState.Walking);
-            }
-        }
+		if (Mathf.Abs(moveInput) > 0 && currentState != PlayerState.Crouching && currentState != PlayerState.Running)
+		{
+			if (!gunout)
+			{
+				ChangePlayerState(PlayerState.Walking);
+			}
+		}
 
 
-        FlipCharacter(moveInput);
+		FlipCharacter(moveInput);
 
-        // přesunout na update.
-        if (moveInput != 0 && !footStepsAudioSource.isPlaying && Mathf.Abs(rb.linearVelocity.y) < 0.01f)
-        {
-            PlaySoundFootSteps(footstepClip);
-        }
-        // když skok nebo se hráč nepohybuje.
-        else if (moveInput == 0 || Mathf.Abs(rb.linearVelocity.y) >= 0.01f)
-        {
-            StopSoundFootSteps();
-        }
-    }
+		// přesunout na update.
+		if (moveInput != 0 && !footStepsAudioSource.isPlaying && Mathf.Abs(rb.linearVelocity.y) < 0.01f)
+		{
+			PlaySoundFootSteps(footstepClip);
+		}
+		// když skok nebo se hráč nepohybuje.
+		else if (moveInput == 0 || Mathf.Abs(rb.linearVelocity.y) >= 0.01f)
+		{
+			StopSoundFootSteps();
+		}
+	}
 
-    private void FixedUpdate()
-    {
-        rb.linearVelocity = new Vector2(moveInput * speed / 10, rb.linearVelocity.y);
-    }
+	private void FixedUpdate()
+	{
+		rb.linearVelocity = new Vector2(moveInput * speed / 10, rb.linearVelocity.y);
+	}
 
-    #region Controls
-    private void OnEnable()
-    {
-        controls.Player.Interact.performed += HandleInteraction;
-        controls.Player.Crouch.performed += HandleCrouch;
-        controls.Player.Reload.performed += HandleReload;
-        controls.Player.Shoot.performed += HandleShoot;
-        controls.Player.GunOut.performed += HandleGunOut;
-        controls.Player.Moving.performed += HandleMoveInput;
-        controls.Enable();
-    }
+	#region Controls
+	private void OnEnable()
+	{
+		controls.Player.Interact.performed += HandleInteraction;
+		controls.Player.Crouch.performed += HandleCrouch;
+		controls.Player.Reload.performed += HandleReload;
+		controls.Player.Shoot.performed += HandleShoot;
+		controls.Player.GunOut.performed += HandleGunOut;
+		controls.Player.Moving.performed += HandleMoveInput;
+		controls.Enable();
+	}
 
-    private void OnDisable()
-    {
-        controls.Player.Interact.performed -= HandleInteraction;
-        controls.Player.Crouch.performed -= HandleCrouch;
-        controls.Player.Reload.performed -= HandleReload;
-        controls.Player.Shoot.performed -= HandleShoot;
-        controls.Player.GunOut.performed -= HandleGunOut;
-        controls.Player.Moving.performed -= HandleMoveInput;
+	private void OnDisable()
+	{
+		controls.Player.Interact.performed -= HandleInteraction;
+		controls.Player.Crouch.performed -= HandleCrouch;
+		controls.Player.Reload.performed -= HandleReload;
+		controls.Player.Shoot.performed -= HandleShoot;
+		controls.Player.GunOut.performed -= HandleGunOut;
+		controls.Player.Moving.performed -= HandleMoveInput;
 
-        controls.Disable();
-    }
+		controls.Disable();
+	}
 
-    public void DisableControls()
-    {
-        controls.Disable();
-        iscanMove = false;
-        moveInput = 0;
+	public void DisableControls()
+	{
+		controls.Disable();
+		iscanMove = false;
+		moveInput = 0;
 #if PLATFORM_ANDROID
-        GameObject.FindAnyObjectByType<MobileInputsUI>().gameObject.SetActive(false);
+		GameObject.FindAnyObjectByType<MobileInputsUI>().gameObject.SetActive(false);
 #endif
-    }
+	}
 
-    public void EnableControls()
-    {
-        controls.Enable();
-        iscanMove = true;
+	public void EnableControls()
+	{
+		controls.Enable();
+		iscanMove = true;
 #if PLATFORM_ANDROID
-        GameObject parent = GameObject.Find("Canvas");
-        if (parent != null)
-        {
-            MobileInputsUI mobileInputsUI = parent.GetComponentInChildren<MobileInputsUI>(true);
-            if (mobileInputsUI != null)
-            {
-                mobileInputsUI.gameObject.SetActive(true);
-            }
-        }
+		GameObject parent = GameObject.Find("Canvas");
+		if (parent != null)
+		{
+			MobileInputsUI mobileInputsUI = parent.GetComponentInChildren<MobileInputsUI>(true);
+			if (mobileInputsUI != null)
+			{
+				mobileInputsUI.gameObject.SetActive(true);
+			}
+		}
 #endif
-    }
-    #endregion
+	}
+	#endregion
 
-    private void HandleTouchInput()
-    {
-        // Tuhle část skrz možnout budoucí složitosti jsem se rozhodl řešit kódově bez newinputsystemu za pomocí souboru nebo za ui kliknutí.
-        if (TouchInput() && iscanMove)
-        {
-            var touch = Touchscreen.current.primaryTouch;
+	private void HandleTouchInput()
+	{
+		// Tuhle část skrz možnout budoucí složitosti jsem se rozhodl řešit kódově bez newinputsystemu za pomocí souboru nebo za ui kliknutí.
+		if (TouchInput() && iscanMove)
+		{
+			var touch = Touchscreen.current.primaryTouch;
 
-            if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
-            {
-                touchStartPosition = touch.position.ReadValue();
-                isTouching = true;
-            }
-            else if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved && isTouching)
-            {
-                Vector2 touchDelta = touch.position.ReadValue() - touchStartPosition;
+			if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
+			{
+				touchStartPosition = touch.position.ReadValue();
+				isTouching = true;
+			}
+			else if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved && isTouching)
+			{
+				Vector2 touchDelta = touch.position.ReadValue() - touchStartPosition;
 
-                float deltaX = touchDelta.x * 2;
-                float deltaY = touchDelta.y;
+				float deltaX = touchDelta.x * 2;
+				float deltaY = touchDelta.y;
 
-                if (Mathf.Abs(deltaX) > touchThreshold)
-                {
-                    moveInput = Mathf.Clamp(deltaX / Screen.width * 2f, -1f, 1f);
-                    HandleRunAndWalk(moveInput);
-                }
+				if (Mathf.Abs(deltaX) > touchThreshold)
+				{
+					moveInput = Mathf.Clamp(deltaX / Screen.width * 2f, -1f, 1f);
+					HandleRunAndWalk(moveInput);
+				}
 
-                if (Mathf.Abs(deltaY) > touchThresholdDown)
-                {
-                    HandleCrouchAndStand(deltaY);
-                }
-            }
-            else if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Ended || touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Canceled)
-            {
-                isTouching = false;
-                moveInput = 0f;
-            }
-        }
-    }
+				if (Mathf.Abs(deltaY) > touchThresholdDown)
+				{
+					HandleCrouchAndStand(deltaY);
+				}
+			}
+			else if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Ended || touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Canceled)
+			{
+				isTouching = false;
+				moveInput = 0f;
+			}
+		}
+	}
 
-    private void HandleRunAndWalk(float moveInput)
-    {
-        if (Mathf.Abs(moveInput) > 0.3f)
-        {
-            ChangePlayerState(PlayerState.Running);
+	private void HandleRunAndWalk(float moveInput)
+	{
+		if (Mathf.Abs(moveInput) > 0.3f)
+		{
+			ChangePlayerState(PlayerState.Running);
 
-            animator.SetBool("Run", true);
-        }
-        else if (Mathf.Abs(moveInput) > 0.1f)
-        {
-            ChangePlayerState(PlayerState.Walking);
-            animator.SetBool("Run", false);
-        }
-    }
+			animator.SetBool("Run", true);
+		}
+		else if (Mathf.Abs(moveInput) > 0.1f)
+		{
+			ChangePlayerState(PlayerState.Walking);
+			animator.SetBool("Run", false);
+		}
+	}
 
-    private bool TouchInput()
-    {
-        return Touchscreen.current != null;
-    }
-    
-    private void HandleCrouchAndStand(float crouchInput)
-    {
-        if (isCanGetUp)
-        {
-            if (crouchInput < 0.1f)
-            {
-                animator.SetBool("Crouch", true);
-                crouch = true;
-                ChangePlayerState(PlayerState.Crouching);
-            }
-            else if (crouchInput > -0.1f)
-            {
-                animator.SetBool("Crouch", false);
-                crouch = false;
-            }
-        }
-    }
+	private bool TouchInput()
+	{
+		return Touchscreen.current != null;
+	}
 
-    private void HandleMoveInput(InputAction.CallbackContext context)
-    {
-        Vector2 input = context.ReadValue<Vector2>();
-        moveInput = input.x;
+	private void HandleCrouchAndStand(float crouchInput)
+	{
+		if (isCanGetUp)
+		{
+			if (crouchInput < 0.1f)
+			{
+				animator.SetBool("Crouch", true);
+				crouch = true;
+				ChangePlayerState(PlayerState.Crouching);
+			}
+			else if (crouchInput > -0.1f)
+			{
+				animator.SetBool("Crouch", false);
+				crouch = false;
+			}
+		}
+	}
 
-        if (moveInput > 0 && !mFacingRight)
-        {
-            Flip();
-        }
-        else if (moveInput < 0 && mFacingRight)
-        {
-            Flip();
-        }
-    }
+	private void HandleMoveInput(InputAction.CallbackContext context)
+	{
+		Vector2 input = context.ReadValue<Vector2>();
+		moveInput = input.x;
 
-    private void HandleCrouch(InputAction.CallbackContext context)
-    {
-        if (isHidden)
-        {
-            isPlayerVisible = !isPlayerVisible;
-        }
+		if (moveInput > 0 && !mFacingRight)
+		{
+			Flip();
+		}
+		else if (moveInput < 0 && mFacingRight)
+		{
+			Flip();
+		}
+	}
 
-        ChangePlayerState(currentState == PlayerState.Crouching ? (run ? PlayerState.Running : PlayerState.Walking) : PlayerState.Crouching);
+	private void HandleCrouch(InputAction.CallbackContext context)
+	{
+		if (isHidden)
+		{
+			isPlayerVisible = !isPlayerVisible;
+		}
 
-        ToggleAnimationState(ref crouch, "Crouch");
-    }
+		ChangePlayerState(currentState == PlayerState.Crouching ? (run ? PlayerState.Running : PlayerState.Walking) : PlayerState.Crouching);
 
-    private void HandleShoot(InputAction.CallbackContext context)
-    {
-        if (gunout && rounds > 0)
-        {
-            animator.SetBool("Shot", true);
-            gunAudioSource.clip = shootClip;
-            gunAudioSource.Play();
-        }
-    }
+		ToggleAnimationState(ref crouch, "Crouch");
+	}
 
-    private void HandleGunOut(InputAction.CallbackContext context)
-    {
-        ToggleAnimationState(ref gunout, "GunOut");
-    }
+	private void HandleShoot(InputAction.CallbackContext context)
+	{
+		if (gunout && rounds > 0)
+		{
+			animator.SetBool("Shot", true);
+			gunAudioSource.clip = shootClip;
+			gunAudioSource.Play();
+		}
+	}
 
-    private void HandleRun()
-    {
-        ChangePlayerState(currentState == PlayerState.Walking ? PlayerState.Running : PlayerState.Walking);
+	private void HandleGunOut(InputAction.CallbackContext context)
+	{
+		ToggleAnimationState(ref gunout, "GunOut");
+	}
 
-        ToggleAnimationState(ref run, "Run");
-    }
+	private void HandleRun()
+	{
+		ChangePlayerState(currentState == PlayerState.Walking ? PlayerState.Running : PlayerState.Walking);
 
-    private void HandleReload(InputAction.CallbackContext context)
-    {
-        if (gunout)
-        {
-            Reload();
-        }
-    }
+		ToggleAnimationState(ref run, "Run");
+	}
 
-    private void HandleInteraction(InputAction.CallbackContext context)
-    {
-        if (currentInteractiveObject != null)
-        {
-            currentInteractiveObject.SetInteractionKeyState(true);
-            currentInteractiveObject.Interact();
-        }
-    }
+	private void HandleReload(InputAction.CallbackContext context)
+	{
+		if (gunout)
+		{
+			Reload();
+		}
+	}
 
-    private void ChangePlayerState(PlayerState newState)
-    {
-        currentState = newState;
+	private void HandleInteraction(InputAction.CallbackContext context)
+	{
+		if (currentInteractiveObject != null)
+		{
+			currentInteractiveObject.SetInteractionKeyState(true);
+			currentInteractiveObject.Interact();
+		}
+	}
 
-        switch (currentState)
-        {
-            case PlayerState.Walking:
-                WalkingMode();
-                break;
-            case PlayerState.Running:
-                RunMode();
-                break;
-            case PlayerState.Crouching:
-                SlowMode();
-                break;
-            default:
-                WalkingMode();
-                break;
-        }
-    }
+	private void ChangePlayerState(PlayerState newState)
+	{
+		currentState = newState;
 
-    #region Fliping
-    private void FlipCharacter(float moveDirection)
-    {
-        if ((moveDirection > 0 && !mFacingRight) || (moveDirection < 0 && mFacingRight))
-        {
-            Flip();
-        }
-    }
+		switch (currentState)
+		{
+			case PlayerState.Walking:
+				WalkingMode();
+				break;
+			case PlayerState.Running:
+				RunMode();
+				break;
+			case PlayerState.Crouching:
+				SlowMode();
+				break;
+			default:
+				WalkingMode();
+				break;
+		}
+	}
 
-    private void Flip()
-    {
-        mFacingRight = !mFacingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-    }
-    #endregion
-    private void ToggleAnimationState(ref bool state, string animation)
-    {
-        state ^= true;
-        animator.SetBool(animation, state);
-    }
+	#region Fliping
+	private void FlipCharacter(float moveDirection)
+	{
+		if ((moveDirection > 0 && !mFacingRight) || (moveDirection < 0 && mFacingRight))
+		{
+			Flip();
+		}
+	}
 
-    #region SpeedChanging
-    private void SlowMode()
-    {
-        speed = slowSpeed;
-    }
+	private void Flip()
+	{
+		mFacingRight = !mFacingRight;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
+	#endregion
+	private void ToggleAnimationState(ref bool state, string animation)
+	{
+		state ^= true;
+		animator.SetBool(animation, state);
+	}
 
-    private void NoMoving()
-    {
-        speed = 0;
-    }
+	#region SpeedChanging
+	private void SlowMode()
+	{
+		speed = slowSpeed;
+	}
 
-    private void RunMode()
-    {
-        speed = runSpeed;
-    }
+	private void NoMoving()
+	{
+		speed = 0;
+	}
 
-    private void WalkingMode()
-    {
-        speed = walkSpeed;
-    }
-    #endregion
-    #region Shooting
-    private void AktualizovatTextovaPole()
-    {
-        zobrazovaninaboju.text = rounds.ToString() + " / " + roundsDeposit.ToString();
-    }
+	private void RunMode()
+	{
+		speed = runSpeed;
+	}
 
-    public void Shoot()
-    {
-        rounds -= 1;
+	private void WalkingMode()
+	{
+		speed = walkSpeed;
+	}
+	#endregion
+	#region Shooting
+	private void AktualizovatTextovaPole()
+	{
+		zobrazovaninaboju.text = rounds.ToString() + " / " + roundsDeposit.ToString();
+	}
 
-        Vector2 shootDirection = mFacingRight ? Vector2.right : Vector2.left;
+	public void Shoot()
+	{
+		rounds -= 1;
 
-        int layerMask = ~(1 << LayerMask.NameToLayer("Player")) & ~(1 << LayerMask.NameToLayer("Barier"));
+		Vector2 shootDirection = mFacingRight ? Vector2.right : Vector2.left;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, shootDirection, shootDistance, layerMask);
+		int layerMask = ~(1 << LayerMask.NameToLayer("Player")) & ~(1 << LayerMask.NameToLayer("Barier"));
 
-        if (hit.collider != null)
-        {
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(1);
-                }
-            }
-        }
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, shootDirection, shootDistance, layerMask);
 
-        animator.SetBool("Shot", false);
+		if (hit.collider != null)
+		{
+			if (hit.collider.CompareTag("Enemy"))
+			{
+				EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();
+				if (enemy != null)
+				{
+					enemy.TakeDamage(1);
+				}
+			}
+		}
 
-        AktualizovatTextovaPole();
-    }
+		animator.SetBool("Shot", false);
 
-    public void Reload()
-    {
-        if (rounds != 3)
-        {
-            rounds = 3;
-            if (roundsDeposit >= 3)
-            {
-                roundsDeposit -= 3;
-            }
-            else if (roundsDeposit > 0)
-            {
-                roundsDeposit -= roundsDeposit;
-            }
+		AktualizovatTextovaPole();
+	}
 
-            gunAudioSource.clip = reloadClip;
-            gunAudioSource.Play();
-            AktualizovatTextovaPole();
-        }
-        ToggleAnimationState(ref reload, "Reload");
-    }
+	public void Reload()
+	{
+		if (rounds != 3)
+		{
+			rounds = 3;
+			if (roundsDeposit >= 3)
+			{
+				roundsDeposit -= 3;
+			}
+			else if (roundsDeposit > 0)
+			{
+				roundsDeposit -= roundsDeposit;
+			}
 
-    #endregion
-    #region Triggers
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.CompareTag("Interactive"))
-        {
-            currentInteractiveObject = collider.gameObject.GetComponent<InteractiveObject>();
-        }
-        if (collider.CompareTag("Schovavani"))
-        {
-            isHidden = true;
-            if (crouch)
-            {
-                isPlayerVisible = false;
-            }
-        }
-        else if (collider.gameObject.CompareTag("Obstacle"))
-        {
-            HandlePlayerDeath();
-        }
-    }
+			gunAudioSource.clip = reloadClip;
+			gunAudioSource.Play();
+			AktualizovatTextovaPole();
+		}
+		ToggleAnimationState(ref reload, "Reload");
+	}
 
-    private void OnTriggerExit2D(Collider2D collider)
-    {
-        if (collider.CompareTag("Schovavani"))
-        {
-            isHidden = false;
-            if (crouch)
-            {
-                isPlayerVisible = true;
-            }
-        }
-    }
+	#endregion
+	#region Triggers
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		if (collider.gameObject.CompareTag("Interactive"))
+		{
+			currentInteractiveObject = collider.gameObject.GetComponent<InteractiveObject>();
+		}
+		if (collider.CompareTag("Schovavani"))
+		{
+			isHidden = true;
+			if (crouch)
+			{
+				isPlayerVisible = false;
+			}
+		}
+		else if (collider.gameObject.CompareTag("Obstacle"))
+		{
+			HandlePlayerDeath();
+		}
+	}
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
-            if (enemy.isAttack)
-            {
-                HandlePlayerDeath();
-            }
-        }
-        if (collision.CompareTag("Schovavani"))
-        {
-            if (crouch)
-            {
-                isPlayerVisible = false;
-            }
-            else
-            {
-                isPlayerVisible = true;
-            }
-        }
-    }
-    #endregion
-    public void HandlePlayerDeath()
-    {
-        DeathScreen.gameObject.SetActive(true);
-        Time.timeScale = 0f;
-    }
+	private void OnTriggerExit2D(Collider2D collider)
+	{
+		if (collider.CompareTag("Schovavani"))
+		{
+			isHidden = false;
+			if (crouch)
+			{
+				isPlayerVisible = true;
+			}
+		}
+	}
 
-    public bool IsPlayerVisible()
-    {
-        return isPlayerVisible;
-    }
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		if (collision.gameObject.CompareTag("Enemy"))
+		{
+			EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
+			if (enemy.isAttack)
+			{
+				HandlePlayerDeath();
+			}
+		}
+		if (collision.CompareTag("Schovavani"))
+		{
+			if (crouch)
+			{
+				isPlayerVisible = false;
+			}
+			else
+			{
+				isPlayerVisible = true;
+			}
+		}
+	}
+	#endregion
+	public void HandlePlayerDeath()
+	{
+		DeathScreen.gameObject.SetActive(true);
+		Time.timeScale = 0f;
+	}
 
-    public void CanGetUp()
-    {
-        isCanGetUp = true;
+	public bool IsPlayerVisible()
+	{
+		return isPlayerVisible;
+	}
 
-        if (crouch == true)
-        {
-            ToggleAnimationState(ref crouch, "Crouch");
-        }
-    }
+	public void CanGetUp()
+	{
+		isCanGetUp = true;
 
-    public void GetDown()
-    {
-        isCanGetUp = false;
-        ChangePlayerState(PlayerState.Crouching);
-        if (crouch == false)
-        {
-            ToggleAnimationState(ref crouch, "Crouch");
-        }
-    }
+		if (crouch == true)
+		{
+			ToggleAnimationState(ref crouch, "Crouch");
+		}
+	}
 
-    #region Sounds
-    private void PlaySoundFootSteps(AudioClip clip)
-    {
-        footStepsAudioSource.clip = clip;
-        footStepsAudioSource.Play();
-    }
+	public void GetDown()
+	{
+		isCanGetUp = false;
+		ChangePlayerState(PlayerState.Crouching);
+		if (crouch == false)
+		{
+			ToggleAnimationState(ref crouch, "Crouch");
+		}
+	}
 
-    private void StopSoundFootSteps()
-    {
-        footStepsAudioSource.Stop();
-    }
+	#region Sounds
+	private void PlaySoundFootSteps(AudioClip clip)
+	{
+		footStepsAudioSource.clip = clip;
+		footStepsAudioSource.Play();
+	}
 
-    #endregion
+	private void StopSoundFootSteps()
+	{
+		footStepsAudioSource.Stop();
+	}
 
-    public void PerformJump()
-    {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-    }
+	#endregion
 
-    private void OnDrawGizmos()
-    {
-        Vector2 shootDirection = mFacingRight ? Vector2.right : Vector2.left;
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, shootDirection * shootDistance);
-    }
+	public void PerformJump()
+	{
+		rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+	}
 
-    /// <summary>
-    /// Deaktivování světla u hráče.
-    /// </summary>
-    /// <param name="player"></param>
-    /// todo opravit.
-    public void DeactivateLight(GameObject player)
-    {
-        Light playerLight = gameObject.GetComponentInChildren<Light>();
-        if (playerLight != null)
-        {
-            playerLight.enabled = false;
-        }
-    }
+	private void OnDrawGizmos()
+	{
+		Vector2 shootDirection = mFacingRight ? Vector2.right : Vector2.left;
+		Gizmos.color = Color.red;
+		Gizmos.DrawRay(transform.position, shootDirection * shootDistance);
+	}
 
-    public int GetRounds()
-    {
-        return rounds;
-    }
+	/// <summary>
+	/// Deaktivování světla u hráče.
+	/// </summary>
+	/// <param name="player"></param>
+	/// todo opravit.
+	public void DeactivateLight(GameObject player)
+	{
+		Light playerLight = gameObject.GetComponentInChildren<Light>();
+		if (playerLight != null)
+		{
+			playerLight.enabled = false;
+		}
+	}
 
-    public float GetPlayerInput()
-    {
-        return moveInput;
-    }
+	public int GetRounds()
+	{
+		return rounds;
+	}
 
-    public bool IsPlayerCrouch()
-    {
-        return crouch;
-    }
+	public float GetPlayerInput()
+	{
+		return moveInput;
+	}
 
-    public int GetNumberOfGunReposit()
-    {
-        return roundsDeposit;
-    }
+	public bool IsPlayerCrouch()
+	{
+		return crouch;
+	}
+
+	public int GetNumberOfGunReposit()
+	{
+		return roundsDeposit;
+	}
 }

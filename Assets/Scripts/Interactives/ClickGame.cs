@@ -7,39 +7,37 @@ using Assets.Scripts.Interfaces;
 /// </summary>
 public class ClickGame : MonoBehaviour, IMiniGame
 {
+	public PlayMiniGame playMiniGame;
+	private InputAction clickAction;
+	private PlayerInputs controls;
 
-    public PlayMiniGame playMiniGame;
-    private InputAction clickAction;
-    private PlayerInputs controls;
+	void Awake()
+	{
+		controls = new PlayerInputs();
+	}
 
-    void Awake()
-    {
-        controls = new PlayerInputs();
-    }
+	void OnEnable()
+	{
+		controls.Enable();
+		controls.Minigames.ClickLockPick.performed += HandleInteraction;
+	}
 
-    void OnEnable()
-    {
-        controls.Enable();
-        controls.Minigames.ClickLockPick.performed += HandleInteraction;
-    }
+	void OnDisable()
+	{
+		controls.Minigames.ClickLockPick.performed -= HandleInteraction;
+		controls.Disable();
+	}
 
-    void OnDisable()
-    {
-        controls.Minigames.ClickLockPick.performed -= HandleInteraction;
-        controls.Disable();
-    }
+	void HandleInteraction(InputAction.CallbackContext context)
+	{
+		EndMiniGame();
+	}
 
-    void HandleInteraction(InputAction.CallbackContext context)
-    {
-        EndMiniGame();
-    }
-
-
-    public void EndMiniGame()
-    {
-        if (playMiniGame != null)
-        {
-            playMiniGame.EndMiniGame();
-        }
-    }
+	public void EndMiniGame()
+	{
+		if (playMiniGame != null)
+		{
+			playMiniGame.EndMiniGame();
+		}
+	}
 }

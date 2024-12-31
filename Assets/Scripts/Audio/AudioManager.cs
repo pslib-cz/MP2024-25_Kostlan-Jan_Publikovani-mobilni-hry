@@ -6,6 +6,9 @@ using UnityEngine.Audio;
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public static AudioManager instance;
 
 	public AudioMixer audioMixer;
@@ -13,15 +16,15 @@ public class AudioManager : MonoBehaviour
 	public float defaultVolume = 0.7f;
 
 	[Header("MusicSettings")]
-    public AudioClip defaultMusicClip;
-    public AudioSource musicSource;
+	public AudioClip defaultMusicClip;
+	public AudioSource musicSource;
 
-    private void Awake()
-    {
-        musicSource.ignoreListenerPause = true;
-    }
+	private void Awake()
+	{
+		musicSource.ignoreListenerPause = true;
+	}
 
-    private void Start()
+	private void Start()
 	{
 		if (instance == null)
 		{
@@ -33,11 +36,11 @@ public class AudioManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-        PlayMusic();
+		PlayMusic();
 
-    }
+	}
 
-    public void SetMusicVolume(float volume)
+	public void SetMusicVolume(float volume)
 	{
 		volume = Mathf.Clamp(volume, 0.0f, 1.0f);
 		float dBValue = GetdBValue(volume);
@@ -58,62 +61,62 @@ public class AudioManager : MonoBehaviour
 	private float GetdBValue(float volume)
 	{
 		return Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20;
-    }
+	}
 
-    private void LoadMusicPlayerPrefs()
-    {
-        if (PlayerPrefs.HasKey(PlayerPrefsKeys.MusicVolume))
-        {
-            float musicVolume = PlayerPrefs.GetFloat(PlayerPrefsKeys.MusicVolume, defaultVolume);  // Nastavení výchozí hodnoty
-            float dBValue = GetdBValue(musicVolume);
-            Debug.Log($"Loaded Music Volume: {musicVolume}, dB: {dBValue}");
-            audioMixer.SetFloat(PlayerPrefsKeys.MusicVolume, dBValue);
-        }
-        else
-        {
-            SetMusicVolume(defaultVolume);  // Pokud není klíč, nastavíme defaultní hlasitost
-        }
-    }
+	private void LoadMusicPlayerPrefs()
+	{
+		if (PlayerPrefs.HasKey(PlayerPrefsKeys.MusicVolume))
+		{
+			float musicVolume = PlayerPrefs.GetFloat(PlayerPrefsKeys.MusicVolume, defaultVolume);  // Nastavení výchozí hodnoty
+			float dBValue = GetdBValue(musicVolume);
+			Debug.Log($"Loaded Music Volume: {musicVolume}, dB: {dBValue}");
+			audioMixer.SetFloat(PlayerPrefsKeys.MusicVolume, dBValue);
+		}
+		else
+		{
+			SetMusicVolume(defaultVolume);  // Pokud není klíč, nastavíme defaultní hlasitost
+		}
+	}
 
-    private void LoadSFXPlayerPrefs()
-    {
-        if (PlayerPrefs.HasKey(PlayerPrefsKeys.SFXVolume))
-        {
-            float sfxVolume = PlayerPrefs.GetFloat(PlayerPrefsKeys.SFXVolume, defaultVolume);  // Nastavení výchozí hodnoty
-            float dBValue = GetdBValue(sfxVolume);
-            Debug.Log($"Loaded SFX Volume: {sfxVolume}, dB: {dBValue}");
-            audioMixer.SetFloat(PlayerPrefsKeys.SFXVolume, dBValue);
-        }
-        else
-        {
-            SetSFXVolume(defaultVolume);  // Pokud není klíč, nastavíme defaultní hlasitost
-        }
-    }
+	private void LoadSFXPlayerPrefs()
+	{
+		if (PlayerPrefs.HasKey(PlayerPrefsKeys.SFXVolume))
+		{
+			float sfxVolume = PlayerPrefs.GetFloat(PlayerPrefsKeys.SFXVolume, defaultVolume);  // Nastavení výchozí hodnoty
+			float dBValue = GetdBValue(sfxVolume);
+			Debug.Log($"Loaded SFX Volume: {sfxVolume}, dB: {dBValue}");
+			audioMixer.SetFloat(PlayerPrefsKeys.SFXVolume, dBValue);
+		}
+		else
+		{
+			SetSFXVolume(defaultVolume);  // Pokud není klíč, nastavíme defaultní hlasitost
+		}
+	}
 
-    private void LoadVolumeSettings()
-    {
-        LoadMusicPlayerPrefs();
-        LoadSFXPlayerPrefs();
-    }
+	private void LoadVolumeSettings()
+	{
+		LoadMusicPlayerPrefs();
+		LoadSFXPlayerPrefs();
+	}
 
-    #region MusicSettings
+	#region MusicSettings
 
-    public void PlayMusic()
-    {
-        musicSource.clip = defaultMusicClip;
-        musicSource.Play();
-    }
+	public void PlayMusic()
+	{
+		musicSource.clip = defaultMusicClip;
+		musicSource.Play();
+	}
 
-    public void ChangeMusic(AudioClip musicClip)
-    {
-        musicSource.clip = musicClip;
-        musicSource.Play();
-    }
+	public void ChangeMusic(AudioClip musicClip)
+	{
+		musicSource.clip = musicClip;
+		musicSource.Play();
+	}
 
-    public void StopMusic()
-    {
-        musicSource.Stop();
-    }
+	public void StopMusic()
+	{
+		musicSource.Stop();
+	}
 
-    #endregion
+	#endregion
 }

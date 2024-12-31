@@ -14,10 +14,10 @@ public class DeathMenu : MonoBehaviour
 	{
 		Time.timeScale = 0f;
 
-        AudioManager.instance.ChangeMusic(deathMusicClip);
+		AudioManager.instance.ChangeMusic(deathMusicClip);
 		AudioListener.pause = true;
-        Handheld.Vibrate();
-    }
+		Handheld.Vibrate();
+	}
 
 	/// <summary>
 	/// Exit game.
@@ -33,9 +33,9 @@ public class DeathMenu : MonoBehaviour
 	public void SceneMinus()
 	{
 		bannerAdsDeath.DestroyAd();
-        AudioListener.pause = false;
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+		AudioListener.pause = false;
+		Time.timeScale = 1f;
+		SceneManager.LoadScene("MainMenu");
 	}
 
 	/// <summary>
@@ -43,9 +43,9 @@ public class DeathMenu : MonoBehaviour
 	/// </summary>s
 	public void RestartLevel()
 	{
-        bannerAdsDeath.DestroyAd();
-        AudioListener.pause = false;
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		bannerAdsDeath.DestroyAd();
+		AudioListener.pause = false;
+		Time.timeScale = 1f;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }

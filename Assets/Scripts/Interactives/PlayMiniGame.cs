@@ -9,17 +9,17 @@ public class PlayMiniGame : MonoBehaviour
 	[SerializeField] GameObject minigame;
 	[SerializeField] GameObject bariel;
 	[SerializeField] GameObject objectToShow;
-    [SerializeField] UnityEvent eventsAfterGame;
+	[SerializeField] UnityEvent eventsAfterGame;
 	[SerializeField] Button exitButton;
 
-    private void Awake()
+	private void Awake()
 	{
 		playerController = FindAnyObjectByType<PlayerController2D>();
-        var button = Instantiate(exitButton, minigame.transform);
-        button.onClick.AddListener(ExitMiniGame);
-    }
+		var button = Instantiate(exitButton, minigame.transform);
+		button.onClick.AddListener(ExitMiniGame);
+	}
 
-    public void StartMiniGame()
+	public void StartMiniGame()
 	{
 		minigame.SetActive(true);
 		playerController.DisableControls();
@@ -30,12 +30,12 @@ public class PlayMiniGame : MonoBehaviour
 		Debug.Log("změna");
 		playerController.EnableControls();
 		minigame.SetActive(false);
-    }
+	}
 
 	public void EndMiniGame()
 	{
-        eventsAfterGame?.Invoke();
-        if (bariel != null)
+		eventsAfterGame?.Invoke();
+		if (bariel != null)
 		{
 			bariel.SetActive(false);
 		}
@@ -44,9 +44,9 @@ public class PlayMiniGame : MonoBehaviour
 		{
 			objectToShow.SetActive(true);
 		}
-        playerController.EnableControls();
+		playerController.EnableControls();
 
-        minigame.SetActive(false);
+		minigame.SetActive(false);
 
 	}
 }

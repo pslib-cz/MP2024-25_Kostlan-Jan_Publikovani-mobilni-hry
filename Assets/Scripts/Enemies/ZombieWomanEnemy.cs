@@ -14,18 +14,18 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(SpriteRenderer))]
 public class ZombieWomanEnemy : EnemyBase
 {
-    [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 2f;
+	[Header("Movement Settings")]
+	[SerializeField] private float moveSpeed = 2f;
 	[SerializeField] private float runSpeed = 10f;
 
-    [Header("Audio Clips")]
-    [SerializeField] private AudioClip walkClip;
-    [SerializeField] private AudioClip runClip;
-    [SerializeField] private AudioClip attackClip;
-    [SerializeField] private AudioClip screamClip;
+	[Header("Audio Clips")]
+	[SerializeField] private AudioClip walkClip;
+	[SerializeField] private AudioClip runClip;
+	[SerializeField] private AudioClip attackClip;
+	[SerializeField] private AudioClip screamClip;
 
-    [Header("Detection Settings")]
-    [SerializeField] private bool isFacingRight = true;
+	[Header("Detection Settings")]
+	[SerializeField] private bool isFacingRight = true;
 	[SerializeField] private float frontDetectionDistance = 10f;
 	[SerializeField] private float frontDetectionWidth = 5f;
 	[SerializeField] private float backDetectionDistance = 5f;
@@ -34,20 +34,20 @@ public class ZombieWomanEnemy : EnemyBase
 	[SerializeField] private float attackWidth = 1f;
 	[SerializeField] private bool isAlert;
 
-    [Header("Idle and Walk Timers")]
-    [SerializeField] private float idleTime = 2f;
+	[Header("Idle and Walk Timers")]
+	[SerializeField] private float idleTime = 2f;
 	[SerializeField] private float walkTime = 5f;
 	private float currentIdleTime;
 	private float currentWalkTime;
 
 	private bool isScream = true;
-    private bool dead;
-    private bool isIdle;
-    private bool isWalkingRight;
-    private Transform target;
-    private Animator animator;
+	private bool dead;
+	private bool isIdle;
+	private bool isWalkingRight;
+	private Transform target;
+	private Animator animator;
 
-    private void Awake()
+	private void Awake()
 	{
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		animator = GetComponent<Animator>();
@@ -186,12 +186,12 @@ public class ZombieWomanEnemy : EnemyBase
 	{
 		animator.SetBool("Dead", true);
 		PlayDeathSound();
-        dead = true;
+		dead = true;
 
-        gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
+		gameObject.layer = LayerMask.NameToLayer("DeathEnemy");
 
-    }
-    private void OnDrawGizmosSelected()
+	}
+	private void OnDrawGizmosSelected()
 	{
 		Vector2 frontBoxPosition = (Vector2)transform.position + (isFacingRight ? Vector2.right : Vector2.left) * frontDetectionDistance / 2;
 		Vector2 backBoxPosition = (Vector2)transform.position - (isFacingRight ? Vector2.right : Vector2.left) * backDetectionDistance / 2;

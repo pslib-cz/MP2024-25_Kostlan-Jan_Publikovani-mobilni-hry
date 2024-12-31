@@ -1,12 +1,12 @@
+using Assets.Scripts.Enums;
 using UnityEngine;
 
 /// <summary>
-/// voják, který reaguje na stealf systém.
+/// Voják, který reaguje na steaf systém.
 /// </summary>
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(AudioSource))]
-
 public class Soldier : MonoBehaviour
 {
 	[Header("Soldier Settings")]
@@ -43,15 +43,7 @@ public class Soldier : MonoBehaviour
 
 	private bool isAlerted;
 
-	private enum State
-	{
-		Idle,
-		Walking,
-		Running,
-		Firing
-	}
-
-	private State state = State.Idle;
+	private SoldierState State = SoldierState.Idle;
 
 	void Start()
 	{
@@ -91,11 +83,11 @@ public class Soldier : MonoBehaviour
 				(mFacingRight && playerDirection.x < 0 || !mFacingRight && playerDirection.x > 0) || isAlerted)
 			{
 				isAlerted = true;
-				state = State.Running;
+				State = SoldierState.Running;
 
 				if (Vector2.Distance(transform.position, player.position) <= attackRange)
 				{
-					state = State.Firing;
+					State = SoldierState.Firing;
 					if (isShootingAnimationPlaying)
 					{
 						playerController.HandlePlayerDeath();
@@ -104,10 +96,10 @@ public class Soldier : MonoBehaviour
 			}
 			else if (Time.time >= nextActionTime)
 			{
-				state = (state == State.Idle) ? State.Walking : State.Idle;
+				State = (State == SoldierState.Idle) ? SoldierState.Walking : SoldierState.Idle;
 				nextActionTime = Time.time + idleTime;
 
-				if (state == State.Walking)
+				if (State == SoldierState.Walking)
 				{
 					direction = Random.value < 0.3 ? Vector2.left : Vector2.right;
 				}
@@ -115,35 +107,35 @@ public class Soldier : MonoBehaviour
 		}
 		else if (Time.time >= nextActionTime)
 		{
-			state = (state == State.Idle) ? State.Walking : State.Idle;
+			State = (State == SoldierState.Idle) ? SoldierState.Walking : SoldierState.Idle;
 			nextActionTime = Time.time + idleTime;
 
-			if (state == State.Walking)
+			if (State == SoldierState.Walking)
 			{
 				direction = Random.value < 0.7 ? Vector2.left : Vector2.right;
 			}
 		}
 
-		switch (state)
+		switch (State)
 		{
-			case State.Idle:
+			case SoldierState.Idle:
 				animator.SetBool("Run", false);
 				animator.SetBool("Walk", false);
 				StopMovementSound();
 				break;
-			case State.Walking:
+			case SoldierState.Walking:
 				animator.SetBool("Run", false);
 				animator.SetBool("Walk", true);
 				Patrol(walkSpeed);
 				PlayMovementSound(walkingSound);
 				break;
-			case State.Running:
+			case SoldierState.Running:
 				animator.SetBool("Run", true);
 				animator.SetBool("Walk", false);
 				ChasePlayer(runSpeed);
 				PlayMovementSound(runningSound);
 				break;
-			case State.Firing:
+			case SoldierState.Firing:
 				animator.SetBool("Run", false);
 				animator.SetBool("Walk", false);
 				ShotStyle();

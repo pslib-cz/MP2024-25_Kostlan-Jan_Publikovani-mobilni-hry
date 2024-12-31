@@ -6,145 +6,145 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Scenes
 {
-    /// <summary>
-    /// Skript pro práci se scénami.
-    /// </summary>
-    public class SceneManager : MonoBehaviour
-    {
-        public const string introScene = "Intro";
-        private Image image;
-        private string targetSceneName;
-        private const float fadeDuration = 3f;
+	/// <summary>
+	/// Skript pro práci se scénami.
+	/// </summary>
+	public class SceneManager : MonoBehaviour
+	{
+		public const string introScene = "Intro";
+		private Image image;
+		private string targetSceneName;
+		private const float fadeDuration = 3f;
 
-        public static SceneManager Instance;
-        [SerializeField] private RewardAds adPrefab;
-        private float gameStartTime;
-        private const float adTriggerTime = 1800f;
+		public static SceneManager Instance;
+		[SerializeField] private RewardAds adPrefab;
+		private float gameStartTime;
+		private const float adTriggerTime = 1800f;
 
-        private void Start()
-        {
-            gameStartTime = Time.time;
-        }
+		private void Start()
+		{
+			gameStartTime = Time.time;
+		}
 
-        private void Awake()
-        {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-                return;
-            }
+		private void Awake()
+		{
+			if (Instance != null && Instance != this)
+			{
+				Destroy(gameObject);
+				return;
+			}
 
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+			Instance = this;
+			DontDestroyOnLoad(gameObject);
 
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-        }
+			UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+		}
 
-        private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
-        {
-            // provizorní
-            if (CanShowAd())
-            {
-                CreateRewardAdsObject();
-                gameStartTime = Time.time;
+		private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
+		{
+			// provizorní
+			if (CanShowAd())
+			{
+				CreateRewardAdsObject();
+				gameStartTime = Time.time;
 
-            }
-        }
+			}
+		}
 
-        private bool CanShowAd()
-        {
-            // Zkontroluje, zda hráč hraje déle než 30 minut
-            return Time.time - gameStartTime >= adTriggerTime;
-        }
+		private bool CanShowAd()
+		{
+			// Zkontroluje, zda hráč hraje déle než 30 minut
+			return Time.time - gameStartTime >= adTriggerTime;
+		}
 
 
-        public void SceneLoad(string sceneName)
-        {
-            FindBlackImage();
-            targetSceneName = sceneName;
-            StartCoroutine(LoadSceneAsync(sceneName));
-        }
+		public void SceneLoad(string sceneName)
+		{
+			FindBlackImage();
+			targetSceneName = sceneName;
+			StartCoroutine(LoadSceneAsync(sceneName));
+		}
 
-        public void LoadLastScene()
-        {
-            if (PlayerPrefs.HasKey(PlayerPrefsKeys.LastScene))
-            {
-                string lastScene = PlayerPrefs.GetString(PlayerPrefsKeys.LastScene);
-                targetSceneName = lastScene;
+		public void LoadLastScene()
+		{
+			if (PlayerPrefs.HasKey(PlayerPrefsKeys.LastScene))
+			{
+				string lastScene = PlayerPrefs.GetString(PlayerPrefsKeys.LastScene);
+				targetSceneName = lastScene;
 
-                FindBlackImage();
-                StartCoroutine(LoadSceneAsync(lastScene));
-            }
-            else
-            {
-                targetSceneName = introScene;
-                StartCoroutine(LoadSceneAsync(introScene));
-            }
-        }
+				FindBlackImage();
+				StartCoroutine(LoadSceneAsync(lastScene));
+			}
+			else
+			{
+				targetSceneName = introScene;
+				StartCoroutine(LoadSceneAsync(introScene));
+			}
+		}
 
-        private void FindBlackImage()
-        {
-            GameObject canvasObject = GameObject.Find("BlackImage");
-            if (canvasObject != null)
-            {
-                image = canvasObject.GetComponent<Image>();
-                image.color = new Color(0, 0, 0, 0);
-            }
-            else
-            {
-                Debug.LogError("BlackImage nebyl nalezen.");
-            }
-        }
+		private void FindBlackImage()
+		{
+			GameObject canvasObject = GameObject.Find("BlackImage");
+			if (canvasObject != null)
+			{
+				image = canvasObject.GetComponent<Image>();
+				image.color = new Color(0, 0, 0, 0);
+			}
+			else
+			{
+				Debug.LogError("BlackImage nebyl nalezen.");
+			}
+		}
 
-        private IEnumerator LoadSceneAsync(string sceneName)
-        {
-            AsyncOperation asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
-            asyncLoad.allowSceneActivation = false;
+		private IEnumerator LoadSceneAsync(string sceneName)
+		{
+			AsyncOperation asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
+			asyncLoad.allowSceneActivation = false;
 
-            Coroutine fadeCoroutine = StartCoroutine(FadeToOpaque(fadeDuration));
+			Coroutine fadeCoroutine = StartCoroutine(FadeToOpaque(fadeDuration));
 
-            while (!asyncLoad.isDone && asyncLoad.progress < 0.9f)
-            {
-                yield return null;
-            }
+			while (!asyncLoad.isDone && asyncLoad.progress < 0.9f)
+			{
+				yield return null;
+			}
 
-            yield return fadeCoroutine;
+			yield return fadeCoroutine;
 
-            asyncLoad.allowSceneActivation = true;
+			asyncLoad.allowSceneActivation = true;
 
-        }
+		}
 
-        private IEnumerator FadeToOpaque(float duration)
-        {
-            Color color = image.color;
-            float startAlpha = 0;
-            float time = 0;
+		private IEnumerator FadeToOpaque(float duration)
+		{
+			Color color = image.color;
+			float startAlpha = 0;
+			float time = 0;
 
-            color.a = startAlpha;
-            image.color = color;
+			color.a = startAlpha;
+			image.color = color;
 
-            while (time < duration)
-            {
-                time += Time.unscaledDeltaTime;
-                color.a = Mathf.Lerp(startAlpha, 1, time / duration);
-                image.color = color;
-                yield return null;
-            }
+			while (time < duration)
+			{
+				time += Time.unscaledDeltaTime;
+				color.a = Mathf.Lerp(startAlpha, 1, time / duration);
+				image.color = color;
+				yield return null;
+			}
 
-            color.a = 1;
-            image.color = color;
-        }
+			color.a = 1;
+			image.color = color;
+		}
 
-        private void CreateRewardAdsObject()
-        {
-            if (adPrefab != null)
-            {
-                Instantiate(adPrefab, Vector3.zero, Quaternion.identity);
-            }
-            else
-            {
-                Debug.LogError("Ad Prefab není nastaven v SceneManageru.");
-            }
-        }
-    }
+		private void CreateRewardAdsObject()
+		{
+			if (adPrefab != null)
+			{
+				Instantiate(adPrefab, Vector3.zero, Quaternion.identity);
+			}
+			else
+			{
+				Debug.LogError("Ad Prefab není nastaven v SceneManageru.");
+			}
+		}
+	}
 }

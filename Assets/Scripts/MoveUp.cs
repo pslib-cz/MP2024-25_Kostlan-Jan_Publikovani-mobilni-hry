@@ -2,30 +2,30 @@
 
 namespace Assets.Scripts
 {
-    public class MoveUp : MonoBehaviour
-    {
-        public float slowSpeed = 0.5f;
-        public float fastSpeed = 2.0f;
-        public float switchTime = 0.5f;
-        private float currentSpeed;
-        private float timeElapsed;
+	public class MoveUp : MonoBehaviour
+	{
+		public float slowSpeed = 0.5f;
+		public float fastSpeed = 2.0f;
+		public float switchTime = 0.5f;
+		private float currentSpeed;
+		private float timeElapsed;
 
-        void Start()
-        {
-            currentSpeed = slowSpeed;
-            timeElapsed = 0.0f;
-        }
+		void Start()
+		{
+			currentSpeed = slowSpeed;
+			timeElapsed = 0.0f;
+		}
 
-        void Update()
-        {
-            timeElapsed += Time.deltaTime;
+		void Update()
+		{
+			timeElapsed += Time.deltaTime;
 
-            if (timeElapsed >= switchTime)
-            {
-                currentSpeed = fastSpeed;
-            }
+			if (timeElapsed >= switchTime)
+			{
+				currentSpeed = fastSpeed;
+			}
 
-            transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);
-        }
-    }
+			transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);
+		}
+	}
 }

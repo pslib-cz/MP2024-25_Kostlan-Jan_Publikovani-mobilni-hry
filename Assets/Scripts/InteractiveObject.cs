@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
-[RequireComponent (typeof(BoxCollider2D))]
-[RequireComponent (typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class InteractiveObject : MonoBehaviour
 {
 	public Animator objectAnimator;
@@ -43,14 +43,14 @@ public class InteractiveObject : MonoBehaviour
 			{
 				objectAnimator.SetBool(Clicken, true);
 			}
-            // Mark interaction as happened if it's a one-time interaction.
-            if (interactOnlyOnce)
-            {
+			// Mark interaction as happened if it's a one-time interaction.
+			if (interactOnlyOnce)
+			{
 				boxcollider2D.enabled = false;
 				Destroy(showImage);
-            }
-            // Invoke the UnityEvent.
-            onInteract?.Invoke();
+			}
+			// Invoke the UnityEvent.
+			onInteract?.Invoke();
 
 		}
 	}
@@ -74,11 +74,11 @@ public class InteractiveObject : MonoBehaviour
 			isPlayerInRange = true;
 			if (showImage != null)
 			{
-                showImage.SetActive(true);
+				showImage.SetActive(true);
 
 				audioSource.clip = clip;
-                audioSource.Play();
-            }
+				audioSource.Play();
+			}
 		}
 	}
 

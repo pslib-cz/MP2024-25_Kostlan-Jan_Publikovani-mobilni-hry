@@ -1,5 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Mění dialog podle typu zařízení.
+/// </summary>
 public class ActiveByDeviceDialog : MonoBehaviour
 {
 	[SerializeField] ShowTextOnTouch mobileVersion;

@@ -53,7 +53,7 @@ public class UITextWritter : MonoBehaviour
 			typingAudioSource.clip = typingSound;
 			typingAudioSource.loop = true;
 			typingAudioSource.pitch = 0.5f / characterDelay;
-			typingAudioSource.volume = typingAudioSource.volume / 4f; 
+			typingAudioSource.volume = typingAudioSource.volume / 4f;
 			typingAudioSource.Play();
 		}
 	}

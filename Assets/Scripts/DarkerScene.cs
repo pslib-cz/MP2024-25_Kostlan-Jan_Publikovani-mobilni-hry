@@ -5,7 +5,7 @@ public class DarkerScene : MonoBehaviour
 {
 	private Color startColor = new Color32(0xFF, 0xFF, 0xFF, 0xFF);
 	private Color targetColor = new Color32(0x00, 0x00, 0x00, 0xFF);
-	private Color finalColor = new Color32(0x62, 0x62, 0x62, 0xFF); 
+	private Color finalColor = new Color32(0x62, 0x62, 0x62, 0xFF);
 
 	public float darkeningDuration = 5f;
 	public float blackScreenDuration = 2f;

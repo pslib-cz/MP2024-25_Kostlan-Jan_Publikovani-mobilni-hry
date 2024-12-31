@@ -2,10 +2,10 @@
 
 namespace Assets.Scripts.Interfaces
 {
-    interface IControl
-    {
-        void OnEnable();
-        void OnDisable();
+	interface IControl
+	{
+		void OnEnable();
+		void OnDisable();
 
-    }
+	}
 }

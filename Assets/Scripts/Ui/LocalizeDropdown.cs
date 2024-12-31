@@ -9,49 +9,49 @@ using UnityEngine.Localization.Settings;
 [AddComponentMenu("Localization/Localize Dropdown")]
 public class LocalizeDropdown : MonoBehaviour
 {
-    // todo opravit tuto chybu skrz jazyky, když někdo klikne nastavení, nastaví se mu jazyk čeština.
-    [Serializable]
-    public class LocalizedDropdownOption
-    {
-        public LocalizedString text;
-    }
+	// todo opravit tuto chybu skrz jazyky, když někdo klikne nastavení, nastaví se mu jazyk čeština.
+	[Serializable]
+	public class LocalizedDropdownOption
+	{
+		public LocalizedString text;
+	}
 
-    public List<LocalizedDropdownOption> options;
-    public int selectedOptionIndex;
-    private Locale currentLocale;
-    private Dropdown Dropdown => GetComponent<Dropdown>();
+	public List<LocalizedDropdownOption> options;
+	public int selectedOptionIndex;
+	private Locale currentLocale;
+	private Dropdown Dropdown => GetComponent<Dropdown>();
 
-    private void Start()
-    {
-        getLocale();
-        UpdateDropdown(currentLocale);
-    }
+	private void Start()
+	{
+		getLocale();
+		UpdateDropdown(currentLocale);
+	}
 
-    private void OnEnable() => LocalizationSettings.SelectedLocaleChanged += UpdateDropdown;
-    private void OnDisable() => LocalizationSettings.SelectedLocaleChanged -= UpdateDropdown;
-    void OnDestroy() => LocalizationSettings.SelectedLocaleChanged -= UpdateDropdown;
+	private void OnEnable() => LocalizationSettings.SelectedLocaleChanged += UpdateDropdown;
+	private void OnDisable() => LocalizationSettings.SelectedLocaleChanged -= UpdateDropdown;
+	void OnDestroy() => LocalizationSettings.SelectedLocaleChanged -= UpdateDropdown;
 
-    private void getLocale()
-    {
-        var locale = LocalizationSettings.SelectedLocale;
-        if (currentLocale != null && locale != currentLocale)
-        {
-            currentLocale = locale;
-        }
-    }
+	private void getLocale()
+	{
+		var locale = LocalizationSettings.SelectedLocale;
+		if (currentLocale != null && locale != currentLocale)
+		{
+			currentLocale = locale;
+		}
+	}
 
-    private void UpdateDropdown(Locale locale)
-    {
-        selectedOptionIndex = Dropdown.value;
-        Dropdown.ClearOptions();
+	private void UpdateDropdown(Locale locale)
+	{
+		selectedOptionIndex = Dropdown.value;
+		Dropdown.ClearOptions();
 
-        for (int i = 0; i < options.Count; i++)
-        {
-            String localizedText = options[i].text.GetLocalizedString();
-            Dropdown.options.Add(new Dropdown.OptionData(localizedText));
-        }
+		for (int i = 0; i < options.Count; i++)
+		{
+			String localizedText = options[i].text.GetLocalizedString();
+			Dropdown.options.Add(new Dropdown.OptionData(localizedText));
+		}
 
-        Dropdown.value = selectedOptionIndex;
-        Dropdown.RefreshShownValue();
-    }
+		Dropdown.value = selectedOptionIndex;
+		Dropdown.RefreshShownValue();
+	}
 }

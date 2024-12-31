@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Automatický mění scénu při inicializaci.
+/// </summary>
 public class AutomaticSceneSwitch : MonoBehaviour
 {
 	public float timeToSwitch = 5.0f;

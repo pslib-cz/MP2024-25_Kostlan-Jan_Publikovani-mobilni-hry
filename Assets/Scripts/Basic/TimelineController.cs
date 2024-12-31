@@ -22,7 +22,7 @@ namespace Assets.Scripts.Basic
 			if (shouldSkip)
 			{
 				SkipTimeline();
-            }
+			}
 		}
 
 		public void SkipTimeline()
