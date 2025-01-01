@@ -8,7 +8,7 @@ namespace Assets.Scripts.Audio
 
         private void Awake()
         {
-            if (FindObjectOfType<AudioManager>() == null)
+            if (FindFirstObjectByType<AudioManager>() == null)
             {
                 GameObject audioManager = new GameObject("AudioManager");
             }

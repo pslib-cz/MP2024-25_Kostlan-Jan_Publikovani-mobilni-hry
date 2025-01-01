@@ -85,7 +85,7 @@ public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 			PlayerPrefs.Save();
 
 			// Zavolejte metodu v MainMenu pro odstranění reklam
-			MainMenu mainMenu = FindObjectOfType<MainMenu>();
+			MainMenu mainMenu = FindFirstObjectByType<MainMenu>();
 			if (mainMenu != null)
 			{
 				mainMenu.OnAdsRemoved();

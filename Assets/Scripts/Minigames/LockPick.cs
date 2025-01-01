@@ -83,7 +83,7 @@ public class Lockpick : MonoBehaviour
 		transform.position = originalPosition;
 		pinDetected = false;
 		lastDetectedPin = null;
-		FindObjectOfType<LockController>().ResetPins();
+		FindFirstObjectByType<LockController>().ResetPins();
 	}
 
 	void OnDrawGizmos()

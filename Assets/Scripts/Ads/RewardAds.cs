@@ -24,7 +24,7 @@ namespace Assets.Scripts.Ads
 
 		private void Awake()
 		{
-			InicializationScene = FindObjectOfType<InicializationScene>();
+			InicializationScene = FindFirstObjectByType<InicializationScene>();
 		}
 
 		public void Start()

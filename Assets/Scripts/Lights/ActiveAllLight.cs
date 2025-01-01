@@ -9,7 +9,7 @@ public class ActiveAllLight : MonoBehaviour
 
 	void Awake()
 	{
-		Light2D[] allLights = FindObjectsOfType<Light2D>();
+		Light2D[] allLights = FindObjectsByType<Light2D>(FindObjectsSortMode.None);
 		int lightLayer = LayerMask.NameToLayer("Light");
 
 		foreach (Light2D light in allLights)

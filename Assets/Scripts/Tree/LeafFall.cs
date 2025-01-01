@@ -11,18 +11,13 @@ public class LeafFall : MonoBehaviour
 	private float spinSpeed;
 	private float groundLevel;
 
-	void Start()
+	public void Initialize(float groundLevel)
 	{
-		// Nastav náhodné rychlosti pádu a otáčení v rozsahu mezi minimem a maximem.
+		this.groundLevel = groundLevel;
+
+		// Nastav náhodné rychlosti pádu a otáčení
 		fallSpeed = Random.Range(minFallSpeed, maxFallSpeed);
 		spinSpeed = Random.Range(minSpinSpeed, maxSpinSpeed);
-
-		// Najdi LeafGenerator v scéně a získej z něj hodnotu groundLevel.
-		LeafGenerator leafGenerator = FindObjectOfType<LeafGenerator>();
-		if (leafGenerator != null)
-		{
-			groundLevel = leafGenerator.groundLevel;
-		}
 	}
 
 	void Update()

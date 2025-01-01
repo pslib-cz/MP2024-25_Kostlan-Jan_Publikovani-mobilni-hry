@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class LeafGenerator : MonoBehaviour
@@ -25,12 +26,22 @@ public class LeafGenerator : MonoBehaviour
 
 		while (true)
 		{
+			// Vygeneruj náhodnou pozici v oblasti
 			Vector2 spawnPosition = new Vector2(
 				Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x),
 				Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y)
 			);
 
+			// Vytvoř nový list
 			GameObject leaf = Instantiate(leafPrefab, spawnPosition, Quaternion.identity);
+
+			// Předání groundLevel listu
+			LeafFall leafFall = leaf.GetComponent<LeafFall>();
+			if (leafFall != null)
+			{
+				leafFall.Initialize(groundLevel);
+			}
+
 			yield return new WaitForSeconds(spawnInterval);
 		}
 	}

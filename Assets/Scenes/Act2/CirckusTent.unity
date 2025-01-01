@@ -4343,7 +4343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1949655793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4985,7 +4985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805514, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 3.125
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805514, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_BackGroundColor.a

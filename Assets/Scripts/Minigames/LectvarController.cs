@@ -14,9 +14,8 @@ namespace Assets.Scripts.Minigames
 
 		private void Awake()
 		{
-			lectvars = FindObjectsOfType<Lectvar>();
+			lectvars = FindObjectsByType<Lectvar>(FindObjectsSortMode.None);
 			AssignRandomPotions();
-
 		}
 
 		public bool CheckCorrectPotion(int potionIndex, int targetIndex)

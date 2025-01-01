@@ -19,7 +19,7 @@ public class DarkerScene : MonoBehaviour
 	private IEnumerator AfterDeath()
 	{
 		// zvážit náročnost / výsledek
-		Renderer[] renderers = FindObjectsOfType<Renderer>();
+		Renderer[] renderers = FindObjectsByType<Renderer>(FindObjectsSortMode.None);
 
 		float elapsedTime = 0f;
 		while (elapsedTime < darkeningDuration)

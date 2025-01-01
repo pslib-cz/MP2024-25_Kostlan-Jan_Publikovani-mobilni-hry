@@ -30,7 +30,6 @@ public class InteractiveObject : MonoBehaviour
 	{
 		audioSource = GetComponent<AudioSource>();
 		boxcollider2D = GetComponent<BoxCollider2D>();
-
 	}
 
 	public void Interact()

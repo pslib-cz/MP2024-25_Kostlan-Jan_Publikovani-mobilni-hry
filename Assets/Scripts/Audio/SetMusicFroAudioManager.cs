@@ -12,12 +12,12 @@ namespace Assets.Scripts.Audio
 		public void Start()
 		{
 #if UNITY_EDITOR
-			if (FindObjectOfType<AudioManager>() == null)
+			if (FindFirstObjectByType<AudioManager>() == null)
 			{
 				GameObject audioManager = new GameObject("AudioManager");
 			}
 #endif
-			audioManager = FindObjectOfType<AudioManager>();
+			audioManager = FindFirstObjectByType<AudioManager>();
 			audioManager.ChangeMusic(audioClip);
 		}
 	}

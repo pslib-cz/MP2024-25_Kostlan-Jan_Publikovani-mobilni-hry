@@ -122,11 +122,11 @@ public class MainMenu : MonoBehaviour
 		PlayGamesPlatform.Instance.Authenticate(OnSignInResult);
 	}
 
-	private void OnSignInResult(SignInStatus signInStatus)
+	public  void OnSignInResult(SignInStatus signInStatus)
 	{
 		if (signInStatus == SignInStatus.Success)
 		{
-			_mStatus = "Authenticated. Hello, " + Social.localUser.userName + " (" + Social.localUser.id + ")";
+			_mStatus = "Authenticated. Hello, " + PlayGamesPlatform.Instance.localUser.userName + " (" + PlayGamesPlatform.Instance.localUser.id + ")";
 			Debug.Log(_mStatus);
 
 			CheckForSavedGame();

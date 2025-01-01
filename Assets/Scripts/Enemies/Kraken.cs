@@ -11,7 +11,7 @@ public class Kraken : EnemyBase
 
 	private void Awake()
 	{
-		controller = FindObjectOfType<PlayerController2D>();
+		controller = FindFirstObjectByType<PlayerController2D>();
 
 		if (controller == null)
 		{
