@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Assets.Scripts.Enums;
+using Assets.Scripts.Minigames;
+using UnityEngine.UI;
+using JetBrains.Annotations;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +26,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private int rowStartObject;
 	[SerializeField] private int rowEndObject;
 
+	public GameObject PipeContainer;
+
 	[Header("Grid Settings")]
 	public int gridWidth = 5;
 	public int gridHeight = 5;
@@ -36,6 +42,8 @@ public class GameManager : MonoBehaviour
 	private List<(PipeType, Vector2Int)> generatePathWithPipes;
 
 	[SerializeField] PlayMiniGame playMiniGame;
+
+
 
 	//private Color startColor = Color.blue;
 	//private Color endColor = Color.red;
@@ -114,31 +122,57 @@ public class GameManager : MonoBehaviour
 					pipePrefab = GetRandomPipePrefab();
 				}
 
-				// Instantiate the pipe and add it to the grid
-				GameObject newPipe = Instantiate(pipePrefab, position, Quaternion.identity, PipesHolder.transform);
-				PipeScript pipeScript = newPipe.GetComponent<PipeScript>();
+				if (x == 0 && y == rowStartObject)
+				{
 
-				pipeScript.gridX = x;
-				pipeScript.gridY = y;
-				pipeScript.UpdateOpenDirections();
+					GameObject StartContainer = Instantiate(PipeContainer, position, Quaternion.identity, PipesHolder.transform);
+					GameObject newStartChild = Instantiate(PositionStartObject, StartContainer.transform);
+					newStartChild.GetComponent<Image>().color = Color.red;
+					newStartChild.transform.rotation = Quaternion.identity;
+					newStartChild.transform.localPosition = new Vector3(-60, 0, 0);
 
+					GameObject newPipe = Instantiate(pipePrefab, position, Quaternion.identity, StartContainer.transform);
+					PipeScript pipeScript = newPipe.GetComponent<PipeScript>();
 
-				pipes.Add(pipeScript);
+					pipeScript.gridX = x;
+					pipeScript.gridY = y;
+					pipeScript.UpdateOpenDirections();
+
+					pipes.Add(pipeScript);
+				}
+
+				else if (x == (gridWidth - 1) && y == rowEndObject)
+				{
+					GameObject EndContainer = Instantiate(PipeContainer, position, Quaternion.identity, PipesHolder.transform);
+					GameObject newEndChild = Instantiate(PositionEndObject, EndContainer.transform);
+					newEndChild.transform.rotation = Quaternion.identity;
+					newEndChild.transform.localPosition = new Vector3(60, 0, 0);
+
+					GameObject newPipe = Instantiate(pipePrefab, position, Quaternion.identity, EndContainer.transform );
+					PipeScript pipeScript = newPipe.GetComponent<PipeScript>();
+
+					pipeScript.gridX = x;
+					pipeScript.gridY = y;
+					pipeScript.UpdateOpenDirections();
+
+					pipes.Add(pipeScript);
+				}
+
+				else
+				{
+					GameObject newPipe = Instantiate(pipePrefab, position, Quaternion.identity, PipesHolder.transform);
+					PipeScript pipeScript = newPipe.GetComponent<PipeScript>();
+
+					pipeScript.gridX = x;
+					pipeScript.gridY = y;
+					pipeScript.UpdateOpenDirections();
+
+					pipes.Add(pipeScript);
+				}
 			}
 		}
-
-		var startPipe = pipes.FirstOrDefault(pipe => pipe.gridX == 0 && pipe.gridY == rowStartObject);
-		var endPipe = pipes.FirstOrDefault(pipe => pipe.gridX == 5 && pipe.gridY == rowEndObject);
-
-		var nevim = canvas.scaleFactor;
-		var nevimddkl = canvas.pixelRect;
-
-		Vector3 newPosition = new Vector3(startPipe.transform.position.x * nevim, startPipe.transform.position.y * nevim, startPipe.transform.position.z);
-		Instantiate(PositionStartObject, newPosition, Quaternion.identity, canvas.transform);
-
-		Vector3 endPositionPositionStart = new Vector3(endPipe.transform.position.x * nevim, endPipe.transform.position.y * nevim, startPipe.transform.position.z);
-		Instantiate(PositionEndObject, endPositionPositionStart, Quaternion.identity, canvas.transform);
 	}
+
 	GameObject GetPrefabByPipeType(PipeType pipeType)
 	{
 		switch (pipeType)
