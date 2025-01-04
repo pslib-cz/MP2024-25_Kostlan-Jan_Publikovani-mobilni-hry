@@ -62,7 +62,7 @@ public class Lockpick : MonoBehaviour
 			Pin pin = lastDetectedPin.GetComponent<Pin>();
 			pin.PinUp();
 			pinDetected = false;
-			FindObjectOfType<LockController>().AreAllPinsPicked();
+			FindFirstObjectByType<LockController>().AreAllPinsPicked();
 		}
 		else
 		{

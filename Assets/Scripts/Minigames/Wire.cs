@@ -24,17 +24,22 @@ namespace Assets.Scripts.Minigames
 		private Wire connectedWire;
 		[SerializeField] private Color dropColor;
 
-		// pozor dávej, skrz součanost velikost textury.
-		[SerializeField] private const float scaleFactor = 0.40f;
-		private void Start()
-		{
-			startPoint = transform.position;
-			wireImage = GetComponent<Image>();
-			wireImage.color = wireColor;
-			originalSiblingIndex = transform.GetSiblingIndex();
-		}
+		[SerializeField] private float scaleFactor;
 
-		private void Awake()
+	  private void Start()
+	  {
+		 // Dynamický výpočet scaleFactor na základě velikosti obrazovky nebo jiných parametrů
+		 RectTransform canvasRect = draggingPlane != null ? draggingPlane : transform.parent as RectTransform;
+
+		 startPoint = transform.position;
+		 wireImage = GetComponent<Image>();
+		 wireImage.color = wireColor;
+		 scaleFactor = (float)((canvasRect.rect.width / Screen.width) * 8f);
+		 originalSiblingIndex = transform.GetSiblingIndex();
+	  }
+
+
+	  private void Awake()
 		{
 			wireManager = FindFirstObjectByType<WireController>();
 		}

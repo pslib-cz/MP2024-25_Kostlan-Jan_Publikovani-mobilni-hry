@@ -117,7 +117,7 @@ namespace Assets.Scripts
 				.WithUpdatedDescription("Saved at " + System.DateTime.Now)
 				.Build();
 
-			PlayGamesPlatform.Instance.SavedGame.CommitUpdate(
+				PlayGamesPlatform.Instance.SavedGame.CommitUpdate(
 				game,
 				update,
 				data,

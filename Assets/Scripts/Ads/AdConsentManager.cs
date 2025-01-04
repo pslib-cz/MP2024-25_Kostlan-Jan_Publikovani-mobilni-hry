@@ -62,7 +62,9 @@ public class AdConsentManager : MonoBehaviour
             }
         });
 
-		Canvas consentCanvas = GameObject.Find("ConsentForm(Clone)")?.GetComponent<Canvas>(); CanvasScaler scaler = consentCanvas.GetComponent<CanvasScaler>(); scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight; scaler.matchWidthOrHeight = 0.6f;
+		Canvas consentCanvas = GameObject.Find("ConsentForm(Clone)")?.GetComponent<Canvas>();
+         CanvasScaler scaler = consentCanvas.GetComponent<CanvasScaler>();
+      scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight; scaler.matchWidthOrHeight = 0.6f;
 	}
 
     private void LoadConsentForm()

@@ -1219,8 +1219,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 284277560}
-  - component: {fileID: 284277561}
   - component: {fileID: 284277562}
+  - component: {fileID: 284277561}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -5097,7 +5097,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1799979849}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AdConsentManager, Assembly-CSharp
         m_MethodName: ShowConsentFormAgain
         m_Mode: 1
@@ -5935,6 +5935,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489655706}
   m_CullTransparentMesh: 1
+--- !u!1 &1500485210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1500485212}
+  - component: {fileID: 1500485211}
+  m_Layer: 0
+  m_Name: AdsContentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1500485211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500485210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f0320d490b3cb4f8a35e0f7b1b7403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1500485212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500485210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1529891388
 GameObject:
   m_ObjectHideFlags: 0
@@ -6738,7 +6782,6 @@ GameObject:
   - component: {fileID: 1799979843}
   - component: {fileID: 1799979847}
   - component: {fileID: 1799979848}
-  - component: {fileID: 1799979849}
   m_Layer: 1
   m_Name: Canvas
   m_TagString: Untagged
@@ -6866,18 +6909,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 17b9d4e9ab58d33a391c84a49e73563b, type: 3}
---- !u!114 &1799979849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799979842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58f0320d490b3cb4f8a35e0f7b1b7403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1812664076
 GameObject:
   m_ObjectHideFlags: 0
@@ -10718,3 +10749,4 @@ SceneRoots:
   - {fileID: 1764717337}
   - {fileID: 1799979846}
   - {fileID: 563031107}
+  - {fileID: 1500485212}
