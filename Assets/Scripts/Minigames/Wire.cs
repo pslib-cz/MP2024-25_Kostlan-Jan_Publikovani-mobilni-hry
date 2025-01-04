@@ -34,7 +34,7 @@ namespace Assets.Scripts.Minigames
 		 startPoint = transform.position;
 		 wireImage = GetComponent<Image>();
 		 wireImage.color = wireColor;
-		 scaleFactor = (float)((canvasRect.rect.width / Screen.width) * 8f);
+		 scaleFactor = ((canvasRect.rect.width / Screen.width) * 8f);
 		 originalSiblingIndex = transform.GetSiblingIndex();
 	  }
 

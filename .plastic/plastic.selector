@@ -1,4 +1,0 @@
-repository "DrownedBonePixelDread@DrownedBonePixelDread@cloud"
-  path "/"
-    br "/main"
-    co "/main"

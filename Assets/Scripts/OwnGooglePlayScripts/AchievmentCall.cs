@@ -1,42 +1,46 @@
 using UnityEngine;
+using GooglePlayGames;
 
 public class AchievmentCall : MonoBehaviour
 {
-	private string mStatus;
-	[SerializeField] private string mAchievementID;
-	void Start()
-	{
-		DoAchievementUnlock();
-	}
+   private string mStatus;
+   [SerializeField] private string mAchievementID;
 
-	public void DoAchievementUnlock()
-	{
-		SetStandBy("Unlocking achievement...");
-		Social.ReportProgress(
-			mAchievementID,
-			100.0f,
-			(bool success) =>
-			{
-				EndStandBy();
-				mStatus = success ? "Unlocked successfully." : "*** Failed to unlock ach.";
-				ShowEffect(success);
-			});
-		Debug.Log("Achievment unlocked");
-	}
+   void Start()
+   {
+	  // Initialize the PlayGamesPlatform
+	  PlayGamesPlatform.Activate();
+	  DoAchievementUnlock();
+   }
 
-	public void ShowEffect(bool success)
-	{
-		Camera.main.backgroundColor =
-			success ? new Color(0.0f, 0.0f, 0.8f, 1.0f) : new Color(0.8f, 0.0f, 0.0f, 1.0f);
-	}
+   public void DoAchievementUnlock()
+   {
+	  SetStandBy("Unlocking achievement...");
+	  PlayGamesPlatform.Instance.ReportProgress(
+		  mAchievementID,
+		  100.0f,
+		  (bool success) =>
+		  {
+			 EndStandBy();
+			 mStatus = success ? "Unlocked successfully." : "*** Failed to unlock ach.";
+			 ShowEffect(success);
+		  });
+	  Debug.Log("Achievment unlocked");
+   }
 
-	private void SetStandBy(string msg)
-	{
-		mStatus = msg;
-	}
+   public void ShowEffect(bool success)
+   {
+	  Camera.main.backgroundColor =
+		  success ? new Color(0.0f, 0.0f, 0.8f, 1.0f) : new Color(0.8f, 0.0f, 0.0f, 1.0f);
+   }
 
-	private void EndStandBy()
-	{
-		mStatus += " (Done!)";
-	}
+   private void SetStandBy(string msg)
+   {
+	  mStatus = msg;
+   }
+
+   private void EndStandBy()
+   {
+	  mStatus += " (Done!)";
+   }
 }

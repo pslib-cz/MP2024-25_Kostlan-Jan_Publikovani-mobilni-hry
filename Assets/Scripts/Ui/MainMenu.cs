@@ -31,8 +31,10 @@ public class MainMenu : MonoBehaviour
 	public void Start()
 	{
 
-		PlayGamesPlatform.DebugLogEnabled = true;
-		PlayGamesPlatform.Activate();
+#if DEBUG
+	  PlayGamesPlatform.DebugLogEnabled = true;
+#endif
+	  PlayGamesPlatform.Activate();
 		AuthenticateUser();
 
 		if (PlayerPrefs.GetInt(PlayerPrefsKeys.HasPlayedBefore, 0) == 0)
