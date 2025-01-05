@@ -657,7 +657,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1516371944}
+  - {fileID: 6303223077897572441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &62685614
@@ -6057,17 +6057,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &557767936 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6612937734540896572, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
-  m_PrefabInstance: {fileID: 6303223077897572440}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6add1982d1e04984fb8fe3deab0ddec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &560894070
 GameObject:
   m_ObjectHideFlags: 0
@@ -7994,7 +7983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70438983342b43c4685860b8f7f7823c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigame: {fileID: 1516371943}
+  minigame: {fileID: 0}
   bariel: {fileID: 1603622775}
   objectToShow: {fileID: 0}
   eventsAfterGame:
@@ -8373,17 +8362,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1740889598}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &908393363 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2932523642264746581, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
-  m_PrefabInstance: {fileID: 6303223077897572440}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6add1982d1e04984fb8fe3deab0ddec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &913825000
 GameObject:
   m_ObjectHideFlags: 0
@@ -10812,17 +10790,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1883100159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1354439384 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3972613259490530009, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
-  m_PrefabInstance: {fileID: 6303223077897572440}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6add1982d1e04984fb8fe3deab0ddec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1370417449
 GameObject:
   m_ObjectHideFlags: 0
@@ -11258,17 +11225,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1883100159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1435796434 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8988205942907728366, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
-  m_PrefabInstance: {fileID: 6303223077897572440}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6add1982d1e04984fb8fe3deab0ddec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1447722988
 GameObject:
   m_ObjectHideFlags: 0
@@ -11541,16 +11497,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1690550531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1516371943 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 134036940243213536, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
-  m_PrefabInstance: {fileID: 6303223077897572440}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1516371944 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 740634721053974938, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
-  m_PrefabInstance: {fileID: 6303223077897572440}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1538521532
 GameObject:
   m_ObjectHideFlags: 0
@@ -17213,7 +17159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299715220809948408, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8569137
+      value: 1.8404486
       objectReference: {fileID: 0}
     - target: {fileID: 4299715220809948408, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18528,6 +18474,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -8.387188
       objectReference: {fileID: 0}
+    - target: {fileID: 6417248465649980912, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7225606580712975518, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
       propertyPath: playMiniGame
       value: 
@@ -18539,19 +18489,19 @@ PrefabInstance:
     - target: {fileID: 7225606580712975518, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
       propertyPath: 'pins.Array.data[0]'
       value: 
-      objectReference: {fileID: 908393363}
+      objectReference: {fileID: 0}
     - target: {fileID: 7225606580712975518, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
       propertyPath: 'pins.Array.data[1]'
       value: 
-      objectReference: {fileID: 557767936}
+      objectReference: {fileID: 0}
     - target: {fileID: 7225606580712975518, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
       propertyPath: 'pins.Array.data[2]'
       value: 
-      objectReference: {fileID: 1435796434}
+      objectReference: {fileID: 0}
     - target: {fileID: 7225606580712975518, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
       propertyPath: 'pins.Array.data[3]'
       value: 
-      objectReference: {fileID: 1354439384}
+      objectReference: {fileID: 0}
     - target: {fileID: 8577728345739323814, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -18561,6 +18511,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
+--- !u!224 &6303223077897572441 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4112685199181641146, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
+  m_PrefabInstance: {fileID: 6303223077897572440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6333735533444095666
 GameObject:
   m_ObjectHideFlags: 0

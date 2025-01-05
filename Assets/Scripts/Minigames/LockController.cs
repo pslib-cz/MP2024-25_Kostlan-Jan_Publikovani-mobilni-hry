@@ -5,14 +5,16 @@ public class LockController : MonoBehaviour, IMiniGame
 {
 	// automatické generování velikosti paklíče, vzdálenosti atd, to by se hodilo spíše než to natvrdo mít definované!
 	public Pin[] pins;
-	Lockpick lockpick;
 	public PlayMiniGame playMiniGame;
 
 	void Start()
 	{
-		// tohle je krutý s tím findobjectinactive.
-		pins = FindObjectsByType<Pin>(FindObjectsInactive.Include, FindObjectsSortMode.None); ResetPins();
-	}
+	  // natvrdo definovaný locker. Musí se jmenovat nějaký prvek s piny Locker.
+	  GameObject locker = GameObject.Find("Locker");
+	  // tohle je krutý s tím findobjectinactive.
+	  pins = locker.GetComponentsInChildren<Pin>(true);
+	  ResetPins();
+   }
 
 	public void ResetPins()
 	{
