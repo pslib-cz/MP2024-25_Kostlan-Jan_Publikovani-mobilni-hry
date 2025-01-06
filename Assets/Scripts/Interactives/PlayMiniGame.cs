@@ -47,6 +47,5 @@ public class PlayMiniGame : MonoBehaviour
 		playerController.EnableControls();
 
 		minigame.SetActive(false);
-
 	}
 }

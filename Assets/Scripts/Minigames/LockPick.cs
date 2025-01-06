@@ -43,7 +43,6 @@ public class Lockpick : MonoBehaviour
 
 		if (hit.collider != null)
 		{
-			Debug.Log("Pin zasažen.");
 			Pin pin = hit.collider.GetComponent<Pin>();
 			if (pin != null && !pin.isPicked)
 			{

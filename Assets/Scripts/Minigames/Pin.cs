@@ -7,7 +7,7 @@ public class Pin : MonoBehaviour
    // Upravit, když responzivní design!
    private const float YPosition = 800f;
 
-   public void Awake()
+   public void Start()
    {
 	  inicializationPosition = transform.position;
    }

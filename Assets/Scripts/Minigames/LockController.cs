@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Interfaces;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LockController : MonoBehaviour, IMiniGame
 {
@@ -13,8 +14,12 @@ public class LockController : MonoBehaviour, IMiniGame
 	  GameObject locker = GameObject.Find("Locker");
 	  // tohle je krutý s tím findobjectinactive.
 	  pins = locker.GetComponentsInChildren<Pin>(true);
-	  ResetPins();
-   }
+	}
+
+	void OnDisable()
+	{
+		ResetPins();
+	}
 
 	public void ResetPins()
 	{
@@ -41,7 +46,6 @@ public class LockController : MonoBehaviour, IMiniGame
 		if (playMiniGame != null)
 		{
 			playMiniGame.EndMiniGame();
-
 		}
 	}
 }

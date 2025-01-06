@@ -138,6 +138,8 @@ public class PlayerController2D : MonoBehaviour
 		controls.Disable();
 		iscanMove = false;
 		moveInput = 0;
+		zobrazovaninaboju.gameObject.SetActive(false);
+
 #if PLATFORM_ANDROID
 		GameObject.FindAnyObjectByType<MobileInputsUI>().gameObject.SetActive(false);
 #endif
@@ -147,6 +149,8 @@ public class PlayerController2D : MonoBehaviour
 	{
 		controls.Enable();
 		iscanMove = true;
+		zobrazovaninaboju.gameObject.SetActive(true);
+
 #if PLATFORM_ANDROID
 		GameObject parent = GameObject.Find("Canvas");
 		if (parent != null)
@@ -549,7 +553,7 @@ public class PlayerController2D : MonoBehaviour
 			playerLight.enabled = false;
 		}
 	}
-
+	#region Tutorial
 	public int GetRounds()
 	{
 		return rounds;
@@ -569,4 +573,5 @@ public class PlayerController2D : MonoBehaviour
 	{
 		return roundsDeposit;
 	}
+	#endregion
 }
