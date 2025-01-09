@@ -65,7 +65,9 @@ namespace Assets.Scripts.Player
 			{
 				Debug.LogError("Device does not support accelerometer or it is unavailable.");
 				// řešíme pro případ, kdyby hráč neměl zapnutý accelerometr.
-				new SceneManager().SceneLoad(sceneNext);
+#if !UNITY_EDITOR
+					SceneManager.Instance.SceneLoad(sceneNext);
+#endif
 			}
 		}
 

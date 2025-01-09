@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 using System;
 using Assets.Scripts.Enums;
 
+/// <summary>
+/// Kontroler hráče.
+/// </summary>
 public class PlayerController2D : MonoBehaviour
 {
 	[Header("References")]
@@ -16,7 +19,6 @@ public class PlayerController2D : MonoBehaviour
 	public AudioClip reloadClip;
 	public DeathMenu DeathScreen;
 	public Text zobrazovaninaboju;
-	public Image StaminaBar;
 
 	[Header("Settings")]
 	[SerializeField] private float shootDistance = 10f;
@@ -33,8 +35,8 @@ public class PlayerController2D : MonoBehaviour
 	private InteractiveObject currentInteractiveObject;
 	// private things
 	[NonSerialized] public bool isPlayerVisible = true;
-	private bool isRightKeyPressed;
-	private bool isLeftKeyPressed;
+	//private bool isRightKeyPressed;
+	//private bool isLeftKeyPressed;
 	private bool crouch;
 	public bool gunout;
 	private bool run;
@@ -45,7 +47,6 @@ public class PlayerController2D : MonoBehaviour
 	[SerializeField] private float speed;
 	private int rounds;
 	private int roundsDeposit;
-	private float Stamina;
 	private bool isCanGetUp = true;
 	private int speedHash = Animator.StringToHash("Speed");
 
@@ -139,7 +140,7 @@ public class PlayerController2D : MonoBehaviour
 		zobrazovaninaboju.gameObject.SetActive(false);
 
 #if PLATFORM_ANDROID
-		GameObject.FindAnyObjectByType<MobileInputsUI>().gameObject.SetActive(false);
+		FindAnyObjectByType<MobileInputsUI>().gameObject.SetActive(false);
 #endif
 	}
 
@@ -268,11 +269,9 @@ public class PlayerController2D : MonoBehaviour
 
 	private void HandleShoot(InputAction.CallbackContext context)
 	{
-		if (gunout && rounds > 0)
+		if (gunout && rounds > 0 && moveInput == 0)
 		{
 			animator.SetBool("Shot", true);
-			gunAudioSource.clip = shootClip;
-			gunAudioSource.Play();
 		}
 	}
 
@@ -378,6 +377,8 @@ public class PlayerController2D : MonoBehaviour
 
 	public void Shoot()
 	{
+		gunAudioSource.clip = shootClip;
+		gunAudioSource.Play();
 		rounds -= 1;
 
 		Vector2 shootDirection = mFacingRight ? Vector2.right : Vector2.left;

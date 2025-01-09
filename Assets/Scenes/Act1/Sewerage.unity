@@ -4883,6 +4883,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1724051665}
     - target: {fileID: 4299715220809948414, guid: f3020213224f99e498149dec69d854f5, type: 3}
+      propertyPath: m_Name
+      value: CM vcam1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299715220809948414, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -4986,7 +4990,17 @@ PrefabInstance:
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5326560736373825239, guid: f3020213224f99e498149dec69d854f5, type: 3}
+      propertyPath: Target.TrackingTarget
+      value: 
+      objectReference: {fileID: 1724051665}
+    - target: {fileID: 5326560736373825239, guid: f3020213224f99e498149dec69d854f5, type: 3}
+      propertyPath: Target.CustomLookAtTarget
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4299715220809948409, guid: f3020213224f99e498149dec69d854f5, type: 3}
+    - {fileID: 1391759808017652079, guid: f3020213224f99e498149dec69d854f5, type: 3}
     m_RemovedGameObjects:
     - {fileID: 4299715219337302674, guid: f3020213224f99e498149dec69d854f5, type: 3}
     m_AddedGameObjects: []
@@ -5122,6 +5136,10 @@ PrefabInstance:
       propertyPath: timelineController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8301593895283158523, guid: 744d6e816e9eb704e86665361ac249c2, type: 3}
+      propertyPath: localizeStringEvent
+      value: 
+      objectReference: {fileID: 4492065904927483372}
     - target: {fileID: 8632064953943053139, guid: 744d6e816e9eb704e86665361ac249c2, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -5131,6 +5149,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 744d6e816e9eb704e86665361ac249c2, type: 3}
+--- !u!114 &4492065904927483372 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1957994909300877628, guid: 744d6e816e9eb704e86665361ac249c2, type: 3}
+  m_PrefabInstance: {fileID: 4492065904927483371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4786298632475743909
 PrefabInstance:
   m_ObjectHideFlags: 0

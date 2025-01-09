@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -42,8 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -921,6 +918,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!224 &1441716341114922332
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4592,6 +4590,7 @@ MonoBehaviour:
   pauseAction: {fileID: 7776173405461791094, guid: 593c815018f1ed64286f43f5e64f04bf, type: 3}
   PauseMenuUI: {fileID: 6423657345683682381}
   SettingsMenuUI: {fileID: 2776720425598957551}
+  bannerAdsPause: {fileID: 0}
 --- !u!224 &6423657343939803038
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5636,6 +5635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b120a21a51a834ca409618f150a6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!224 &6423657345683682380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7319,7 +7319,6 @@ MonoBehaviour:
   panel: {fileID: 0}
   fullscreenColor: {r: 0.15294118, g: 0.13725491, b: 0.19607843, a: 0}
   windowedColor: {r: 1, g: 1, b: 1, a: 0}
-  audioMixer: {fileID: 24100000, guid: c6662650153cf248f8c59a75438a2748, type: 2}
   resolutionDropdown: {fileID: 6145502709439196332}
   musicVolumeSlider: {fileID: 6145502709276615713}
   sfxVolumeSlider: {fileID: 6145502709276615713}
