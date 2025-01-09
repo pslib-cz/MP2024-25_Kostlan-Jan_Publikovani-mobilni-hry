@@ -484,7 +484,6 @@ public class PlayerController2D : MonoBehaviour
 	public void HandlePlayerDeath()
 	{
 		DeathScreen.gameObject.SetActive(true);
-		Time.timeScale = 0f;
 	}
 
 	public bool IsPlayerVisible()
