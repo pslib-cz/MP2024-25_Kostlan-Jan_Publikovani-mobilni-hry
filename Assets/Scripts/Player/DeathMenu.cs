@@ -13,7 +13,6 @@ public class DeathMenu : MonoBehaviour
 	private void Start()
 	{
 		Time.timeScale = 0f;
-
 		AudioManager.instance.ChangeMusic(deathMusicClip);
 		AudioListener.pause = true;
 		Handheld.Vibrate();
@@ -30,7 +29,7 @@ public class DeathMenu : MonoBehaviour
 	/// <summary>
 	/// Load MainMenu
 	/// </summary>
-	public void SceneMinus()
+	public void GoToMainMenu()
 	{
 		bannerAdsDeath.DestroyAd();
 		AudioListener.pause = false;
@@ -40,7 +39,7 @@ public class DeathMenu : MonoBehaviour
 
 	/// <summary>
 	/// Restart current level
-	/// </summary>s
+	/// </summary>
 	public void RestartLevel()
 	{
 		bannerAdsDeath.DestroyAd();

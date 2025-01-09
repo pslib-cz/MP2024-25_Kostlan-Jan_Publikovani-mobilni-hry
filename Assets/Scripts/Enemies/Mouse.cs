@@ -74,12 +74,12 @@ public class Mouse : EnemyBase
 	{
 		dead = true;
 		PlayDeathSound();
-		rb.gravityScale = 0;
 		foreach (var collider in boxColliders)
 		{
 			collider.enabled = false;
 		}
 		animator.enabled = false;
+		rb.gravityScale = 0;
 		spriteRenderer.sprite = deathSprite;
 	}
 }

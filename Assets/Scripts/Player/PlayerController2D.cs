@@ -29,10 +29,8 @@ public class PlayerController2D : MonoBehaviour
 	[SerializeField] private float runSpeed = 20f;
 	[SerializeField] private float walkSpeed = 10f;
 	[SerializeField] private float slowSpeed = 4f;
-
 	private Rigidbody2D rb;
 	private InteractiveObject currentInteractiveObject;
-
 	// private things
 	[NonSerialized] public bool isPlayerVisible = true;
 	private bool isRightKeyPressed;

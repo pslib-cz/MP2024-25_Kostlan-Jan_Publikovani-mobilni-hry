@@ -3013,7 +3013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4017230856937334922, guid: c9e25777e25ca69b2a6bdc2b85741879, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.29
+      value: 47.01
       objectReference: {fileID: 0}
     - target: {fileID: 4017230856937334922, guid: c9e25777e25ca69b2a6bdc2b85741879, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6716,7 +6716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &616545959
 Transform:
   m_ObjectHideFlags: 0
@@ -9008,6 +9008,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1296690570}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 915981714}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18209,7 +18221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299715220809948408, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8404486
+      value: 1.8364681
       objectReference: {fileID: 0}
     - target: {fileID: 4299715220809948408, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20295,7 +20307,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4683728689748284532, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4683728689748284535, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9002191942665340539, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}

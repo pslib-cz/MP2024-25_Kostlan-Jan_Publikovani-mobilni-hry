@@ -1,0 +1,1 @@
+C:\Users\janse\source\repos\MP2024-25_Kostlan-Jan_Publikovani-mobilni-hry\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\6q4m649b\obj\arm64-v8a
