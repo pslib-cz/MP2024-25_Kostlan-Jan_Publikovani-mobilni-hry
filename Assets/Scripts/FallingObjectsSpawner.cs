@@ -9,8 +9,8 @@ public class FallingObjectsSpawner : MonoBehaviour
 	public float initialSpawnInterval = 2f;
 	public float minSpawnInterval = 0.1f;
 	public float intervalDecreaseRate = 0.95f;
-	public float spawnRangeX = 10f;
-	public float deleteObjectAfter = 4f;
+	public float spawnRangeX = 8f;
+	public float deleteObjectAfter = 8f;
 	private float currentSpawnInterval;
 
 	void Start()
@@ -29,7 +29,7 @@ public class FallingObjectsSpawner : MonoBehaviour
 		Vector3 spawnPosition = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), transform.position.y, 0f) + transform.position;
 
 		GameObject car = new GameObject("Car");
-		car.transform.localScale = new Vector3(30, 30, 1);
+		car.transform.localScale = new Vector3(18, 18, 1);
 		car.tag = "Obstacle";
 		SpriteRenderer renderer = car.AddComponent<SpriteRenderer>();
 		renderer.sprite = TextureToSprite(carTexture);
@@ -39,7 +39,7 @@ public class FallingObjectsSpawner : MonoBehaviour
 		carCollider.isTrigger = true;
 
 		Rigidbody2D carRigidbody = car.AddComponent<Rigidbody2D>();
-		carRigidbody.gravityScale = 2f;
+		carRigidbody.gravityScale = 0.7f;
 		car.transform.position = spawnPosition;
 
 		StartCoroutine(DestroyAfterDelay(car, 15));
@@ -57,14 +57,13 @@ public class FallingObjectsSpawner : MonoBehaviour
 
 	void SpawnObject()
 	{
-		// Generování náhodné pozice na ose X, pevná osa Y
 		Vector3 spawnPosition = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), transform.position.y, 0f);
 
 		int randomIndex = Random.Range(0, texturesToSpawn.Count);
 		Texture2D selectedTexture = texturesToSpawn[randomIndex];
 
 		GameObject spawnedObject = new GameObject("FallingObject");
-		spawnedObject.transform.localScale = new Vector3(10, 10, 1);
+		spawnedObject.transform.localScale = new Vector3(5, 5, 1);
 		spawnedObject.tag = "Obstacle";
 		SpriteRenderer renderer = spawnedObject.AddComponent<SpriteRenderer>();
 		renderer.sprite = TextureToSprite(selectedTexture);
@@ -74,7 +73,10 @@ public class FallingObjectsSpawner : MonoBehaviour
 		boxCollider.isTrigger = true;
 
 		Rigidbody2D rigidbodyObject = spawnedObject.AddComponent<Rigidbody2D>();
-		rigidbodyObject.gravityScale = 0.5f;
+		rigidbodyObject.gravityScale = 0.3f;
+
+		float randomRotation = Random.Range(0f, 360f);
+		spawnedObject.transform.rotation = Quaternion.Euler(0f, 0f, randomRotation);
 
 		spawnedObject.transform.position = spawnPosition;
 

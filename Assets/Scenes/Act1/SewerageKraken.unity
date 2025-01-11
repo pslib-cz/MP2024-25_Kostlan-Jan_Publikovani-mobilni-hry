@@ -10055,7 +10055,6 @@ MonoBehaviour:
   reloadClip: {fileID: 8300000, guid: 0e96be857a1be7c48b559c08aa27345d, type: 3}
   DeathScreen: {fileID: 2222277095261788389}
   zobrazovaninaboju: {fileID: 7675662301959005285}
-  StaminaBar: {fileID: 0}
   shootDistance: 10
   MaxStamina: 0
   initialRounds: 3
@@ -10112,7 +10111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768953531}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.99997246, w: -0.0074259588}
+  m_LocalRotation: {x: -0, y: -0, z: 0.99664557, w: -0.081839256}
   m_LocalPosition: {x: -1.71, y: -1.0839996, z: 0}
   m_LocalScale: {x: 40, y: 40.000015, z: 0.005555555}
   m_ConstrainProportionsScale: 0
@@ -10160,7 +10159,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 5.7541146
+  m_PointLightOuterRadius: 10.460099
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -10883,7 +10882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805514, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: orthographic size
-      value: 9.75
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805514, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_OcclusionCulling

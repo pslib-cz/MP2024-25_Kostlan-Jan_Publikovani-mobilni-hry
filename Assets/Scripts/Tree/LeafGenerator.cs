@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class LeafGenerator : MonoBehaviour
@@ -9,16 +8,13 @@ public class LeafGenerator : MonoBehaviour
 	public float spawnInterval = 1f;
 	public float groundLevel = 0f;
 
-	/// <summary>
-	/// When object active, start spawnleaves.
-	/// </summary>
 	void Start()
 	{
 		StartCoroutine(SpawnLeaves());
 	}
 
 	/// <summary>
-	/// With boxcolliders determine areas to spawn leaves.
+	/// Za pomocí box collideru generuje listy v oblasti.
 	/// </summary>
 	private IEnumerator SpawnLeaves()
 	{
@@ -42,12 +38,23 @@ public class LeafGenerator : MonoBehaviour
 				leafFall.Initialize(groundLevel);
 			}
 
+			StartCoroutine(DestroyAfterDelay(leaf, 6f));
+
 			yield return new WaitForSeconds(spawnInterval);
 		}
 	}
 
 	/// <summary>
-	/// Render spawnArea
+	/// Zničí objekt po zadaném čase.
+	/// </summary>
+	IEnumerator DestroyAfterDelay(GameObject obj, float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		Destroy(obj);
+	}
+
+	/// <summary>
+	/// Vykreslí oblast, ve které se listy generují.
 	/// </summary>
 	void OnDrawGizmos()
 	{

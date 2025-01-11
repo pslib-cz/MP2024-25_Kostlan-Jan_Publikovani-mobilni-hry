@@ -243,7 +243,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": ""PlacePipe"",
                     ""type"": ""Button"",
                     ""id"": ""330a6cf2-201e-4a0c-888a-923f5118436b"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -319,6 +319,24 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e247c79-88be-4c1a-bb44-fab30d151a19"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6e5c19e-3993-4523-bb22-5bb2711d70da"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -464,32 +482,26 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""DragAndMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""OnTilt"",
-            ""id"": ""8d8fb079-d451-4e02-9dea-d4f26235cbe5"",
-            ""actions"": [
-                {
-                    ""name"": ""Tilt"",
-                    ""type"": ""Value"",
-                    ""id"": ""eb4780a6-e4ae-4acc-a44d-11e2da2a3cb2"",
-                    ""expectedControlType"": ""Quaternion"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""51ad4627-d0b3-4a78-bf12-bb1ec31f120a"",
-                    ""path"": ""<AttitudeSensor>/attitude"",
+                    ""id"": ""bac9ddc8-c818-44ec-a67c-b02e7bbec7b3"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Tilt"",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9c6581a-7968-4bcc-a9ef-885dcf61c987"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -553,16 +565,14 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Minigames_DragWire = m_Minigames.FindAction("DragWire", throwIfNotFound: true);
         m_Minigames_Point = m_Minigames.FindAction("Point", throwIfNotFound: true);
         m_Minigames_DragAndMove = m_Minigames.FindAction("DragAndMove", throwIfNotFound: true);
-        // OnTilt
-        m_OnTilt = asset.FindActionMap("OnTilt", throwIfNotFound: true);
-        m_OnTilt_Tilt = m_OnTilt.FindAction("Tilt", throwIfNotFound: true);
+        m_Minigames_MoveRight = m_Minigames.FindAction("MoveRight", throwIfNotFound: true);
+        m_Minigames_MoveLeft = m_Minigames.FindAction("MoveLeft", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInputs.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Minigames.enabled, "This will cause a leak and performance issues, PlayerInputs.Minigames.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_OnTilt.enabled, "This will cause a leak and performance issues, PlayerInputs.OnTilt.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -735,6 +745,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Minigames_DragWire;
     private readonly InputAction m_Minigames_Point;
     private readonly InputAction m_Minigames_DragAndMove;
+    private readonly InputAction m_Minigames_MoveRight;
+    private readonly InputAction m_Minigames_MoveLeft;
     public struct MinigamesActions
     {
         private @PlayerInputs m_Wrapper;
@@ -748,6 +760,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @DragWire => m_Wrapper.m_Minigames_DragWire;
         public InputAction @Point => m_Wrapper.m_Minigames_Point;
         public InputAction @DragAndMove => m_Wrapper.m_Minigames_DragAndMove;
+        public InputAction @MoveRight => m_Wrapper.m_Minigames_MoveRight;
+        public InputAction @MoveLeft => m_Wrapper.m_Minigames_MoveLeft;
         public InputActionMap Get() { return m_Wrapper.m_Minigames; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -784,6 +798,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @DragAndMove.started += instance.OnDragAndMove;
             @DragAndMove.performed += instance.OnDragAndMove;
             @DragAndMove.canceled += instance.OnDragAndMove;
+            @MoveRight.started += instance.OnMoveRight;
+            @MoveRight.performed += instance.OnMoveRight;
+            @MoveRight.canceled += instance.OnMoveRight;
+            @MoveLeft.started += instance.OnMoveLeft;
+            @MoveLeft.performed += instance.OnMoveLeft;
+            @MoveLeft.canceled += instance.OnMoveLeft;
         }
 
         private void UnregisterCallbacks(IMinigamesActions instance)
@@ -815,6 +835,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @DragAndMove.started -= instance.OnDragAndMove;
             @DragAndMove.performed -= instance.OnDragAndMove;
             @DragAndMove.canceled -= instance.OnDragAndMove;
+            @MoveRight.started -= instance.OnMoveRight;
+            @MoveRight.performed -= instance.OnMoveRight;
+            @MoveRight.canceled -= instance.OnMoveRight;
+            @MoveLeft.started -= instance.OnMoveLeft;
+            @MoveLeft.performed -= instance.OnMoveLeft;
+            @MoveLeft.canceled -= instance.OnMoveLeft;
         }
 
         public void RemoveCallbacks(IMinigamesActions instance)
@@ -832,52 +858,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         }
     }
     public MinigamesActions @Minigames => new MinigamesActions(this);
-
-    // OnTilt
-    private readonly InputActionMap m_OnTilt;
-    private List<IOnTiltActions> m_OnTiltActionsCallbackInterfaces = new List<IOnTiltActions>();
-    private readonly InputAction m_OnTilt_Tilt;
-    public struct OnTiltActions
-    {
-        private @PlayerInputs m_Wrapper;
-        public OnTiltActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Tilt => m_Wrapper.m_OnTilt_Tilt;
-        public InputActionMap Get() { return m_Wrapper.m_OnTilt; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(OnTiltActions set) { return set.Get(); }
-        public void AddCallbacks(IOnTiltActions instance)
-        {
-            if (instance == null || m_Wrapper.m_OnTiltActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_OnTiltActionsCallbackInterfaces.Add(instance);
-            @Tilt.started += instance.OnTilt;
-            @Tilt.performed += instance.OnTilt;
-            @Tilt.canceled += instance.OnTilt;
-        }
-
-        private void UnregisterCallbacks(IOnTiltActions instance)
-        {
-            @Tilt.started -= instance.OnTilt;
-            @Tilt.performed -= instance.OnTilt;
-            @Tilt.canceled -= instance.OnTilt;
-        }
-
-        public void RemoveCallbacks(IOnTiltActions instance)
-        {
-            if (m_Wrapper.m_OnTiltActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IOnTiltActions instance)
-        {
-            foreach (var item in m_Wrapper.m_OnTiltActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_OnTiltActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public OnTiltActions @OnTilt => new OnTiltActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -927,9 +907,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnDragWire(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
         void OnDragAndMove(InputAction.CallbackContext context);
-    }
-    public interface IOnTiltActions
-    {
-        void OnTilt(InputAction.CallbackContext context);
+        void OnMoveRight(InputAction.CallbackContext context);
+        void OnMoveLeft(InputAction.CallbackContext context);
     }
 }

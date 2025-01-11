@@ -221,7 +221,7 @@
                     "name": "PlacePipe",
                     "type": "Button",
                     "id": "330a6cf2-201e-4a0c-888a-923f5118436b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -297,6 +297,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "MoveRight",
+                    "type": "Button",
+                    "id": "8e247c79-88be-4c1a-bb44-fab30d151a19",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveLeft",
+                    "type": "Button",
+                    "id": "a6e5c19e-3993-4523-bb22-5bb2711d70da",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -442,32 +460,26 @@
                     "action": "DragAndMove",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "OnTilt",
-            "id": "8d8fb079-d451-4e02-9dea-d4f26235cbe5",
-            "actions": [
-                {
-                    "name": "Tilt",
-                    "type": "Value",
-                    "id": "eb4780a6-e4ae-4acc-a44d-11e2da2a3cb2",
-                    "expectedControlType": "Quaternion",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "51ad4627-d0b3-4a78-bf12-bb1ec31f120a",
-                    "path": "<AttitudeSensor>/attitude",
+                    "id": "bac9ddc8-c818-44ec-a67c-b02e7bbec7b3",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Tilt",
+                    "action": "MoveRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9c6581a-7968-4bcc-a9ef-885dcf61c987",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

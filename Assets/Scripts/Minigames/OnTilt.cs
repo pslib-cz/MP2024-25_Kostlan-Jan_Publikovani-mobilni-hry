@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Scenes;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Player
@@ -9,17 +8,22 @@ namespace Assets.Scripts.Player
 		private Accelerometer accelerometer;
 		public float tiltSpeed = 2f;
 		public float jumpForce = 1f;
-		public float maxRotationZ = 45f;
 		public float gravityStrength = 1f;
+
+		public float maxRotation = 50f;
+		public float minRotation = -50f;
+
+
 		[SerializeField] private PlayerInputs controls;
-		[SerializeField] GameObject Player;
+		[SerializeField] private GameObject Player;
 		[SerializeField] private Rigidbody2D PlayerRb;
 		[SerializeField] private string sceneNext = "HospitalOutside";
-		// řešíme to přes bool, ale kdyby to bylo neoptimální, tak by se to mohlo řešit přes aktivování a deaktivování skriptu.
 		[SerializeField] private bool playerClick = false;
 		[SerializeField] private MoveUp dangerWater;
 		[SerializeField] private GameObject howToPlay;
 		[SerializeField] private GameObject generateObjects;
+		[SerializeField] private float minX = -12f;
+		[SerializeField] private float maxX = 12f;
 
 		private void Awake()
 		{
@@ -31,13 +35,21 @@ namespace Assets.Scripts.Player
 		private void OnEnable()
 		{
 			controls.Minigames.ClickToTop.performed += HandleMoveToTop;
+			controls.Minigames.MoveRight.performed += HandleMoveRight;
+			controls.Minigames.MoveLeft.performed += HandleMoveLeft;
 			controls.Minigames.ClickToTop.Enable();
+			controls.Minigames.MoveRight.Enable();
+			controls.Minigames.MoveLeft.Enable();
 		}
 
 		private void OnDisable()
 		{
 			controls.Minigames.ClickToTop.performed -= HandleMoveToTop;
+			controls.Minigames.MoveRight.performed -= HandleMoveRight;
+			controls.Minigames.MoveLeft.performed -= HandleMoveLeft;
 			controls.Minigames.ClickToTop.Disable();
+			controls.Minigames.MoveRight.Disable();
+			controls.Minigames.MoveLeft.Disable();
 		}
 		#endregion
 
@@ -54,6 +66,32 @@ namespace Assets.Scripts.Player
 			Player.transform.localPosition = new Vector3(Player.transform.localPosition.x, Player.transform.localPosition.y + jumpForce, Player.transform.localPosition.z);
 		}
 
+		private void HandleMoveRight(InputAction.CallbackContext obj)
+		{
+
+			if (Player.transform.position.x < maxX)
+			{
+				float currentZRotation = gameObject.transform.eulerAngles.z;
+				if (currentZRotation > 180) currentZRotation -= 360; 
+
+				float newZRotation = Mathf.Clamp(currentZRotation + tiltSpeed, minRotation, maxRotation);
+				gameObject.transform.rotation = Quaternion.Euler(0, 0, newZRotation);
+			}
+		}
+
+		private void HandleMoveLeft(InputAction.CallbackContext obj)
+		{
+			if (Player.transform.position.x > minX)
+			{
+				float currentZRotation = gameObject.transform.eulerAngles.z;
+				if (currentZRotation > 180) currentZRotation -= 360;
+
+				float newZRotation = Mathf.Clamp(currentZRotation - tiltSpeed, minRotation, maxRotation);
+				gameObject.transform.rotation = Quaternion.Euler(0, 0, newZRotation);
+			}
+		}
+
+
 		private void Start()
 		{
 			if (Accelerometer.current != null)
@@ -64,9 +102,8 @@ namespace Assets.Scripts.Player
 			else
 			{
 				Debug.LogError("Device does not support accelerometer or it is unavailable.");
-				// řešíme pro případ, kdyby hráč neměl zapnutý accelerometr.
 #if !UNITY_EDITOR
-					SceneManager.Instance.SceneLoad(sceneNext);
+                //SceneManager.Instance.SceneLoad(sceneNext);
 #endif
 			}
 		}
@@ -76,23 +113,44 @@ namespace Assets.Scripts.Player
 			if (playerClick)
 			{
 				Player.transform.localPosition += Vector3.down * gravityStrength * Time.deltaTime;
+
+				float clampedX = Mathf.Clamp(Player.transform.position.x, minX, maxX);
+				Player.transform.position = new Vector3(clampedX, Player.transform.position.y, Player.transform.position.z);
+
 			}
 		}
 
 		private void Update()
 		{
-			if (playerClick)
+			if (playerClick && accelerometer != null)
 			{
-				// udělat to tak, že budeme mít nějakou hodnotu, která hodnotí, kde hráč může být maximálně po ose x nebo to řešit ve formě box collideru
-				Vector3 acceleration = Vector3.zero;
-				acceleration = accelerometer.acceleration.ReadValue();
+				Vector3 acceleration = accelerometer.acceleration.ReadValue();
 				float tilt = acceleration.x;
 				float currentZRotation = gameObject.transform.rotation.eulerAngles.z;
+
+				if (currentZRotation > 180) currentZRotation -= 360;
+
 				float newZRotation = currentZRotation + (tilt * tiltSpeed);
-				if (newZRotation > 180) newZRotation -= 360; // Pro práci s negativními úhly
-				newZRotation = Mathf.Clamp(newZRotation, -maxRotationZ, maxRotationZ);
-				gameObject.transform.rotation = Quaternion.Euler(0, 0, newZRotation);
+
+				newZRotation = Mathf.Clamp(newZRotation, minRotation, maxRotation);
+
+				if (tilt > 0 && Player.transform.position.x < maxX)
+				{
+					gameObject.transform.rotation = Quaternion.Euler(0, 0, newZRotation);
+				}
+				else if (tilt < 0 && Player.transform.position.x > minX)
+				{
+					gameObject.transform.rotation = Quaternion.Euler(0, 0, newZRotation);
+				}
 			}
+		}
+
+		// Metoda pro vykreslení hranic v editoru
+		private void OnDrawGizmos()
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawLine(new Vector3(minX, -60, 0), new Vector3(minX, 100, 0));
+			Gizmos.DrawLine(new Vector3(maxX, -60, 0), new Vector3(maxX, 100, 0));
 		}
 	}
 }
