@@ -4,7 +4,6 @@ namespace Assets.Scripts.Player
 {
 	public class OnTiltPlayer : MonoBehaviour
 	{
-		public OnTilt OnTilt;
 		public DeathMenu DeathScreen;
 
 		void OnTriggerEnter2D(Collider2D collider)

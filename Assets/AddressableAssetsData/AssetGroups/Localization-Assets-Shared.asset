@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: 130863621400a024ba7f53073e7203a4
   m_SerializeEntries:
+  - m_GUID: 03136a7b6a0d9b84e83fc2d625297bd7
+    m_Address: Assets/LocalizationSettings/Tables/AdCanvas Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 05946013a464d574493ac90522cad0fd
     m_Address: Assets/LocalizationSettings/Tables/DeathQuotes/DeathQuotes Shared
       Data.asset

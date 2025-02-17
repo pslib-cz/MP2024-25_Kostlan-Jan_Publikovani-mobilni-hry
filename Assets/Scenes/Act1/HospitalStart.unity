@@ -51228,7 +51228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299715219337302684, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: orthographic size
-      value: 9.75
+      value: 10.35
       objectReference: {fileID: 0}
     - target: {fileID: 4299715219337302684, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -52862,7 +52862,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1341447391337302958, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: myscene
-      value: Cirkus
+      value: CirkusTent
       objectReference: {fileID: 0}
     - target: {fileID: 2410031041332804816, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: m_Size.x

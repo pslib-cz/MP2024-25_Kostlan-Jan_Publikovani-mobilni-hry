@@ -69,6 +69,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-cs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc67349e6150db14382316ffba226036
+    m_Address: AdCanvas_cs
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-cs
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: f204535128d0ff245b537e70c77b5a49, type: 2}
   m_SchemaSet:

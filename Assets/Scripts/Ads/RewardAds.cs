@@ -1,6 +1,7 @@
 ﻿using GoogleMobileAds.Api;
 using System;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Ads
@@ -17,10 +18,12 @@ namespace Assets.Scripts.Ads
 
 		public Button adObject;
 		public Text buttonTextadObject;
-		public float adCooldownTime = 20f;
-		private float timer;
+		public float adCooldownTime = 30f;
 		private float lastAdTime;
 		private InicializationScene InicializationScene;
+		[SerializeField] private LocalizeStringEvent localizedStringEvent;
+		[SerializeField] private string adReady = "AdReady";
+		[SerializeField] private string adCooldown = "AdCooldown";
 
 		private void Awake()
 		{
@@ -41,8 +44,6 @@ namespace Assets.Scripts.Ads
 			});
 
 			InicializationScene.PauseFade();
-			Time.timeScale = 0f;
-			timer = 0f;
 
 			lastAdTime = Time.realtimeSinceStartup - adCooldownTime;
 		}
@@ -54,15 +55,17 @@ namespace Assets.Scripts.Ads
 			if (remainingTime <= 0)
 			{
 				adObject.interactable = true;
-				buttonTextadObject.text = "Zobrazit reklamu";
+				localizedStringEvent.StringReference.TableEntryReference = adReady;
 			}
 			else
 			{
 				adObject.interactable = false;
-				buttonTextadObject.text = $"Zbývá {remainingTime} sekund";
+				localizedStringEvent.StringReference.TableEntryReference = adCooldown;
+				localizedStringEvent.StringReference.Arguments = new object[] { remainingTime };
 			}
-		}
 
+			localizedStringEvent.RefreshString();
+		}
 
 		/// <summary>
 		/// Načte odměnovou reklamu.

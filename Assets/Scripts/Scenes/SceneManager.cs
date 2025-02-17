@@ -42,7 +42,6 @@ namespace Assets.Scripts.Scenes
 
 		private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
 		{
-			// provizorní
 			if (CanShowAd())
 			{
 				CreateRewardAdsObject();

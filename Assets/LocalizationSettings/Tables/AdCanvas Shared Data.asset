@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: AdCanvas Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: AdCanvas
+  m_TableCollectionNameGuidString: 03136a7b6a0d9b84e83fc2d625297bd7
+  m_Entries:
+  - m_Id: 39417012224
+    m_Key: enjoyGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 793368322048
+    m_Key: buyCoffee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 938877116416
+    m_Key: AdCooldown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7547187617792
+    m_Key: AdReady
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 28147889926570064
+  references:
+    version: 2
+    RefIds:
+    - rid: 28147889926570064
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1739780263465

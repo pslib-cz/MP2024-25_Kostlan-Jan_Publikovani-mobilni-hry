@@ -6,7 +6,6 @@ using GooglePlayGames.BasicApi.SavedGame;
 using System;
 using UnityEngine.UI;
 using UnityEngine.Localization.Settings;
-using GoogleMobileAds.Ump.Api;
 
 public class MainMenu : MonoBehaviour
 {
