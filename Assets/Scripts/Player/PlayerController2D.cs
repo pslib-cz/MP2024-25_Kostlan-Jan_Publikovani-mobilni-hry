@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
 using Assets.Scripts.Enums;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Kontroler hráče.
@@ -56,7 +57,7 @@ public class PlayerController2D : MonoBehaviour
 
 	private Vector2 touchStartPosition;
 	private bool isTouching = false;
-	private float touchThreshold = 0.5f;
+	private float touchThreshold = 0.25f;
 	private float touchThresholdDown = 120f;
 	[SerializeField] private PlayerInputs controls;
 	[SerializeField] private bool iscanMove = true;
@@ -176,6 +177,7 @@ public class PlayerController2D : MonoBehaviour
 				touchStartPosition = touch.position.ReadValue();
 				isTouching = true;
 			}
+
 			else if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved && isTouching)
 			{
 				Vector2 touchDelta = touch.position.ReadValue() - touchStartPosition;
@@ -185,7 +187,7 @@ public class PlayerController2D : MonoBehaviour
 
 				if (Mathf.Abs(deltaX) > touchThreshold)
 				{
-					moveInput = Mathf.Clamp(deltaX / Screen.width * 2f, -1f, 1f);
+					moveInput = Mathf.Clamp(deltaX / Screen.width * 1.5f, -1f, 1f);
 					HandleRunAndWalk(moveInput);
 				}
 
@@ -194,6 +196,7 @@ public class PlayerController2D : MonoBehaviour
 					HandleCrouchAndStand(deltaY);
 				}
 			}
+
 			else if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Ended || touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Canceled)
 			{
 				isTouching = false;
@@ -210,6 +213,7 @@ public class PlayerController2D : MonoBehaviour
 
 			animator.SetBool("Run", true);
 		}
+
 		else if (Mathf.Abs(moveInput) > 0.1f)
 		{
 			ChangePlayerState(PlayerState.Walking);
@@ -217,8 +221,13 @@ public class PlayerController2D : MonoBehaviour
 		}
 	}
 
-	private bool TouchInput()
+	public bool TouchInput()
 	{
+		if (EventSystem.current.IsPointerOverGameObject())
+		{
+			return false;
+		}
+
 		return Touchscreen.current != null;
 	}
 

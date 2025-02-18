@@ -1,5 +1,4 @@
-﻿using Unity.Services.Core;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Extension;
 
@@ -98,8 +97,6 @@ public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 
 		return PurchaseProcessingResult.Complete;
 	}
-
-
 	public void GetSubscription()
 	{
 		sController.InitiatePurchase(cId);

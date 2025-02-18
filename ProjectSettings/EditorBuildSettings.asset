@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Act1/HospitalStart.unity
     guid: 113075c56a5bb1746bf94f05ad7ff5d3
   - enabled: 1
-    path: Assets/Scenes/Act2/CirckusTent.unity
+    path: Assets/Scenes/Act2/CirkusTent.unity
     guid: c6a465ba9d3268649aebf95a4af539a8
   - enabled: 1
     path: Assets/Scenes/Act2/Cirkus.unity
