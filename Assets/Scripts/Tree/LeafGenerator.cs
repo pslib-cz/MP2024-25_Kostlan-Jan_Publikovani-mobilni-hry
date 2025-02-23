@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Generátor listů na stromě.
+/// </summary>
 [RequireComponent(typeof(BoxCollider2D))]
 public class LeafGenerator : MonoBehaviour
 {

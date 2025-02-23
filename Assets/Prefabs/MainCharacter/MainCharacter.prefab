@@ -44,14 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
+  m_ComponentVersion: 2
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
-  m_LightVolumeIntensityEnabled: 0
+  m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000eb88c33ef18aaf466d57b71a
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
@@ -61,8 +61,10 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
+  m_ShadowsEnabled: 0
   m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0
+  m_ShadowSoftnessFalloffIntensity: 0.5
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
@@ -125,6 +127,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5719989151141736243, guid: c6662650153cf248f8c59a75438a2748, type: 2}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.21
   m_Pitch: 1
@@ -266,10 +269,13 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -303,7 +309,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!50 &7734353869353991401
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -313,9 +319,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1.2721285
-  m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_Mass: 1.2717032
+  m_LinearDamping: 0
+  m_AngularDamping: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -336,6 +342,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7734353869353991403}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -359,7 +366,8 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: -0.057742, y: 0.046126574}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -370,12 +378,11 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 0.20949292, y: 0.37952608}
   m_EdgeRadius: 0
 --- !u!95 &7734353869353991413
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -389,6 +396,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -413,7 +421,6 @@ MonoBehaviour:
   reloadClip: {fileID: 8300000, guid: 0e96be857a1be7c48b559c08aa27345d, type: 3}
   DeathScreen: {fileID: 0}
   zobrazovaninaboju: {fileID: 0}
-  StaminaBar: {fileID: 0}
   shootDistance: 10
   MaxStamina: 0
   initialRounds: 3
@@ -474,6 +481,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5719989151141736243, guid: c6662650153cf248f8c59a75438a2748, type: 2}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.155
   m_Pitch: 1

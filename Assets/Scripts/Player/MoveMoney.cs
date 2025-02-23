@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Auto move money.
+/// Automatický pohyb pen?z.
 /// </summary>
 public class MoveMoney : MonoBehaviour
 {

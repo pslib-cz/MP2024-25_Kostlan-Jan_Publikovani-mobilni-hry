@@ -2,7 +2,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+/// <summary>
+/// Kontroller pro hráče na úroveň ontilt.
+/// </summary>
+public class PlayerOnTilt : MonoBehaviour
 {
 	public float forceAmount = 50f;
 	[SerializeField] private Rigidbody2D tilt;

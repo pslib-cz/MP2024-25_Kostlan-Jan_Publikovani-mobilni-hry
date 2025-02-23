@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// Autoshut down script
+/// Skript, který zníčí určitý skript po určité době.
 /// </summary>
 public class ScriptToggle : MonoBehaviour
 {

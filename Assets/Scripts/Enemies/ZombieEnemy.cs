@@ -174,6 +174,7 @@ public class ZombieEnemy : EnemyBase
 		transform1.localScale = theScale;
 	}
 
+	// tato prasárna byla před tím, než jsem si uvědomil, že existují vrstvy a že je můžu použít
 	void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("Player") && dead == false)

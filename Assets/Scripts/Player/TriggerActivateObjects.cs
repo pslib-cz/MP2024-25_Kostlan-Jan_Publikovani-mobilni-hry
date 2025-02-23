@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts
 {
+	/// <summary>
+	/// Trigger reagující na kolizi s hráčem.
+	/// </summary>
 	[RequireComponent(typeof(Collider2D))]
 	public class TriggerActivateObjects : MonoBehaviour
 	{

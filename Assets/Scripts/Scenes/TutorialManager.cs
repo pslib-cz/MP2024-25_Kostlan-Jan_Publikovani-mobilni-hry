@@ -5,7 +5,7 @@ using System.Collections;
 using Assets.Scripts.Scenes;
 
 /// <summary>
-/// Vytvořená třída, kdybychom tam chtěli přidat další parametry.
+/// Vytvořená třída, kdybychom tam chtěli přidat další parametry pro lokalizaci.
 /// </summary>
 [System.Serializable]
 public class LocalizedTextData
@@ -13,6 +13,9 @@ public class LocalizedTextData
 	public string localizedTextKey;
 }
 
+/// <summary>
+/// Manažer na tutorial.
+/// </summary>
 [RequireComponent(typeof(LocalizeStringEvent))]
 public class TutorialManager : MonoBehaviour
 {
@@ -133,14 +136,13 @@ public class TutorialManager : MonoBehaviour
 	// Coroutine pro načítání nové scény po zpoždění
 	private IEnumerator LoadLevelAfterDelay(float delay)
 	{
-
 		yield return new WaitForSeconds(delay);
 		PlayNewLevel();
 	}
 
 	private void PlayNewLevel()
 	{
-		// je otázka, zda načíst poslední scénu nebo MainMenu.
+		// Je otázka, zda načíst poslední scénu nebo MainMenu. todo
 		var sceneManager = SceneManager.Instance;
 		sceneManager.LoadLastScene();
 	}

@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.Enemies
 {
+	/// <summary>
+	/// Komponenta pro tutorial, která reaguje na střelbu hráče změnou spritu.
+	/// </summary>
 	[RequireComponent(typeof(BoxCollider2D))]
 	[RequireComponent(typeof(SpriteRenderer))]
 	public class BottleTutorial : EnemyBase

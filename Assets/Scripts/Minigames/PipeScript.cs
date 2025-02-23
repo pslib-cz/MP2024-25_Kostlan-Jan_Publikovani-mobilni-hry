@@ -3,6 +3,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Assets.Scripts.Enums;
 
+/// <summary>
+/// 
+/// </summary>
 public class PipeScript : MonoBehaviour, IPointerClickHandler
 {
 	[Header("Pipe type")]

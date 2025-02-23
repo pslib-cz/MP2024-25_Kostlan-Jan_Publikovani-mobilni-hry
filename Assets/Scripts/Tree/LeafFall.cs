@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Skript pro padájící list ze stromu.
+/// </summary>
 public class LeafFall : MonoBehaviour
 {
 	public float minFallSpeed = 0.3f;

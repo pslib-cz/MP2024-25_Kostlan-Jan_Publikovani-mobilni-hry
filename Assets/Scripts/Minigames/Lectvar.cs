@@ -16,7 +16,7 @@ namespace Assets.Scripts.Minigames
 		private Image potionImage;
 		private Sprite startPotionImage;
 		private int originalSiblingIndex;
-		[SerializeField] int potionIndex;
+		[SerializeField] private  int potionIndex;
 
 		private void Start()
 		{

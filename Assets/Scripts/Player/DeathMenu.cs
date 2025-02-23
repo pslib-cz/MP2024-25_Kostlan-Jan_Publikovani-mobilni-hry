@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// When player dies, show DeathScreen
+/// Okno smrti, které se ukáže pro hráčovi smrti.
 /// </summary>
 public class DeathMenu : MonoBehaviour
 {
@@ -18,17 +18,11 @@ public class DeathMenu : MonoBehaviour
 		Handheld.Vibrate();
 	}
 
-	/// <summary>
-	/// Exit game.
-	/// </summary>
 	public void QuitGame()
 	{
 		Application.Quit();
 	}
 
-	/// <summary>
-	/// Load MainMenu
-	/// </summary>
 	public void GoToMainMenu()
 	{
 		bannerAdsDeath.DestroyAd();
@@ -37,9 +31,6 @@ public class DeathMenu : MonoBehaviour
 		SceneManager.LoadScene("MainMenu");
 	}
 
-	/// <summary>
-	/// Restart current level
-	/// </summary>
 	public void RestartLevel()
 	{
 		bannerAdsDeath.DestroyAd();

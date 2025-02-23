@@ -7,7 +7,7 @@ using Assets.Scripts.Enums;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// Kontroler hráče.
+/// Nejzákladnější kontroller hráče, který slouží pro hlavní úrovně.
 /// </summary>
 public class PlayerController2D : MonoBehaviour
 {
@@ -28,22 +28,18 @@ public class PlayerController2D : MonoBehaviour
 	public int initialRoundsDeposit = 8;
 	[SerializeField] public bool mFacingRight = true;
 
-	[Header("Movement Speeds")]
+	[Header("Movement")]
 	[SerializeField] private float runSpeed = 20f;
 	[SerializeField] private float walkSpeed = 10f;
 	[SerializeField] private float slowSpeed = 4f;
 	private Rigidbody2D rb;
 	private InteractiveObject currentInteractiveObject;
-	// private things
 	[NonSerialized] public bool isPlayerVisible = true;
-	//private bool isRightKeyPressed;
-	//private bool isLeftKeyPressed;
 	private bool crouch;
 	public bool gunout;
 	private bool run;
 	private bool reload;
-	[SerializeField]
-	private bool isHidden = false;
+	[SerializeField] private bool isHidden = false;
 	private float moveInput;
 	[SerializeField] private float speed;
 	private int rounds;
@@ -57,8 +53,8 @@ public class PlayerController2D : MonoBehaviour
 
 	private Vector2 touchStartPosition;
 	private bool isTouching = false;
-	private float touchThreshold = 0.25f;
-	private float touchThresholdDown = 120f;
+	private const float touchThreshold = 0.1f;
+	private const float touchThresholdDown = 100f;
 	[SerializeField] private PlayerInputs controls;
 	[SerializeField] private bool iscanMove = true;
 
@@ -182,12 +178,12 @@ public class PlayerController2D : MonoBehaviour
 			{
 				Vector2 touchDelta = touch.position.ReadValue() - touchStartPosition;
 
-				float deltaX = touchDelta.x * 2;
+				float deltaX = touchDelta.x * 3;
 				float deltaY = touchDelta.y;
 
 				if (Mathf.Abs(deltaX) > touchThreshold)
 				{
-					moveInput = Mathf.Clamp(deltaX / Screen.width * 1.5f, -1f, 1f);
+					moveInput = Mathf.Clamp(deltaX / Screen.width * 2.5f, -1f, 1f);
 					HandleRunAndWalk(moveInput);
 				}
 
@@ -415,17 +411,13 @@ public class PlayerController2D : MonoBehaviour
 
 	public void Reload()
 	{
-		if (rounds != 3)
+		if (rounds < 3 && roundsDeposit > 0)
 		{
-			rounds = 3;
-			if (roundsDeposit >= 3)
-			{
-				roundsDeposit -= 3;
-			}
-			else if (roundsDeposit > 0)
-			{
-				roundsDeposit -= roundsDeposit;
-			}
+			int neededRounds = 3 - rounds;
+			int roundsToLoad = Mathf.Min(neededRounds, roundsDeposit);
+
+			rounds += roundsToLoad;
+			roundsDeposit -= roundsToLoad;
 
 			gunAudioSource.clip = reloadClip;
 			gunAudioSource.Play();
@@ -433,6 +425,7 @@ public class PlayerController2D : MonoBehaviour
 		}
 		ToggleAnimationState(ref reload, "Reload");
 	}
+
 
 	#endregion
 	#region Triggers
@@ -560,6 +553,7 @@ public class PlayerController2D : MonoBehaviour
 			playerLight.enabled = false;
 		}
 	}
+
 	#region Tutorial
 	public int GetRounds()
 	{

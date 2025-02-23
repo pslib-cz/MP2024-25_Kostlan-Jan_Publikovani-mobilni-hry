@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Minigames
 {
+	/// <summary>
+	/// Drát sloužící pro WireController.
+	/// </summary>
 	public class Wire : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler
 	{
 		public WireController wireManager;
@@ -12,19 +15,16 @@ namespace Assets.Scripts.Minigames
 		public Sprite emptyWireSprite;
 		public Sprite connectedWireSprite;
 		public bool isConnected = false;
-
 		public GameObject wireImageConnecting;
-		private GameObject currentDraggedWire;
 
+		[SerializeField] private Color dropColor;
+		[SerializeField] private float scaleFactor;
+		private GameObject currentDraggedWire;
 		private RectTransform draggingPlane;
 		private Vector3 startPoint;
 		private Image wireImage;
 		private int originalSiblingIndex;
-
 		private Wire connectedWire;
-		[SerializeField] private Color dropColor;
-
-		[SerializeField] private float scaleFactor;
 
 	  private void Start()
 	  {

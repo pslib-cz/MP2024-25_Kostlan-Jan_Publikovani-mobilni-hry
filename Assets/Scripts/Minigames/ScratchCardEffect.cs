@@ -1,8 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// Effekt na výherní los.
+/// </summary>
 public class ScratchCardEffect : MonoBehaviour
 {
-
 	public GameObject maskPrefab;
 	private bool isPressed = false;
 
@@ -11,7 +13,6 @@ public class ScratchCardEffect : MonoBehaviour
 		var mousePos = Input.mousePosition;
 		mousePos.z = 2;
 		mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
 
 		if (isPressed)
 		{
@@ -24,12 +25,12 @@ public class ScratchCardEffect : MonoBehaviour
 			Invoke("Reveal", 10);
 			isPressed = true;
 		}
+
 		else if (Input.GetMouseButtonDown(1))
 		{
 			{
 				isPressed = false;
 			}
-
 		}
 	}
 

@@ -1,16 +1,19 @@
 using UnityEngine;
 
+/// <summary>
+/// Pin slouží pro minihru lockpicking.
+/// </summary>
 public class Pin : MonoBehaviour
 {
-   public bool isPicked = false;
-   public Vector3 inicializationPosition;
-   // Upravit, když responzivní design!
-   private const float YPosition = 800f;
+	public bool isPicked = false;
+	public Vector3 inicializationPosition;
+	// Upravit, když responzivní design!
+	private const float YPosition = 800f;
 
-   public void Start()
-   {
-	  inicializationPosition = transform.position;
-   }
+	public void Start()
+	{
+		inicializationPosition = transform.position;
+	}
 
 	public void PinUp()
 	{

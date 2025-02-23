@@ -9,13 +9,15 @@ using GooglePlayGames.BasicApi;
 
 namespace Assets.Scripts
 {
+	/// <summary>
+	/// Initializuje základní herní scénu s fade-out efektem, ukládá hru a ukládá současnou úroveň do PlayerPrefs..
+	/// </summary>
 	public class InicializationScene : MonoBehaviour
 	{
 		private Image image;
 		private float fadeDuration = 5f;
 		private string savedGameName = "MyCustomSaveGame";
 		[SerializeField] private bool saveSceneToPrefs = true;
-
 		private Coroutine fadeCoroutine;
 
 		private void Awake()

@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
+	/// <summary>
+	/// Slouží pro telšeportování hráče k určitým dveřím s fade-in a fade-out efektem.
+	/// </summary>
 	[RequireComponent(typeof(AudioSource))]
 	public class DoorTelepoted : MonoBehaviour
 	{

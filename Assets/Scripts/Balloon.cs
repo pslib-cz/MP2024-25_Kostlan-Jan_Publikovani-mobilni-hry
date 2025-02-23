@@ -1,49 +1,134 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Assets.Scripts.Interfaces;
 
 namespace Assets.Scripts
 {
-	internal class Balloon : MonoBehaviour
+	public class Balloon : EnemyBase
 	{
-		public float speedX = 2f; // Rychlost pohybu na ose X
-		public float speedY = 1f; // Maximální rychlost pohybu na ose Y
-		public float yChangeInterval = 1f; // Interval změny směru na ose Y
+		public float speedX = 2f;
+		public float speedY = 1f;
+		public float yChangeInterval = 1f;
 
-		private float targetYDirection; // Cílový směr na ose Y
-		private float yVelocity; // Aktuální rychlost na ose Y
-		private Vector3 targetPosition; // Cílová pozice balónku
+		private float yVelocity;
+		private Transform player;
+		private Animator animator;
+		private bool isAggressive = false;
+		private const float moveSpeed = 2f;
+
+		[SerializeField] private bool mFacingRight = false;
+
+		private void Awake()
+		{
+			player = GameObject.FindGameObjectWithTag("Player").transform;
+			animator = GetComponent<Animator>();
+			audioSource = GetComponent<AudioSource>();
+		}
 
 		void Start()
 		{
-			// Nastavte náhodnou cílovou pozici na ose Y a vzdálenou cílovou pozici na ose X
-			targetPosition = new Vector3(UnityEngine.Random.Range(10f, 20f), UnityEngine.Random.Range(-4f, 4f), transform.position.z);
 			StartCoroutine(ChangeYDirection());
-		}
-
-		void Update()
-		{
-			// Pohyb na ose X
-			transform.position -= Vector3.right * speedX * Time.deltaTime;
-
-			// Pohyb na ose Y s přechodem mezi směry
-			yVelocity = Mathf.Lerp(yVelocity, targetYDirection * speedY, Time.deltaTime);
-			transform.position += Vector3.up * yVelocity * Time.deltaTime;
-
-			// Pokud se balónek přiblíží k cíli na ose X, zastavte ho nebo nastavte nový cíl
-			if (Vector3.Distance(transform.position, targetPosition) < 0.5f)
-			{
-				targetPosition = new Vector3(UnityEngine.Random.Range(10f, 20f), UnityEngine.Random.Range(-4f, 4f), transform.position.z);
-			}
 		}
 
 		private IEnumerator ChangeYDirection()
 		{
-			while (true)
+			while (!isAggressive)
 			{
-				// Náhodně nastavte směr pohybu na ose Y (nahoru/dolu)
-				targetYDirection = UnityEngine.Random.Range(-1f, 1f);
-				yield return new WaitForSeconds(yChangeInterval);
+				float targetYDirection = Random.Range(-0.5f, 0.5f);
+				float targetXDirection = Random.Range(-0.5f, 0.5f);
+
+				float interval = Random.Range(2f, 4f);
+
+				Vector3 newTarget = new Vector3(transform.position.x + targetXDirection * speedX,
+												transform.position.y + targetYDirection * speedY,
+												transform.position.z);
+
+				StartCoroutine(MoveToTarget(newTarget, interval));
+
+				yield return new WaitForSeconds(interval);
 			}
+		}
+
+		private IEnumerator MoveToTarget(Vector3 target, float duration)
+		{
+			float time = 0;
+			Vector3 startPosition = transform.position;
+
+			while (time < duration)
+			{
+				transform.position = Vector3.Lerp(startPosition, target, time / duration);
+				time += Time.deltaTime;
+				yield return null;
+			}
+		}
+
+		private void Update()
+		{
+			if (isAggressive)
+			{
+				// Pronásleduje hráče po ose X i Y
+				transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+			}
+
+			FlipTowardsPlayer();
+		}
+
+		private void FlipTowardsPlayer()
+		{
+			if (player.position.x > transform.position.x && mFacingRight)
+			{
+				Flip();
+			}
+			else if (player.position.x < transform.position.x && !mFacingRight)
+			{
+				Flip();
+			}
+		}
+
+		/// <summary>
+		/// Změní agresivitu balónu. Musí být voláno z jiného skriptu.
+		/// </summary>
+		/// <param name="state">True pro agresivní režim, false pro pasivní režim</param>
+		public void SetAggressive(bool state)
+		{
+			isAggressive = state;
+			animator.SetBool("isAgressive", state);
+			isAttack = state;
+
+			if (state)
+			{
+				StopCoroutine(ChangeYDirection());
+			}
+			else
+			{
+				StartCoroutine(ChangeYDirection());
+			}
+		}
+
+		private void Flip()
+		{
+			mFacingRight = !mFacingRight;
+			Vector3 theScale = transform.localScale;
+			theScale.x *= -1;
+			transform.localScale = theScale;
+		}
+
+		public override void TakeDamage(int damage)
+		{
+			if (isAggressive) // Lze zničit pouze pokud je agresivní
+			{
+				health -= damage;
+				if (health <= 0)
+				{
+					Die();
+				}
+			}
+		}
+
+		private void Die()
+		{
+			PlayDeathSound();
+			Destroy(gameObject);
 		}
 	}
 }

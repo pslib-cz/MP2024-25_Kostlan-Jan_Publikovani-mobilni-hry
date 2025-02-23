@@ -51412,7 +51412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805514, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: orthographic size
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805514, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_OcclusionCulling
@@ -52891,6 +52891,10 @@ PrefabInstance:
     - target: {fileID: 2422763460916794509, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570927946333657104, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
+      propertyPath: m_Intensity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4118573826402047921, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: m_IsActive

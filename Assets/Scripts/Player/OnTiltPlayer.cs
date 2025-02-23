@@ -2,6 +2,9 @@
 
 namespace Assets.Scripts.Player
 {
+	/// <summary>
+	/// Kontroller hráče, který slouží pro úroveň onTilt. Reaguje na kolize smrtí.
+	/// </summary>
 	public class OnTiltPlayer : MonoBehaviour
 	{
 		public DeathMenu DeathScreen;
