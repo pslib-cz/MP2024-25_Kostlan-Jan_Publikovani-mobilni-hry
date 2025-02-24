@@ -105,6 +105,7 @@ public class Soldier : MonoBehaviour
 				}
 			}
 		}
+
 		else if (Time.time >= nextActionTime)
 		{
 			State = (State == SoldierState.Idle) ? SoldierState.Walking : SoldierState.Idle;
@@ -112,7 +113,7 @@ public class Soldier : MonoBehaviour
 
 			if (State == SoldierState.Walking)
 			{
-				direction = Random.value < 0.7 ? Vector2.left : Vector2.right;
+				direction = Random.value < 0.3 ? Vector2.left : Vector2.right;
 			}
 		}
 
