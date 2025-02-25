@@ -31,9 +31,9 @@ public class MainMenu : MonoBehaviour
 	{
 
 #if DEBUG
-	  PlayGamesPlatform.DebugLogEnabled = true;
+		PlayGamesPlatform.DebugLogEnabled = true;
 #endif
-	  PlayGamesPlatform.Activate();
+		PlayGamesPlatform.Activate();
 		AuthenticateUser();
 
 		if (PlayerPrefs.GetInt(PlayerPrefsKeys.HasPlayedBefore, 0) == 0)
@@ -72,11 +72,11 @@ public class MainMenu : MonoBehaviour
 		if (locale != null)
 		{
 			LocalizationSettings.SelectedLocale = locale;
-			Debug.Log("Language set to: " + language);
+			Debug.Log("Jazyk nastavený na: " + language);
 		}
 		else
 		{
-			Debug.LogError("Locale not found for language: " + language);
+			Debug.LogError("Jazyk se nenašel: " + language);
 		}
 	}
 
@@ -120,10 +120,60 @@ public class MainMenu : MonoBehaviour
 
 	public void AuthenticateUser()
 	{
-		PlayGamesPlatform.Instance.Authenticate(OnSignInResult);
+		PlayGamesPlatform.Instance.Authenticate((signInStatus) =>
+		{
+			if (signInStatus == SignInStatus.Success)
+			{
+				Debug.Log("Přihlášení je úspěšné!");
+				LoadRemoveAdsFromCloud();
+			}
+			else
+			{
+				Debug.LogError("Přihlášení se nepodařilo: " + signInStatus);
+			}
+		});
 	}
 
-	public  void OnSignInResult(SignInStatus signInStatus)
+	void LoadRemoveAdsFromCloud()
+	{
+		if (PlayGamesPlatform.Instance.IsAuthenticated())
+		{
+			PlayGamesPlatform.Instance.SavedGame.OpenWithAutomaticConflictResolution(
+				 "MyCustomSaveGame",
+				 DataSource.ReadCacheOrNetwork,
+				 ConflictResolutionStrategy.UseLongestPlaytime,
+				 (status, game) =>
+				 {
+					 if (status == SavedGameRequestStatus.Success)
+					 {
+						 PlayGamesPlatform.Instance.SavedGame.ReadBinaryData(game, (readStatus, data) =>
+						 {
+							 if (readStatus == SavedGameRequestStatus.Success && data != null)
+							 {
+								 string saveData = System.Text.Encoding.UTF8.GetString(data);
+								 if (saveData.Contains("remove_ads=true"))
+								 {
+									 PlayerPrefs.SetInt(PlayerPrefsKeys.HasAds, 1);
+									 PlayerPrefs.Save();
+									 RemoveAds();
+									 Debug.Log("Je to nakoupený od uživatele a uložený na jeho cloud.");
+								 }
+							 }
+							 else
+							 {
+								 Debug.LogError("Selhalo čtení dat o reklamách.");
+							 }
+						 });
+					 }
+					 else
+					 {
+						 Debug.LogError("Selhalo přečtení dat z google cloud.");
+					 }
+				 });
+		}
+	}
+
+	public void OnSignInResult(SignInStatus signInStatus)
 	{
 		if (signInStatus == SignInStatus.Success)
 		{
@@ -210,7 +260,7 @@ public class MainMenu : MonoBehaviour
 		}
 		else
 		{
-			Debug.LogError("Error opening saved game.");
+			Debug.LogError("Selhalo otevření hry.");
 			loadTutorialDialog.SetActive(true);
 			PlayerPrefs.SetInt(PlayerPrefsKeys.HasPlayedBefore, 1);
 		}
@@ -233,7 +283,7 @@ public class MainMenu : MonoBehaviour
 		}
 		else
 		{
-			Debug.LogError("Failed to read saved game data.");
+			Debug.LogError("Selhalo přečtení herních dat.");
 			ShowDialogTutorial();
 		}
 	}
@@ -272,7 +322,7 @@ public class MainMenu : MonoBehaviour
 		if (mCurrentSavedGame != null)
 		{
 			PlayGamesPlatform.Instance.SavedGame.Delete(mCurrentSavedGame);
-			Debug.Log("Saved game deleted.");
+			Debug.Log("Uložení hry selhalo");
 		}
 	}
 
@@ -288,10 +338,9 @@ public class MainMenu : MonoBehaviour
 		}
 	}
 
-	// Metoda, která se volá při úspěšném nákupu:
 	public void OnAdsRemoved()
 	{
 		RemoveAds();
-		Debug.Log("Ads removed successfully!");
+		Debug.Log("Reklama byla úspěšně odstraněná!");
 	}
 }

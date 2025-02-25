@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using GooglePlayGames.BasicApi.SavedGame;
+using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Extension;
 
 public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 {
-	// mám tady pro jistotu i další věci které nepotřebuji při možnosti rozšířování.
+	// Identifikátory produktů
 	public string cId = "50Coin",
 		ncId = "removeads",
 		sId = "VipPayment";
@@ -36,29 +39,28 @@ public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 			if (product != null && product.hasReceipt)
 			{
 				sController.ConfirmPendingPurchase(product);
-
 			}
 		}
 	}
 
 	public void OnInitializeFailed(InitializationFailureReason error)
 	{
-		Debug.LogError("Initialization failed: " + error);
+		Debug.LogError("Inicializace selhala: " + error);
 	}
 
 	public void OnInitializeFailed(InitializationFailureReason error, string message)
 	{
-		Debug.LogError("Initialization failed: " + error + " " + message);
+		Debug.LogError("Inicializace selhala: " + error + " " + message);
 	}
 
 	public void OnPurchaseFailed(Product product, PurchaseFailureDescription failureDescription)
 	{
-		Debug.LogError("Purchase of product " + product.definition.id + " failed: " + failureDescription.reason + " " + failureDescription.message);
+		Debug.LogError("Nákup produktu " + product.definition.id + " selhal: " + failureDescription.reason + " " + failureDescription.message);
 	}
 
 	public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
 	{
-		Debug.LogError("Purchase of product " + product.definition.id + " failed: " + failureReason);
+		Debug.LogError("Nákup produktu " + product.definition.id + " selhal: " + failureReason);
 	}
 
 	public void BuyNonConsumable()
@@ -69,7 +71,7 @@ public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 		}
 		else
 		{
-			Debug.LogError("StoreController is not initialized.");
+			Debug.LogError("StoreController není inicializován.");
 		}
 	}
 
@@ -77,13 +79,14 @@ public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 	{
 		var product = purchaseEvent.purchasedProduct;
 
-		if (product.definition.id == ncId) // Pokud uživatel koupil "removeads"
+		if (product.definition.id == ncId)
 		{
-			Debug.Log("Non-consumable product purchased: " + product.definition.id);
+			Debug.Log("Zakoupen ne-spotřební produkt: " + product.definition.id);
 			PlayerPrefs.SetInt(PlayerPrefsKeys.HasAds, 1);
 			PlayerPrefs.Save();
 
-			// Zavolejte metodu v MainMenu pro odstranění reklam
+			SaveRemoveAdsToCloud();
+
 			MainMenu mainMenu = FindFirstObjectByType<MainMenu>();
 			if (mainMenu != null)
 			{
@@ -92,11 +95,53 @@ public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 		}
 		else
 		{
-			Debug.Log("Unrecognized product purchased: " + product.definition.id);
+			Debug.Log("Neznámý produkt zakoupen: " + product.definition.id);
 		}
 
 		return PurchaseProcessingResult.Complete;
 	}
+
+	void SaveRemoveAdsToCloud()
+	{
+		if (PlayGamesPlatform.Instance.IsAuthenticated())
+		{
+			string saveData = "remove_ads=true";
+
+			byte[] data = System.Text.Encoding.UTF8.GetBytes(saveData);
+
+			PlayGamesPlatform.Instance.SavedGame.OpenWithAutomaticConflictResolution(
+				 "MyCustomSaveGame",
+				 DataSource.ReadCacheOrNetwork,
+				 ConflictResolutionStrategy.UseLongestPlaytime,
+				 (status, game) =>
+				 {
+					 if (status == SavedGameRequestStatus.Success)
+					 {
+						 SavedGameMetadataUpdate update = new SavedGameMetadataUpdate.Builder().Build();
+						 PlayGamesPlatform.Instance.SavedGame.CommitUpdate(game, update, data, (saveStatus, savedGame) =>
+						 {
+							 if (saveStatus == SavedGameRequestStatus.Success)
+							 {
+								 Debug.Log("Úspěšně uloženo: Stav odstranění reklam do cloudu.");
+							 }
+							 else
+							 {
+								 Debug.LogError("Nepodařilo se uložit stav odstranění reklam.");
+							 }
+						 });
+					 }
+					 else
+					 {
+						 Debug.LogError("Nepodařilo se otevřít uloženou hru.");
+					 }
+				 });
+		}
+		else
+		{
+			Debug.LogError("Uživatel není přihlášen, nelze uložit stav odstranění reklam.");
+		}
+	}
+
 	public void GetSubscription()
 	{
 		sController.InitiatePurchase(cId);
