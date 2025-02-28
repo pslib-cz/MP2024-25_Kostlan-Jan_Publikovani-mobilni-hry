@@ -5,12 +5,15 @@ using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Extension;
 
+/// <summary>
+/// Ínteraguje s třetí stranou ohledně nákupu určitého produktu. Je to připravené pro
+/// </summary>
 public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 {
 	// Identifikátory produktů
 	public string cId = "50Coin",
-		ncId = "removeads",
-		sId = "VipPayment";
+	ncId = "removeads",
+	sId = "VipPayment";
 	IStoreController sController;
 
 	public void Start()

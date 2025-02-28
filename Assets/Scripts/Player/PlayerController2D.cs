@@ -9,6 +9,9 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// Nejzákladnější kontroller hráče, který slouží pro hlavní úrovně.
 /// </summary>
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController2D : MonoBehaviour
 {
 	[Header("References")]
