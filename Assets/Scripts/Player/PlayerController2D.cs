@@ -474,6 +474,7 @@ public class PlayerController2D : MonoBehaviour
 				HandlePlayerDeath();
 			}
 		}
+
 		if (collision.CompareTag("Schovavani"))
 		{
 			if (crouch)

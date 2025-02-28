@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Interfaces;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,7 @@ public class PlayerSwipeMovement : MonoBehaviour
 	private Vector2 startTouchPosition, endTouchPosition;
 	private Rigidbody2D rb;
 	private bool isTouching;
+	public DeathMenu DeathScreen;
 
 	private void Start()
 	{
@@ -20,28 +22,30 @@ public class PlayerSwipeMovement : MonoBehaviour
 
 	private void Update()
 	{
-		if (!TouchInput() || Touchscreen.current == null) return;
 
-		var touch = Touchscreen.current.primaryTouch;
-
-		if (touch.press.isPressed)
+		if (TouchInput())
 		{
+			var touch = Touchscreen.current.primaryTouch;
+
 			if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
 			{
 				startTouchPosition = touch.position.ReadValue();
 				isTouching = true;
 			}
+
 			else if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved && isTouching)
 			{
-				DetectSwipe();
 				endTouchPosition = touch.position.ReadValue();
+				DetectSwipe();
 			}
-		}
-		else if (isTouching && touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Ended)
-		{
-			endTouchPosition = Vector2.zero;
-			startTouchPosition = Vector2.zero;
-			isTouching = false;
+
+			else
+			{
+				endTouchPosition = Vector2.zero;
+				startTouchPosition = Vector2.zero;
+				isTouching = false;
+				Move(Vector2.zero);
+			}
 		}
 	}
 
@@ -74,5 +78,22 @@ public class PlayerSwipeMovement : MonoBehaviour
 	private void Move(Vector2 direction)
 	{
 		rb.linearVelocity = direction * speed;
+	}
+
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		if (collision.gameObject.CompareTag("Enemy"))
+		{
+			EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
+			if (enemy.isAttack)
+			{
+				HandlePlayerDeath();
+			}
+		}
+	}
+
+	public void HandlePlayerDeath()
+	{
+		DeathScreen.gameObject.SetActive(true);
 	}
 }

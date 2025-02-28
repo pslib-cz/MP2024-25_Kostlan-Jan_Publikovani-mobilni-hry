@@ -23,7 +23,6 @@ public class InteractiveObject : MonoBehaviour
 		interactOnlyOnce = true;
 		showImage.SetActive(false);
 		boxcollider2D.enabled = false;
-
 	}
 
 	public void Awake()
