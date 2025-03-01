@@ -6,7 +6,7 @@ using Assets.Scripts.Scenes;
 /// </summary>
 public class NewLevel : MonoBehaviour
 {
-	public string myscene;
+	public string scene;
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
@@ -14,7 +14,8 @@ public class NewLevel : MonoBehaviour
 		{
 			if (SceneManager.Instance != null)
 			{
-				SceneManager.Instance.SceneLoad(myscene);
+				SceneManager.Instance.SceneLoad(scene);
+				Destroy(gameObject);
 			}
 		}
 	}

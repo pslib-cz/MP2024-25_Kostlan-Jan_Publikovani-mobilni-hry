@@ -9,6 +9,7 @@ namespace Assets.Scripts.Scenes
 	/// <summary>
 	/// Skript pro práci se scénami.
 	/// </summary>
+	/// todo proč mi to nevydělává :(
 	public class SceneManager : MonoBehaviour
 	{
 		public const string introScene = "Intro";
@@ -19,7 +20,7 @@ namespace Assets.Scripts.Scenes
 		public static SceneManager Instance;
 		[SerializeField] private RewardAds adPrefab;
 		private float gameStartTime;
-		private const float adTriggerTime = 1800f;
+		private const float adTriggerTime = 900f;
 
 		private void Start()
 		{

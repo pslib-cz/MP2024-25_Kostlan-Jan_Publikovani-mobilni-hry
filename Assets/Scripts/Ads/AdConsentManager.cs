@@ -3,6 +3,9 @@ using GoogleMobileAds.Ump.Api;
 using GoogleMobileAds.Api;
 using UnityEngine.UI;
 
+/// <summary>
+/// Třída pro správu souhlasu s reklamami.
+/// </summary>
 public class AdConsentManager : MonoBehaviour
 {
     private static AdConsentManager instance;
@@ -14,7 +17,7 @@ public class AdConsentManager : MonoBehaviour
         {
             if (instance == null)
             {
-                Debug.LogError("Přidsání instance");
+                Debug.LogError("Přidání instance");
             }
             return instance;
         }

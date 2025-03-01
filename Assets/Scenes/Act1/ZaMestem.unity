@@ -19016,6 +19016,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1341447391337302958, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
+      propertyPath: scene
+      value: VeMeste
+      objectReference: {fileID: 0}
     - target: {fileID: 1771663618584790677, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: m_Layer
       value: 10

@@ -15,7 +15,6 @@ namespace Assets.Scripts.Ads
 #endif
 
 		private RewardedAd _rewardedAd;
-
 		public Button adObject;
 		public Text buttonTextadObject;
 		public float adCooldownTime = 30f;

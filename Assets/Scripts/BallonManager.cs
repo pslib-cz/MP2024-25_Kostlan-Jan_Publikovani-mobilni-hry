@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Extension;
+using Assets.Scripts.Scenes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace Assets.Scripts
 		private const int maxBalloonsToActivate = 7;
 		private const float delayBetweenWaves = 20f;
 		private const float lightOffDuration = 1f; // Světlo zhasne na 1 sekundu
-		public const string levelName = "";
+		public string levelName = "";
 
 		private void Start()
 		{
@@ -74,6 +75,7 @@ namespace Assets.Scripts
 
 				balloonsToActivate += 1;
 			}
+			SceneManager.Instance.SceneLoad(levelName);
 		}
 	}
 }

@@ -2224,6 +2224,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1341447391337302958, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
+      propertyPath: scene
+      value: Sewerage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341447391337302958, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: myscene
       value: Sewerage
       objectReference: {fileID: 0}
