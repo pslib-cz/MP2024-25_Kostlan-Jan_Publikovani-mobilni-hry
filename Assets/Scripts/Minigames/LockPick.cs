@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(AudioSource))]
 public class Lockpick : MonoBehaviour
 {
 	public float moveSpeed = 5f;
@@ -12,10 +13,14 @@ public class Lockpick : MonoBehaviour
 	private Vector3 originalPosition;
 	private bool pinDetected = false;
 	private Transform lastDetectedPin;
+	private LockController lockController;
+	private AudioSource audioSource;
 
 	void Awake()
 	{
 		controls = new PlayerInputs();
+		lockController = FindFirstObjectByType<LockController>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	void OnEnable()
@@ -61,7 +66,8 @@ public class Lockpick : MonoBehaviour
 			Pin pin = lastDetectedPin.GetComponent<Pin>();
 			pin.PinUp();
 			pinDetected = false;
-			FindFirstObjectByType<LockController>().AreAllPinsPicked();
+			audioSource.Play();
+			lockController.AreAllPinsPicked();
 		}
 		else
 		{
@@ -79,6 +85,7 @@ public class Lockpick : MonoBehaviour
 
 	void ResetGame()
 	{
+		Handheld.Vibrate();
 		transform.position = originalPosition;
 		pinDetected = false;
 		lastDetectedPin = null;

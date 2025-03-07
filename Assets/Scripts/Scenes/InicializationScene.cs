@@ -119,21 +119,21 @@ namespace Assets.Scripts
 				.WithUpdatedDescription("Saved at " + System.DateTime.Now)
 				.Build();
 
-				PlayGamesPlatform.Instance.SavedGame.CommitUpdate(
-				game,
-				update,
-				data,
-				(status, updatedGame) =>
+			PlayGamesPlatform.Instance.SavedGame.CommitUpdate(
+			game,
+			update,
+			data,
+			(status, updatedGame) =>
+			{
+				if (status == SavedGameRequestStatus.Success)
 				{
-					if (status == SavedGameRequestStatus.Success)
-					{
-						Debug.Log("Scene saved successfully to Google Play.");
-					}
-					else
-					{
-						Debug.LogError("Failed to save scene to Google Play.");
-					}
-				});
+					Debug.Log("Scene saved successfully to Google Play.");
+				}
+				else
+				{
+					Debug.LogError("Failed to save scene to Google Play.");
+				}
+			});
 		}
 	}
 }

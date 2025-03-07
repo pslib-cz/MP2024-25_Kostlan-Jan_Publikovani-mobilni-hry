@@ -1,3 +1,4 @@
+using Assets.Scripts.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,7 +20,7 @@ public class CarController : MonoBehaviour
 
 	private void Awake()
 	{
-		controls = new PlayerInputs();
+		controls = InputManager.Instance.Controls;
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 	}

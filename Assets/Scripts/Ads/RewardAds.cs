@@ -1,7 +1,9 @@
 ﻿using GoogleMobileAds.Api;
 using System;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
+using UnityEngine.Localization.SmartFormat.PersistentVariables;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Ads
@@ -11,7 +13,7 @@ namespace Assets.Scripts.Ads
 #if UNITY_ANDROID
 		private string _rewardAdUnitId = "ca-app-pub-6609788058532191/6413512520";
 #else
-        private string _rewardAdUnitId = "unused";
+            private string _rewardAdUnitId = "unused";
 #endif
 
 		private RewardedAd _rewardedAd;
@@ -24,9 +26,11 @@ namespace Assets.Scripts.Ads
 		[SerializeField] private string adReady = "AdReady";
 		[SerializeField] private string adCooldown = "AdCooldown";
 
+		private LocalizedString localizedString;
+
 		private void Awake()
 		{
-			InicializationScene = FindFirstObjectByType<InicializationScene>();
+			localizedString = localizedStringEvent.StringReference;
 		}
 
 		public void Start()
@@ -36,6 +40,7 @@ namespace Assets.Scripts.Ads
 				Time.timeScale = 1f;
 				return;
 			}
+			Debug.Log(PlayerPrefs.GetInt(PlayerPrefsKeys.HasAds, 0));
 
 			MobileAds.Initialize(initStatus =>
 			{
@@ -53,24 +58,29 @@ namespace Assets.Scripts.Ads
 
 			if (remainingTime <= 0)
 			{
+				// Cooldown skončil -> tlačítko se aktivuje
 				adObject.interactable = true;
 				localizedStringEvent.StringReference.TableEntryReference = adReady;
+				localizedStringEvent.StringReference.Arguments = new object[] { }; // Bez argumentů
 			}
 			else
 			{
+				// Cooldown stále běží -> tlačítko zůstává disabled
 				adObject.interactable = false;
 				localizedStringEvent.StringReference.TableEntryReference = adCooldown;
-				localizedStringEvent.StringReference.Arguments = new object[] { remainingTime };
+				if (localizedString.TryGetValue("remainingTime", out var variable) && variable is IntVariable intVariable)
+				{
+					intVariable.Value = remainingTime;
+				}
 			}
 
+			// Aktualizujeme zobrazený text
 			localizedStringEvent.RefreshString();
 		}
 
+
 		/// <summary>
 		/// Načte odměnovou reklamu.
-		/// </summary>
-		/// <summary>
-		/// Loads the rewarded ad.
 		/// </summary>
 		public void LoadRewardedAd()
 		{
@@ -91,12 +101,12 @@ namespace Assets.Scripts.Ads
 					if (error != null || ad == null)
 					{
 						Debug.LogError("Rewarded ad failed to load an ad " +
-									   "with error : " + error);
+	 "with error : " + error);
 						return;
 					}
 
 					Debug.Log("Rewarded ad loaded with response : "
-							  + ad.GetResponseInfo());
+ + ad.GetResponseInfo());
 
 					_rewardedAd = ad;
 				});
@@ -127,8 +137,6 @@ namespace Assets.Scripts.Ads
 		private void HandleUserEarnedReward(object sender, Reward args)
 		{
 			Debug.Log($"Player earned reward: {args.Amount} {args.Type}");
-
-
 			Time.timeScale = 1f;
 			InicializationScene.ResumeFade();
 
@@ -162,7 +170,7 @@ namespace Assets.Scripts.Ads
 			ad.OnAdFullScreenContentFailed += (AdError error) =>
 			{
 				Debug.LogError("Rewarded ad failed to open full screen content " +
-							   "with error : " + error);
+  "with error : " + error);
 			};
 		}
 
@@ -177,7 +185,7 @@ namespace Assets.Scripts.Ads
 			ad.OnAdFullScreenContentFailed += (AdError error) =>
 			{
 				Debug.LogError("Rewarded ad failed to open full screen content " +
-							   "with error : " + error);
+  "with error : " + error);
 
 				LoadRewardedAd();
 			};

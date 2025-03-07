@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Assets.Scripts.Enums;
-using Assets.Scripts.Minigames;
 using UnityEngine.UI;
-using JetBrains.Annotations;
-using UnityEngine.Rendering.Universal;
 
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Canvas))]
 public class GameManager : MonoBehaviour
 {
 	[Header("Pipes prefabs")]
@@ -42,6 +41,7 @@ public class GameManager : MonoBehaviour
 	private List<(PipeType, Vector2Int)> generatePathWithPipes;
 
 	[SerializeField] PlayMiniGame playMiniGame;
+	private AudioSource audioSource;
 
 
 
@@ -51,6 +51,12 @@ public class GameManager : MonoBehaviour
 
 	//Vector2Int point1;
 	//Vector2Int point2;
+
+	private void Awake()
+	{
+		audioSource = GetComponent<AudioSource>();
+	}
+
 
 	void Start()
 	{
@@ -381,6 +387,7 @@ public class GameManager : MonoBehaviour
 	}
 	public void CheckAllConnections()
 	{
+		audioSource.Play();
 		Vector3 startPosition = PipesHolder.transform.position;
 
 		var startPipe = pipes.FirstOrDefault(pipe => pipe.gridX == 0 && pipe.gridY == rowStartObject);

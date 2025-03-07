@@ -501,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 490911937198887606, guid: 744d6e816e9eb704e86665361ac249c2, type: 3}
       propertyPath: audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 48e9d691769e139469497d84855156dc, type: 3}
+      objectReference: {fileID: 8300000, guid: f02fb2d4b51c99746a07c2f33a2bafad, type: 3}
     - target: {fileID: 910312623714946418, guid: 744d6e816e9eb704e86665361ac249c2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -2390,7 +2390,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1341447391337302958, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: scene
-      value: AlphaThanks
+      value: InMyHeadHallucination
       objectReference: {fileID: 0}
     - target: {fileID: 2410031041332804816, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: m_Size.x

@@ -3,13 +3,13 @@ using System.Collections;
 using UnityEngine.UI;
 using Assets.Scripts.Ads;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Scenes
 {
 	/// <summary>
 	/// Skript pro práci se scénami.
 	/// </summary>
-	/// todo proč mi to nevydělává :(
 	public class SceneManager : MonoBehaviour
 	{
 		public const string introScene = "Intro";
@@ -19,13 +19,8 @@ namespace Assets.Scripts.Scenes
 
 		public static SceneManager Instance;
 		[SerializeField] private RewardAds adPrefab;
-		private float gameStartTime;
-		private const float adTriggerTime = 900f;
 
-		private void Start()
-		{
-			gameStartTime = Time.time;
-		}
+		private List<string> sceneToShowAd = new List<string>() { "VeMesteZkazy", "SewerageRope", "HospitalStart", "Metro" };
 
 		private void Awake()
 		{
@@ -43,23 +38,16 @@ namespace Assets.Scripts.Scenes
 
 		private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 		{
-			if (CanShowAd())
-			{
-				CreateRewardAdsObject();
-				gameStartTime = Time.time;
-
-			}
+			// Pokud hráč dokončil předchozí úroveň, zobrazíme reklamu
+			ShowAdAfterLevelCompletion(scene);
 		}
-
-		private bool CanShowAd()
-		{
-			// Zkontroluje, zda hráč hraje déle než 30 minut
-			return Time.time - gameStartTime >= adTriggerTime;
-		}
-
 
 		public void SceneLoad(string sceneName)
 		{
+			// Uložíme název právě dokončené scény
+			PlayerPrefs.SetString("LastCompletedScene", UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+			PlayerPrefs.Save();
+
 			FindBlackImage();
 			targetSceneName = sceneName;
 			StartCoroutine(LoadSceneAsync(sceneName));
@@ -111,7 +99,6 @@ namespace Assets.Scripts.Scenes
 			yield return fadeCoroutine;
 
 			asyncLoad.allowSceneActivation = true;
-
 		}
 
 		private IEnumerator FadeToOpaque(float duration)
@@ -133,6 +120,22 @@ namespace Assets.Scripts.Scenes
 
 			color.a = 1;
 			image.color = color;
+		}
+
+		private void ShowAdAfterLevelCompletion(Scene scene)
+		{
+			// Získáme název předchozí scény
+			if (PlayerPrefs.HasKey("LastCompletedScene"))
+			{
+				string lastScene = PlayerPrefs.GetString("LastCompletedScene");
+
+				// Pokud byla dokončena některá z úrovní, které mají zobrazovat reklamu
+				if (sceneToShowAd.Contains(lastScene))
+				{
+					CreateRewardAdsObject();
+					PlayerPrefs.DeleteKey("LastCompletedScene"); // Vymažeme uloženou hodnotu
+				}
+			}
 		}
 
 		private void CreateRewardAdsObject()

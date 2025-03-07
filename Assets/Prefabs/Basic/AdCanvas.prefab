@@ -99,7 +99,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:03136a7b6a0d9b84e83fc2d625297bd7
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 39417012224
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adObject: {fileID: 9066836607392769464}
   buttonTextadObject: {fileID: 9201090406018671115}
-  adCooldownTime: 20
-  localizedStringEvent: {fileID: 0}
+  adCooldownTime: 40
+  localizedStringEvent: {fileID: 1465828856657019330}
   adReady: AdReady
   adCooldown: AdCooldown
 --- !u!1 &3067443414597500225
@@ -663,6 +663,7 @@ GameObject:
   - component: {fileID: 5437902694394729786}
   - component: {fileID: 1999815192708801598}
   - component: {fileID: 8119340848459008529}
+  - component: {fileID: 4940941304562802193}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -731,6 +732,46 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Koupit kafe
+--- !u!114 &4940941304562802193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536660690147077802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:03136a7b6a0d9b84e83fc2d625297bd7
+    m_TableEntryReference:
+      m_KeyId: 793368322048
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8119340848459008529}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &8767658430124758571
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,7 +875,7 @@ MonoBehaviour:
     m_LocalVariables:
     - name: remainingTime
       variable:
-        rid: 28147889926570067
+        rid: 6144791334601621585
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
@@ -854,7 +895,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 28147889926570067
-      type: {class: FloatVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+    - rid: 6144791334601621585
+      type: {class: IntVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
       data:
-        m_Value: 20
+        m_Value: 40

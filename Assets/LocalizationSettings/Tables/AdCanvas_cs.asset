@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 938877116416
-    m_Localized: REKLAMA {0}
+    m_Localized: REKLAMA {remainingTime}s
     m_Metadata:
       m_Items:
       - rid: 28147889926570068

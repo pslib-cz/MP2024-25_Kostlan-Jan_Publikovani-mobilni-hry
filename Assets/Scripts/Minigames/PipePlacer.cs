@@ -22,6 +22,15 @@ public class PipePlacer : MonoBehaviour
 		controls.Player.Disable();
 	}
 
+	private void OnDestroy()
+	{
+		if (controls != null)
+		{
+			controls.Minigames.PlacePipe.performed -= ctx => OnPlacePipe();
+			controls.Dispose();
+		}
+	}
+
 	private void OnPlacePipe()
 	{
 		Vector2 mousePosition = controls.Minigames.MousePosition.ReadValue<Vector2>();

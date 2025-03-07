@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using Assets.Scripts.Interfaces;
+using Assets.Scripts.Player;
 
 /// <summary>
 /// Testovací minihry na klikutí, při kliknutí se ukončí hra.
@@ -13,7 +14,7 @@ public class ClickGame : MonoBehaviour, IMiniGame
 
 	void Awake()
 	{
-		controls = new PlayerInputs();
+		controls = InputManager.Instance.Controls;
 	}
 
 	void OnEnable()
@@ -26,6 +27,11 @@ public class ClickGame : MonoBehaviour, IMiniGame
 	{
 		controls.Minigames.ClickLockPick.performed -= HandleInteraction;
 		controls.Disable();
+	}
+
+	void OnDestroy()
+	{
+
 	}
 
 	void HandleInteraction(InputAction.CallbackContext context)

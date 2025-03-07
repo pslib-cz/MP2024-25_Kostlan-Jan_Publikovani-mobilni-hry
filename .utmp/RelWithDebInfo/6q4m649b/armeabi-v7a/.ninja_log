@@ -1,5 +1,5 @@
 # ninja log v5
-150	276	7621269600762623	C:/Users/janse/source/repos/MP2024-25_Kostlan-Jan_Publikovani-mobilni-hry/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6q4m649b/obj/armeabi-v7a/libswappywrapper.so	d300185c31e6c85c
-2	149	7621269599510920	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	eea3121ccebaa056
-2	168	7623851907368688	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	eea3121ccebaa056
-169	362	7623851909250523	C:/Users/janse/source/repos/MP2024-25_Kostlan-Jan_Publikovani-mobilni-hry/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6q4m649b/obj/armeabi-v7a/libswappywrapper.so	d300185c31e6c85c
+1	137	7628819870921730	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	eea3121ccebaa056
+139	304	7628819872618213	C:/Users/janse/source/repos/MP2024-25_Kostlan-Jan_Publikovani-mobilni-hry/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6q4m649b/obj/armeabi-v7a/libswappywrapper.so	d300185c31e6c85c
+1	133	7629011419624044	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	eea3121ccebaa056
+133	267	7629011420959945	C:/Users/janse/source/repos/MP2024-25_Kostlan-Jan_Publikovani-mobilni-hry/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6q4m649b/obj/armeabi-v7a/libswappywrapper.so	d300185c31e6c85c

@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Interfaces;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LockController : MonoBehaviour, IMiniGame
 {

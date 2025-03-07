@@ -1,30 +1,41 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Player;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-	public InputActionReference pauseAction;
 	public static bool GameIsPaused;
 	public GameObject PauseMenuUI;
 	public GameObject SettingsMenuUI;
 	[SerializeField] private BannerAdsPause bannerAdsPause;
+	[SerializeField] private PlayerInputs controls;
+
+	private void Awake()
+	{
+		controls = InputManager.Instance.Controls;
+	}
 
 	private void OnEnable()
 	{
-		pauseAction.action.performed += OnPause;
-		pauseAction.action.Enable();
+		controls.Player.Pause.performed += OnPause;
+		controls.Player.Pause.Enable();
 	}
 
 	private void OnDisable()
 	{
-		pauseAction.action.performed -= OnPause;
-		pauseAction.action.Disable();
+		controls.Player.Pause.performed -= OnPause;
+		controls.Player.Pause.Disable();
+	}
+
+	private void OnDestroy()
+	{
+		controls.Player.Pause.performed -= OnPause;
+		controls.Player.Pause.Disable();
 	}
 
 	private void OnPause(InputAction.CallbackContext context)
 	{
-		Debug.Log("stiknuta klavesa");
 		// Zkontroluje stav hry a podle toho přepíná mezi pauzou a obnovením
 		if (GameIsPaused)
 		{
@@ -41,6 +52,7 @@ public class PauseMenu : MonoBehaviour
 		PauseMenuUI.SetActive(false);
 		SettingsMenuUI.SetActive(false);
 		AudioListener.pause = false;
+		AudioManager.instance.ContinueMusic();
 		Time.timeScale = 1f;
 		GameIsPaused = false;
 		bannerAdsPause.DestroyAd();
@@ -53,6 +65,7 @@ public class PauseMenu : MonoBehaviour
 		PauseMenuUI.SetActive(true);
 		Time.timeScale = 0f;
 		AudioListener.pause = true;
+		AudioManager.instance.PauseMusic();
 		GameIsPaused = true;
 	}
 

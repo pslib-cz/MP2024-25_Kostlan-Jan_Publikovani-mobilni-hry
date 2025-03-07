@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1341447391337302958, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
+      propertyPath: scene
+      value: AlphaThanks
+      objectReference: {fileID: 0}
     - target: {fileID: 2410031041332804816, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: m_Size.x
       value: 0.79014206
@@ -170,6 +174,10 @@ PrefabInstance:
     - target: {fileID: 2410031041332804816, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570927946333657104, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
+      propertyPath: m_Intensity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5003479892330604479, guid: f3d9a0de87476894594dba29853ecdf1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27006,7 +27014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805514, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 3.125
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805514, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_BackGroundColor.a

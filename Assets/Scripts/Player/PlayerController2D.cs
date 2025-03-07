@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using System;
 using Assets.Scripts.Enums;
 using UnityEngine.EventSystems;
+using Assets.Scripts.Player;
 
 /// <summary>
 /// Nejzákladnější kontroller hráče, který slouží pro hlavní úrovně.
@@ -34,7 +35,7 @@ public class PlayerController2D : MonoBehaviour
 	[Header("Movement")]
 	[SerializeField] private float runSpeed = 20f;
 	[SerializeField] private float walkSpeed = 10f;
-	[SerializeField] private float slowSpeed = 4f;
+	[SerializeField] private float slowSpeed = 8f;
 	private Rigidbody2D rb;
 	private InteractiveObject currentInteractiveObject;
 	[NonSerialized] public bool isPlayerVisible = true;
@@ -65,7 +66,7 @@ public class PlayerController2D : MonoBehaviour
 
 	private void Awake()
 	{
-		controls = new PlayerInputs();
+		controls = InputManager.Instance.Controls;
 		rb = GetComponent<Rigidbody2D>();
 		rounds = initialRounds;
 		roundsDeposit = initialRoundsDeposit;
@@ -117,6 +118,7 @@ public class PlayerController2D : MonoBehaviour
 		controls.Player.Shoot.performed += HandleShoot;
 		controls.Player.GunOut.performed += HandleGunOut;
 		controls.Player.Moving.performed += HandleMoveInput;
+
 		controls.Enable();
 	}
 
@@ -130,6 +132,21 @@ public class PlayerController2D : MonoBehaviour
 		controls.Player.Moving.performed -= HandleMoveInput;
 
 		controls.Disable();
+	}
+
+	private void OnDestroy()
+	{
+		if (controls != null)
+		{
+			controls.Player.Interact.performed -= HandleInteraction;
+			controls.Player.Crouch.performed -= HandleCrouch;
+			controls.Player.Reload.performed -= HandleReload;
+			controls.Player.Shoot.performed -= HandleShoot;
+			controls.Player.GunOut.performed -= HandleGunOut;
+			controls.Player.Moving.performed -= HandleMoveInput;
+
+			controls.Disable();
+		}
 	}
 
 	public void DisableControls()
@@ -206,7 +223,12 @@ public class PlayerController2D : MonoBehaviour
 
 	private void HandleRunAndWalk(float moveInput)
 	{
-		if (Mathf.Abs(moveInput) > 0.3f)
+		if (PlayerState.Crouching == currentState)
+		{
+			return;
+		}
+
+		else if (Mathf.Abs(moveInput) > 0.3f)
 		{
 			ChangePlayerState(PlayerState.Running);
 
@@ -239,6 +261,7 @@ public class PlayerController2D : MonoBehaviour
 				animator.SetBool("Crouch", true);
 				crouch = true;
 				ChangePlayerState(PlayerState.Crouching);
+
 			}
 			else if (crouchInput > -0.1f)
 			{

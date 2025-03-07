@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,7 +19,7 @@ public class PlayerOnTilt : MonoBehaviour
 
 	private void Awake()
 	{
-		controls = new PlayerInputs();
+		controls = InputManager.Instance.Controls;
 	}
 
 	#region Controls
@@ -43,6 +44,21 @@ public class PlayerOnTilt : MonoBehaviour
 	}
 
 	#endregion
+	private void OnDestroy()
+	{
+		if (controls != null)
+		{
+			controls.Minigames.ClickToTop.performed -= HandleMoveToTop;
+			controls.Minigames.MoveRight.performed -= HandleMoveRight;
+			controls.Minigames.MoveLeft.performed -= HandleMoveLeft;
+
+			controls.Minigames.ClickToTop.Disable();
+			controls.Minigames.MoveRight.Disable();
+			controls.Minigames.MoveLeft.Disable();
+		}
+	}
+
+
 	void Start()
 	{
 

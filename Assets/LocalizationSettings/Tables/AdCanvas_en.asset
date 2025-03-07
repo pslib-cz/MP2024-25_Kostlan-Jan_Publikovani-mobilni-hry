@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 03136a7b6a0d9b84e83fc2d625297bd7, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 6144791334601621584
   m_TableData:
   - m_Id: 39417012224
     m_Localized: 'Hello. I hope you''re enjoying the game I made. Since it costs
@@ -29,13 +30,20 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 938877116416
-    m_Localized: AD {0}
+    m_Localized: AD {remainingTime}s
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 6144791334601621584
   - m_Id: 7547187617792
     m_Localized: WATCH AD
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 6144791334601621584
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 938877116416

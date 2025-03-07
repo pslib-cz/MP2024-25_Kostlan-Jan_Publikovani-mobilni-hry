@@ -6,9 +6,6 @@ using UnityEngine.Audio;
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
-	/// <summary>
-	/// 
-	/// </summary>
 	public static AudioManager instance;
 
 	public AudioMixer audioMixer;
@@ -116,6 +113,22 @@ public class AudioManager : MonoBehaviour
 	public void StopMusic()
 	{
 		musicSource.Stop();
+	}
+
+	public void PauseMusic()
+	{
+		if (musicSource.isPlaying)
+		{
+			musicSource.Pause();
+		}
+	}
+
+	public void ContinueMusic()
+	{
+		if (!musicSource.isPlaying)
+		{
+			musicSource.UnPause();
+		}
 	}
 
 	#endregion

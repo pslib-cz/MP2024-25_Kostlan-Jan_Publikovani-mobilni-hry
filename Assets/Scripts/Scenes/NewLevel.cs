@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
-using Assets.Scripts.Scenes;
 
-/// <summary>
-/// Pokud se triggrem dotkne hráč, mění scénu podle zadaného parametru.
-/// </summary>
-public class NewLevel : MonoBehaviour
+namespace Assets.Scripts.Scenes
 {
-	public string scene;
 
-	void OnTriggerEnter2D(Collider2D collider)
+	/// <summary>
+	/// Pokud se triggeru dotkne hráč, mění scénu podle zadaného parametru.
+	/// </summary>
+	public class NewLevel : MonoBehaviour
 	{
-		if (collider.gameObject.CompareTag("Player"))
+		public string scene;
+
+		void OnTriggerEnter2D(Collider2D collider)
 		{
-			if (SceneManager.Instance != null)
+			if (collider.gameObject.CompareTag("Player"))
 			{
-				SceneManager.Instance.SceneLoad(scene);
-				Destroy(gameObject);
+				if (SceneManager.Instance != null)
+				{
+					SceneManager.Instance.SceneLoad(scene);
+					Destroy(gameObject);
+				}
 			}
 		}
 	}

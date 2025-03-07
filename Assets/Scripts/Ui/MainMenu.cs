@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
 	public string tutorialScene = "tutorial";
 	public Button removeAdsButton;
 	public InPurchasingApp inPurchasingApp;
+	[SerializeField] private string discordUrl;
 	public void Awake()
 	{
 		if (PlayerPrefs.GetInt(PlayerPrefsKeys.HasAds, 0) == 1)
@@ -93,6 +94,11 @@ public class MainMenu : MonoBehaviour
 	public void Browser()
 	{
 		Application.OpenURL("https://pixeldread.com/");
+	}
+
+	public void OpenDiscord()
+	{
+		Application.OpenURL(discordUrl);
 	}
 
 	public void LoadSceneByName(string name)
