@@ -41,4 +41,4 @@ Nechat si změny **zkontrolovat**, aby bylo vše správně nastaveno.
 ### 5. Potvrzení  
 Po kontrole **potvrdit změny** a dokončit publikaci.  
 
-Podrobnější popis ovládání a gameplay prvků bude součástí dokumentace hry.  
+Podrobnější popis ovládání a gameplay prvků je součástí word dokumentu maturitní práce.  
