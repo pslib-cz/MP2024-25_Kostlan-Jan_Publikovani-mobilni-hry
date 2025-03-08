@@ -89,7 +89,6 @@ public class PlayerController2D : MonoBehaviour
 			}
 		}
 
-
 		FlipCharacter(moveInput);
 
 		// přesunout na update.
@@ -207,7 +206,7 @@ public class PlayerController2D : MonoBehaviour
 					HandleRunAndWalk(moveInput);
 				}
 
-				if (Mathf.Abs(deltaY) > touchThresholdDown)
+				else if (Mathf.Abs(deltaY) > touchThresholdDown)
 				{
 					HandleCrouchAndStand(deltaY);
 				}

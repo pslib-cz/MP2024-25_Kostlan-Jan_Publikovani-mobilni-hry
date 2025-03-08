@@ -7382,6 +7382,10 @@ PrefabInstance:
       value: Rain
       objectReference: {fileID: 0}
     - target: {fileID: 5507646978705083275, guid: 52aa9c058f2ed5c4a8c2f5c85047dc82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507646978705083275, guid: 52aa9c058f2ed5c4a8c2f5c85047dc82, type: 3}
       propertyPath: MinDistance
       value: 46.190823
       objectReference: {fileID: 0}

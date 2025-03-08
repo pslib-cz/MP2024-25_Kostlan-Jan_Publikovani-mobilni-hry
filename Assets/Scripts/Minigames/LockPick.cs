@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Player;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(AudioSource))]
@@ -18,7 +19,7 @@ public class Lockpick : MonoBehaviour
 
 	void Awake()
 	{
-		controls = new PlayerInputs();
+		controls = InputManager.Instance.Controls;
 		lockController = FindFirstObjectByType<LockController>();
 		audioSource = GetComponent<AudioSource>();
 	}

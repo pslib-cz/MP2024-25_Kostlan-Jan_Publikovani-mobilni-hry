@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Player;
+using UnityEngine;
 public class PipePlacer : MonoBehaviour
 {
 	public GridManager gridManager;
@@ -8,7 +9,7 @@ public class PipePlacer : MonoBehaviour
 
 	private void Awake()
 	{
-		controls = new PlayerInputs();
+		controls = InputManager.Instance.Controls;
 		controls.Minigames.PlacePipe.performed += ctx => OnPlacePipe();
 	}
 
