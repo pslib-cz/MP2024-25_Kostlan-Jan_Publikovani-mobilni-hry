@@ -267,6 +267,7 @@ public class PlayerController2D : MonoBehaviour
 			{
 				animator.SetBool("Crouch", false);
 				crouch = false;
+				ChangePlayerState(PlayerState.Walking);
 			}
 		}
 	}

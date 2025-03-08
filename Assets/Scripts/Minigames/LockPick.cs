@@ -25,8 +25,8 @@ public class Lockpick : MonoBehaviour
 
 	void OnEnable()
 	{
-		controls.Enable();
 		controls.Minigames.ClickLockPick.performed += HandleInteraction;
+		controls.Enable();
 	}
 
 	void OnDisable()

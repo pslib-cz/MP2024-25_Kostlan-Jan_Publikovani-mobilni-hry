@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 1376930903052542085}
   - component: {fileID: 7478345064844987590}
   - component: {fileID: 2597740881216990173}
+  - component: {fileID: 7975830689584152341}
   m_Layer: 5
   m_Name: AdCanvas
   m_TagString: Untagged
@@ -245,6 +246,21 @@ MonoBehaviour:
   localizedStringEvent: {fileID: 1465828856657019330}
   adReady: AdReady
   adCooldown: AdCooldown
+--- !u!114 &7975830689584152341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119197476351469887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32b50bd253c76f488f0ba989fba823e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cId: 50Coin
+  ncId: removeads
+  sId: VipPayment
 --- !u!1 &3067443414597500225
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +667,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1990363910774949880}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2597740881216990173}
+        m_TargetAssemblyTypeName: Assets.Scripts.Ads.RewardAds, Assembly-CSharp
+        m_MethodName: BuyCoffee
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6536660690147077802
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ namespace Assets.Scripts.Ads
 #if UNITY_ANDROID
 		private string _rewardAdUnitId = "ca-app-pub-6609788058532191/6413512520";
 #else
-            private string _rewardAdUnitId = "unused";
+		private string _rewardAdUnitId = "unused";
 #endif
 
 		private RewardedAd _rewardedAd;
@@ -25,12 +25,14 @@ namespace Assets.Scripts.Ads
 		[SerializeField] private LocalizeStringEvent localizedStringEvent;
 		[SerializeField] private string adReady = "AdReady";
 		[SerializeField] private string adCooldown = "AdCooldown";
+		private InPurchasingApp InPurchasingApp;
 
 		private LocalizedString localizedString;
 
 		private void Awake()
 		{
 			localizedString = localizedStringEvent.StringReference;
+			InPurchasingApp = GetComponent<InPurchasingApp>();
 		}
 
 		public void Start()
@@ -77,7 +79,6 @@ namespace Assets.Scripts.Ads
 			// Aktualizujeme zobrazený text
 			localizedStringEvent.RefreshString();
 		}
-
 
 		/// <summary>
 		/// Načte odměnovou reklamu.
@@ -131,17 +132,27 @@ namespace Assets.Scripts.Ads
 			}
 		}
 
+		public void BuyCoffee()
+		{
+			InPurchasingApp.BuyNonConsumable();
+		}
+
 		/// <summary>
 		/// Zpracování odměny hráče.
 		/// </summary>
-		private void HandleUserEarnedReward(object sender, Reward args)
+		public void HandleUserEarnedReward(object sender, Reward args)
 		{
-			Debug.Log($"Player earned reward: {args.Amount} {args.Type}");
 			Time.timeScale = 1f;
-			InicializationScene.ResumeFade();
+
+			InicializationScene inicializationScene = GetComponent<InicializationScene>();
+			if (inicializationScene != null)
+			{
+				inicializationScene.ResumeFade();
+			}
 
 			Destroy(gameObject);
 		}
+
 
 		private void RegisterEventHandlers(RewardedAd ad)
 		{
@@ -190,6 +201,5 @@ namespace Assets.Scripts.Ads
 				LoadRewardedAd();
 			};
 		}
-
 	}
 }

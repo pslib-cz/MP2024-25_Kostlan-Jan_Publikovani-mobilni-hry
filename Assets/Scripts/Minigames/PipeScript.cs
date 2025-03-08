@@ -12,8 +12,17 @@ public class PipeScript : MonoBehaviour, IPointerClickHandler
 	public PipeType pipeType;
 	public bool isConnected;
 	public bool[] openDirections = new bool[4];
-	[SerializeField] public int gridX { get; set; }
-	[SerializeField] public int gridY { get; set; }
+
+	[SerializeField] public int gridX
+	{
+		get;
+		set;
+	}
+	[SerializeField] public int gridY
+	{
+		get;
+		set;
+	}
 
 	[Header("Components connections")]
 	private RectTransform rectTransform;

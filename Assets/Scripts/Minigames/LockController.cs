@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LockController : MonoBehaviour, IMiniGame
 {
-	// automatické generování velikosti paklíče, vzdálenosti atd, to by se hodilo spíše než to natvrdo mít definované!
+	// automatické generování velikosti paklíče, vzdálenosti atd, to by se hodilo spíše než to natvrdo mít definované! Tady je to zatím zjednodušené.
 	public Pin[] pins;
 	public PlayMiniGame playMiniGame;
 

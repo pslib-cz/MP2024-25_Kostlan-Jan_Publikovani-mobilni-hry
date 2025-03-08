@@ -1,4 +1,6 @@
-﻿using GooglePlayGames;
+﻿using Assets.Scripts.Ads;
+using GoogleMobileAds.Api;
+using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using GooglePlayGames.BasicApi.SavedGame;
 using UnityEngine;
@@ -6,7 +8,7 @@ using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Extension;
 
 /// <summary>
-/// Ínteraguje s třetí stranou ohledně nákupu určitého produktu. Je to připravené pro
+/// Interaguje s třetí stranou ohledně nákupu určitého produktu. Je to připravené pro
 /// </summary>
 public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 {
@@ -95,6 +97,21 @@ public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 			{
 				mainMenu.OnAdsRemoved();
 			}
+
+			// Najdeme RewardAds a zavoláme stejnou metodu jako při sledování reklamy
+			RewardAds rewardAds = FindFirstObjectByType<RewardAds>();
+			if (rewardAds != null)
+			{
+				rewardAds.HandleUserEarnedReward(this, new Reward() { Amount = 1, Type = "NoAds" });
+			}
+			else
+			{
+				Debug.LogError("RewardAds nebyl nalezen!");
+			}
+		}
+		else if (product.definition.id == cId) // Pokud koupí měnu (50 coinů)
+		{
+			Debug.Log("Zakoupen spotřební produkt: " + product.definition.id);
 		}
 		else
 		{
@@ -103,6 +120,7 @@ public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 
 		return PurchaseProcessingResult.Complete;
 	}
+
 
 	void SaveRemoveAdsToCloud()
 	{
