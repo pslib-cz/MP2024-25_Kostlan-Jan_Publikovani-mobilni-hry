@@ -45,7 +45,7 @@ public class EnemyFly : EnemyBase
 
 	private void Update()
 	{
-		var playerSprite = player.GetComponent<PlayerController2D>().mFacingRight;
+		var playerSprite = player.
 		var positionPlayer = player.position.x > transform.position.x;
 
 		if (playerSprite != facingRight! && positionPlayer || playerSprite != facingRight && !positionPlayer)
