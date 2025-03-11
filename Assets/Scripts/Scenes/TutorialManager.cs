@@ -142,7 +142,6 @@ public class TutorialManager : MonoBehaviour
 
 	private void PlayNewLevel()
 	{
-		// Je otázka, zda načíst poslední scénu nebo MainMenu. todo
 		var sceneManager = SceneManager.Instance;
 		sceneManager.LoadLastScene();
 	}

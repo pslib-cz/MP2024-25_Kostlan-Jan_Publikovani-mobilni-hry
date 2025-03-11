@@ -58,7 +58,7 @@ public class PlayerController2D : MonoBehaviour
 	private Vector2 touchStartPosition;
 	private bool isTouching = false;
 	private const float touchThreshold = 0.1f;
-	private const float touchThresholdDown = 100f;
+	private const float touchThresholdDown = 200f;
 	[SerializeField] private PlayerInputs controls;
 	[SerializeField] private bool iscanMove = true;
 
@@ -206,7 +206,7 @@ public class PlayerController2D : MonoBehaviour
 					HandleRunAndWalk(moveInput);
 				}
 
-				else if (Mathf.Abs(deltaY) > touchThresholdDown)
+				if (Mathf.Abs(deltaY) > touchThresholdDown)
 				{
 					HandleCrouchAndStand(deltaY);
 				}
@@ -570,8 +570,7 @@ public class PlayerController2D : MonoBehaviour
 	/// <summary>
 	/// Deaktivování světla u hráče.
 	/// </summary>
-	/// <param name="player"></param>
-	/// todo opravit.
+	/// todo opravit¨, co jsem tím myslel?
 	public void DeactivateLight(GameObject player)
 	{
 		Light playerLight = gameObject.GetComponentInChildren<Light>();

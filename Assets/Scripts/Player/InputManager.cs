@@ -2,30 +2,20 @@
 
 namespace Assets.Scripts.Player
 {
-	/// <summary>
-	/// Input manažer používající lazy singleton.
-	/// </summary>
 	public class InputManager : MonoBehaviour
 	{
 		private static InputManager _instance;
-		public static InputManager Instance
-		{
-			get
-			{
-				if (_instance == null)
-				{
-					GameObject obj = new GameObject("InputManager");
-					_instance = obj.AddComponent<InputManager>();
-					DontDestroyOnLoad(obj);
-				}
-				return _instance;
-			}
-		}
+		public static InputManager Instance => _instance ?? CreateInstance();
 
-		public PlayerInputs Controls
-		{ 
-			get;
-			private set;
+		public PlayerInputs Controls { get; private set; }
+
+		private static InputManager CreateInstance()
+		{
+			GameObject obj = new GameObject("InputManager");
+			_instance = obj.AddComponent<InputManager>();
+			DontDestroyOnLoad(obj);
+			_instance.InitializeControls(); // Inicializace Controls
+			return _instance;
 		}
 
 		private void Awake()
@@ -38,9 +28,16 @@ namespace Assets.Scripts.Player
 
 			_instance = this;
 			DontDestroyOnLoad(gameObject);
+			InitializeControls();
+		}
 
-			Controls = new PlayerInputs();
-			Controls.Enable();
+		private void InitializeControls()
+		{
+			if (Controls == null)
+			{
+				Controls = new PlayerInputs();
+				Controls.Enable();
+			}
 		}
 	}
 }

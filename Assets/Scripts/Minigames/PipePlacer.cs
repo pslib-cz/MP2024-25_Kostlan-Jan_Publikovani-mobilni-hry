@@ -15,12 +15,12 @@ public class PipePlacer : MonoBehaviour
 
 	private void OnEnable()
 	{
-		controls.Player.Enable();
+		controls.Minigames.Enable();
 	}
 
 	private void OnDisable()
 	{
-		controls.Player.Disable();
+		controls.Minigames.Disable();
 	}
 
 	private void OnDestroy()

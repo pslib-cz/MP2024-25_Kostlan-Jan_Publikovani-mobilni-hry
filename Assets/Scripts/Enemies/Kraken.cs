@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class Kraken : EnemyBase
 {
-	public PlayerController2D controller;
+	private PlayerController2D controller;
 	public float speed = 2f;
 
 	private void Awake()

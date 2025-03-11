@@ -19,15 +19,16 @@ public class Lockpick : MonoBehaviour
 
 	void Awake()
 	{
-		controls = InputManager.Instance.Controls;
+		controls = new PlayerInputs();
 		lockController = FindFirstObjectByType<LockController>();
 		audioSource = GetComponent<AudioSource>();
 	}
 
 	void OnEnable()
 	{
+		controls.Disable(); 
+		controls.Minigames.Enable();
 		controls.Minigames.ClickLockPick.performed += HandleInteraction;
-		controls.Enable();
 	}
 
 	void OnDisable()

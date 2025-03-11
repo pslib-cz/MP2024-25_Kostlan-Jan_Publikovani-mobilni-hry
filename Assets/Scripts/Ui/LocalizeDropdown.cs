@@ -9,7 +9,6 @@ using UnityEngine.Localization.Settings;
 [AddComponentMenu("Localization/Localize Dropdown")]
 public class LocalizeDropdown : MonoBehaviour
 {
-	// todo opravit tuto chybu skrz jazyky, když někdo klikne nastavení, nastaví se mu jazyk čeština.
 	[Serializable]
 	public class LocalizedDropdownOption
 	{

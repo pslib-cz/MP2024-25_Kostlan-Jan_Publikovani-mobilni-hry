@@ -15,6 +15,8 @@ public class PlayerOnTilt : MonoBehaviour
 	[SerializeField] private GameObject howToPlay;
 	[SerializeField] private GameObject generateObjects;
 	[SerializeField] private bool playerClick = false;
+	[SerializeField] private PlayerInput playerInput;
+	[SerializeField] private float tiltSensitivity = 5f;
 	private Accelerometer accelerometer;
 
 	private void Awake()
@@ -28,9 +30,7 @@ public class PlayerOnTilt : MonoBehaviour
 		controls.Minigames.ClickToTop.performed += HandleMoveToTop;
 		controls.Minigames.MoveRight.performed += HandleMoveRight;
 		controls.Minigames.MoveLeft.performed += HandleMoveLeft;
-		controls.Minigames.ClickToTop.Enable();
-		controls.Minigames.MoveRight.Enable();
-		controls.Minigames.MoveLeft.Enable();
+		controls.Minigames.Enable();
 	}
 
 	private void OnDisable()
@@ -38,9 +38,7 @@ public class PlayerOnTilt : MonoBehaviour
 		controls.Minigames.ClickToTop.performed -= HandleMoveToTop;
 		controls.Minigames.MoveRight.performed -= HandleMoveRight;
 		controls.Minigames.MoveLeft.performed -= HandleMoveLeft;
-		controls.Minigames.ClickToTop.Disable();
-		controls.Minigames.MoveRight.Disable();
-		controls.Minigames.MoveLeft.Disable();
+		controls.Minigames.Disable();
 	}
 
 	#endregion
@@ -52,12 +50,9 @@ public class PlayerOnTilt : MonoBehaviour
 			controls.Minigames.MoveRight.performed -= HandleMoveRight;
 			controls.Minigames.MoveLeft.performed -= HandleMoveLeft;
 
-			controls.Minigames.ClickToTop.Disable();
-			controls.Minigames.MoveRight.Disable();
-			controls.Minigames.MoveLeft.Disable();
+			controls.Minigames.Disable();
 		}
 	}
-
 
 	void Start()
 	{
@@ -96,6 +91,13 @@ public class PlayerOnTilt : MonoBehaviour
 		if (playerClick)
 		{
 			transform.localPosition += new Vector3(0, -0.01f, 0) * Time.fixedDeltaTime;
+		}
+
+		if (accelerometer != null)
+		{
+			Vector3 acceleration = accelerometer.acceleration.ReadValue();
+			float tiltX = acceleration.x * tiltSensitivity;
+			tilt.AddForce(new Vector2(tiltX, 0) * forceAmount, ForceMode2D.Force);
 		}
 	}
 

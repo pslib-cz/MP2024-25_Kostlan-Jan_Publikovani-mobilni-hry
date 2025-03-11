@@ -261,7 +261,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": ""PlaceBentPipe"",
                     ""type"": ""Button"",
                     ""id"": ""a6d38f7a-d233-43a0-8e24-d2f13d7c43e3"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -270,7 +270,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": ""ClickLockPick"",
                     ""type"": ""Button"",
                     ""id"": ""a7da4340-c763-488d-ac6d-f59875f2117a"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -379,7 +379,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Touchscreen>/Press"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Touch"",
                     ""action"": ""ClickLockPick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

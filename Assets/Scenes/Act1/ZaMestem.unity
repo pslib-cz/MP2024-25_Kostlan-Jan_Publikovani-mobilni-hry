@@ -7671,7 +7671,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 915981712}
-  - component: {fileID: 915981716}
   - component: {fileID: 915981715}
   - component: {fileID: 915981719}
   - component: {fileID: 915981714}
@@ -7763,7 +7762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80732f0ea7e9b4fc68a10082975ca43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectAnimator: {fileID: 915981716}
+  objectAnimator: {fileID: 0}
   isPlayerInRange: 0
   interactionKeyPressed: 0
   onInteract:
@@ -7784,28 +7783,6 @@ MonoBehaviour:
   interactOnlyOnce: 0
   showImage: {fileID: 144369320}
   clip: {fileID: 8300000, guid: a41669a9cf428c54ea61786942e39b6d, type: 3}
---- !u!95 &915981716
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915981711}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &915981717
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7942,7 +7919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70438983342b43c4685860b8f7f7823c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigame: {fileID: 6417248466503146375}
+  minigame: {fileID: 1328270968}
   bariel: {fileID: 0}
   objectToShow: {fileID: 0}
   eventsAfterGame:
@@ -10207,6 +10184,11 @@ PrefabInstance:
       addedObject: {fileID: 743021564}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
+--- !u!1 &1328270968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6417248465649980912, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
+  m_PrefabInstance: {fileID: 1328270967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1330356102
 GameObject:
   m_ObjectHideFlags: 0
@@ -16857,7 +16839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299715220809948408, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8568667
+      value: 1.8294352
       objectReference: {fileID: 0}
     - target: {fileID: 4299715220809948408, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18474,11 +18456,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &6417248466503146375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6417248465649980912, guid: 148565664a9c66042b1630dc69f79fb4, type: 3}
-  m_PrefabInstance: {fileID: 1328270967}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6492656050594479902
 Transform:
   m_ObjectHideFlags: 0
@@ -19224,7 +19201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7734353869353991415, guid: 9d9f6320d093b564898dcc1515968b65, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.951
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 7734353869353991415, guid: 9d9f6320d093b564898dcc1515968b65, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20040,7 +20017,6 @@ SpriteRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 34339512}
   - {fileID: 4492065904927483371}
   - {fileID: 7734353869802687526}
   - {fileID: 855210344}
@@ -20055,3 +20031,4 @@ SceneRoots:
   - {fileID: 68871577}
   - {fileID: 718677058}
   - {fileID: 1549923366}
+  - {fileID: 34339512}

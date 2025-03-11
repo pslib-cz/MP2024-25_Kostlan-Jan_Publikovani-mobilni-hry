@@ -13,7 +13,6 @@ public class BannerAdsDeath : MonoBehaviour
 
 	BannerView _bannerView;
 
-	// todo: předtím, než to dáš do ostré verze, tak se ujisti, že to splňuješ směrnice evropské unie ohledně GDPR
 	public void Start()
 	{
 		if (PlayerPrefs.GetInt(PlayerPrefsKeys.HasAds, 0) == 1)
