@@ -23,4 +23,6 @@ public class PlayerPrefsKeys
 	public const string HasPlayedBefore = "HasPlayerBefore";
 
 	public const string HasAds = "HasAds";
+
+	public const string LastCompletedScene = "LastCompletedScene";
 }

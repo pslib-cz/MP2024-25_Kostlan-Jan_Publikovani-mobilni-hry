@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Omezuje rotaci objektu
+/// </summary>
 public class ObjectRotationWithLimit : MonoBehaviour
 {
 	public float rotationSpeed = 30.0f;

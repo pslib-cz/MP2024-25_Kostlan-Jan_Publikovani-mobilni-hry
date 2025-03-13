@@ -17,22 +17,20 @@ public class Kraken : EnemyBase
 		{
 			Debug.LogError("PlayerController2D nebyl nalezen ve scéně.");
 		}
+
 		isAttack = true;
 	}
 
 	private void Start()
 	{
 		audioSource = gameObject.AddComponent<AudioSource>();
-
 	}
 
 	void Update()
 	{
 		Vector3 currentPosition = transform.position;
 		Vector3 playerPosition = controller.transform.position;
-
 		Vector3 targetPosition = new Vector3(playerPosition.x, currentPosition.y, currentPosition.z);
-
 		transform.position = Vector3.MoveTowards(currentPosition, targetPosition, speed * Time.deltaTime);
 	}
 }

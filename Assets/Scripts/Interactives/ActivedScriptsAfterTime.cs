@@ -16,6 +16,7 @@ namespace Assets.Scripts.Interactives
 		{
 			StartCoroutine(ActivatedThings());
 		}
+
 		IEnumerator ActivatedThings()
 		{
 			yield return new WaitForSeconds(delay);

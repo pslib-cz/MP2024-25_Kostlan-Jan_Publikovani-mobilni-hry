@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.Enemies
 {
+	/// <summary>
+	/// Nepřítel s jednoduchou animací.
+	/// </summary>
 	[RequireTag("Enemy")]
 	[RequireComponent(typeof(Animator))]
 	public class Worn: EnemyBase
@@ -20,7 +23,6 @@ namespace Assets.Scripts.Enemies
 		public void Start()
 		{
 			isAttack = true;
-
 		}
 	}
 }

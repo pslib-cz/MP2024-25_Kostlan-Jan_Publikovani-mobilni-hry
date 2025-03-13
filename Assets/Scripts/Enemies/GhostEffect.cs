@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.Enemies
 {
+	/// <summary>
+	/// Efekt nepřítele, který zmizí před hráčem.
+	/// </summary>
 	[RequireComponent(typeof(SpriteRenderer))]
 	public class GhostEffect : MonoBehaviour
 	{
@@ -24,6 +27,7 @@ namespace Assets.Scripts.Enemies
 				enemyBase.isAttack = false;
 			}
 
+			// todo tohle je ošklivé!
 			GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 			if (playerObject != null)
 			{

@@ -2,6 +2,9 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Reklama při smrti.
+/// </summary>
 public class BannerAdsDeath : MonoBehaviour
 {
 	// These ad units are configured to always serve test ads.

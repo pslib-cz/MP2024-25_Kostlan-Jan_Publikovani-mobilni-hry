@@ -35,7 +35,9 @@ public class PlayerController2D : MonoBehaviour
 	[Header("Movement")]
 	[SerializeField] private float runSpeed = 20f;
 	[SerializeField] private float walkSpeed = 10f;
-	[SerializeField] private float slowSpeed = 8f;
+
+	// výpočet funguje trochu jinak než u běžného pohybu.
+	[SerializeField] private float slowSpeed = 20f;
 	private Rigidbody2D rb;
 	private InteractiveObject currentInteractiveObject;
 	[NonSerialized] public bool isPlayerVisible = true;
@@ -227,7 +229,7 @@ public class PlayerController2D : MonoBehaviour
 			return;
 		}
 
-		else if (Mathf.Abs(moveInput) > 0.3f)
+		else if (Mathf.Abs(moveInput) > 0.5)
 		{
 			ChangePlayerState(PlayerState.Running);
 
@@ -382,6 +384,7 @@ public class PlayerController2D : MonoBehaviour
 	#region SpeedChanging
 	private void SlowMode()
 	{
+		ChangeVolumeSoundFootSteps(volume: 0.2f);
 		speed = slowSpeed;
 	}
 
@@ -392,11 +395,13 @@ public class PlayerController2D : MonoBehaviour
 
 	private void RunMode()
 	{
+		ChangeVolumeSoundFootSteps(volume: 1f);
 		speed = runSpeed;
 	}
 
 	private void WalkingMode()
 	{
+		ChangeVolumeSoundFootSteps(volume: 0.5f);
 		speed = walkSpeed;
 	}
 	#endregion
@@ -524,6 +529,7 @@ public class PlayerController2D : MonoBehaviour
 	public void CanGetUp()
 	{
 		isCanGetUp = true;
+		ChangePlayerState(PlayerState.Walking);
 
 		if (crouch == true)
 		{
@@ -551,6 +557,11 @@ public class PlayerController2D : MonoBehaviour
 	private void StopSoundFootSteps()
 	{
 		footStepsAudioSource.Stop();
+	}
+
+	private void ChangeVolumeSoundFootSteps(float volume)
+	{
+		footStepsAudioSource.volume = volume;
 	}
 
 	#endregion

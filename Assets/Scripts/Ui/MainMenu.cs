@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
 	public Button removeAdsButton;
 	public InPurchasingApp inPurchasingApp;
 	[SerializeField] private string discordUrl;
+
 	public void Awake()
 	{
 		if (PlayerPrefs.GetInt(PlayerPrefsKeys.HasAds, 0) == 1)

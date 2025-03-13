@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 namespace Assets.Scripts.Extension
 {
+	/// <summary>
+	/// Zamíchávání seznamu za pomocí Fisher-Yates algoritmu, aby výsledný výsledek byl náhodný.
+	/// </summary>
 	public static class ShuffleUtils
 	{
 		private static Random rng = new Random();

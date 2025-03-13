@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.Interfaces
 {
+	/// <summary>
+	/// Abstraktní třída pro obecného nepřítele.
+	/// </summary>
 	public abstract class EnemyBase : MonoBehaviour
 	{
 		[SerializeField] protected int health;

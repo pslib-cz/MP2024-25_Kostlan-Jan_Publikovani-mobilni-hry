@@ -2,6 +2,9 @@
 
 namespace Assets.Scripts.Enemies
 {
+	/// <summary>
+	/// Jednoduchý skript netopýra nepoužívající enemybase.
+	/// </summary>
 	public class Bat : MonoBehaviour
 	{
 		public float speed = 2.0f;

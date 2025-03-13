@@ -2,6 +2,9 @@
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+/// <summary>
+/// Komponenta na minihry.
+/// </summary>
 public class PlayMiniGame : MonoBehaviour
 {
 	private PlayerController2D playerController;

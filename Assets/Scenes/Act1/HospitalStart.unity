@@ -20429,7 +20429,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900431992}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -32675,7 +32675,7 @@ PrefabInstance:
       objectReference: {fileID: 1486952234}
     - target: {fileID: 3140487602006997893, guid: 034b930333a9bfd4db5fa1ad4dc2e54c, type: 3}
       propertyPath: eventsAfterGame.m_PersistentCalls.m_Calls.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3140487602006997893, guid: 034b930333a9bfd4db5fa1ad4dc2e54c, type: 3}
       propertyPath: eventsAfterGame.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -32716,7 +32716,7 @@ PrefabInstance:
     - target: {fileID: 3140487602006997893, guid: 034b930333a9bfd4db5fa1ad4dc2e54c, type: 3}
       propertyPath: eventsAfterGame.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 1535256120}
+      objectReference: {fileID: 1486952235}
     - target: {fileID: 3140487602006997893, guid: 034b930333a9bfd4db5fa1ad4dc2e54c, type: 3}
       propertyPath: eventsAfterGame.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -32755,7 +32755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140487602006997893, guid: 034b930333a9bfd4db5fa1ad4dc2e54c, type: 3}
       propertyPath: eventsAfterGame.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: MinigameEnd
+      value: EndMiniGame
       objectReference: {fileID: 0}
     - target: {fileID: 3140487602006997893, guid: 034b930333a9bfd4db5fa1ad4dc2e54c, type: 3}
       propertyPath: eventsAfterGame.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -32775,7 +32775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3140487602006997893, guid: 034b930333a9bfd4db5fa1ad4dc2e54c, type: 3}
       propertyPath: eventsAfterGame.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: InteractiveObject, Assembly-CSharp
+      value: PlayMiniGame, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3140487602006997893, guid: 034b930333a9bfd4db5fa1ad4dc2e54c, type: 3}
       propertyPath: eventsAfterGame.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -34164,17 +34164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLight2D: {fileID: 35967483}
---- !u!114 &1535256120 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8926238467946371606, guid: 034b930333a9bfd4db5fa1ad4dc2e54c, type: 3}
-  m_PrefabInstance: {fileID: 1486952233}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535256108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80732f0ea7e9b4fc68a10082975ca43b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1551957695
 GameObject:
   m_ObjectHideFlags: 0
@@ -48425,7 +48414,7 @@ Transform:
   m_GameObject: {fileID: 1446406280151389455}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.54, y: -4.580245, z: 0}
+  m_LocalPosition: {x: -8.56, y: -4.580245, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49013,11 +49002,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299715219337302685, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.94
+      value: -2.331
       objectReference: {fileID: 0}
     - target: {fileID: 4299715219337302685, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.3039107
+      value: -6.2919106
       objectReference: {fileID: 0}
     - target: {fileID: 4299715219337302685, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49197,11 +49186,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805525, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.94
+      value: -2.331
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805525, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.3039107
+      value: -6.2919106
       objectReference: {fileID: 0}
     - target: {fileID: 4299715221171805525, guid: f3020213224f99e498149dec69d854f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50936,11 +50925,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7734353869353991415, guid: 9d9f6320d093b564898dcc1515968b65, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.94
+      value: -2.331
       objectReference: {fileID: 0}
     - target: {fileID: 7734353869353991415, guid: 9d9f6320d093b564898dcc1515968b65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.4
+      value: -3.388
       objectReference: {fileID: 0}
     - target: {fileID: 7734353869353991415, guid: 9d9f6320d093b564898dcc1515968b65, type: 3}
       propertyPath: m_LocalPosition.z

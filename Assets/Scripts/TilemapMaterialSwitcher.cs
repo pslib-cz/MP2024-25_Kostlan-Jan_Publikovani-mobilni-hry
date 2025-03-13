@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+/// Mění vidiítelnost tilemapy po určité době.
+/// </summary>
 public class TilemapMaterialSwitcher : MonoBehaviour
 {
 	[SerializeField] private Material visibleMaterial;

@@ -1,5 +1,8 @@
 ﻿namespace Assets.Scripts.Enums
 {
+	/// <summary>
+	/// Typy směru trubek.
+	/// </summary>
 	public enum PipeDirection
 	{
 		Right = 0,

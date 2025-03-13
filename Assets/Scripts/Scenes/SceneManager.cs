@@ -45,7 +45,7 @@ namespace Assets.Scripts.Scenes
 		public void SceneLoad(string sceneName)
 		{
 			// Uložíme název právě dokončené scény
-			PlayerPrefs.SetString("LastCompletedScene", UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+			PlayerPrefs.SetString(PlayerPrefsKeys.LastCompletedScene, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 			PlayerPrefs.Save();
 
 			FindBlackImage();
@@ -125,15 +125,15 @@ namespace Assets.Scripts.Scenes
 		private void ShowAdAfterLevelCompletion(Scene scene)
 		{
 			// Získáme název předchozí scény
-			if (PlayerPrefs.HasKey("LastCompletedScene"))
+			if (PlayerPrefs.HasKey(PlayerPrefsKeys.LastCompletedScene))
 			{
-				string lastScene = PlayerPrefs.GetString("LastCompletedScene");
+				string lastScene = PlayerPrefs.GetString(PlayerPrefsKeys.LastCompletedScene);
 
 				// Pokud byla dokončena některá z úrovní, které mají zobrazovat reklamu
 				if (sceneToShowAd.Contains(lastScene))
 				{
 					CreateRewardAdsObject();
-					PlayerPrefs.DeleteKey("LastCompletedScene"); // Vymažeme uloženou hodnotu
+					PlayerPrefs.DeleteKey(PlayerPrefsKeys.LastCompletedScene); // Vymažeme uloženou hodnotu
 				}
 			}
 		}

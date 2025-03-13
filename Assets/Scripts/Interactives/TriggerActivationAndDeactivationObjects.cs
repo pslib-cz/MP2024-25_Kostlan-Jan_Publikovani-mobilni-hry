@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Při triggeru s hráčem aktivuje nebo deaktivuje vybrané objekty.
+/// </summary>
 [RequireComponent(typeof(BoxCollider2D))]
 public class TriggerActivationAndDeactivationObjects : MonoBehaviour
 {

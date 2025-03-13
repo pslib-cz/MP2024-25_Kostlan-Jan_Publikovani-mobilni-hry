@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 namespace Assets.Scripts.Interactives
 {
+	/// <summary>
+	/// Akce interakce hráče, který u hráče spustí skok.
+	/// </summary>
 	public class JumpInteractive : MonoBehaviour
 	{
 		private PlayerController2D playerController;

@@ -57,6 +57,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Act2/InMyHeadHallucination.unity
     guid: 816eaa8c5f21beb4798f838964b71d07
   - enabled: 1
+    path: Assets/Scenes/Act2/WakeUpInHospital.unity
+    guid: 57fac441e86134245af398e5089c13f8
+  - enabled: 1
+    path: Assets/Scenes/Act2/OutsideAfterWakeUp.unity
+    guid: eed85d99cb7193c4bae8807058a04692
+  - enabled: 1
     path: "Assets/Scenes/Testov\xE1n\xED/AlphaThanks.unity"
     guid: 5251c3f49ce0ded498358849eed18a9f
   m_configObjects:

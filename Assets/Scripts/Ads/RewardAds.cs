@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Ads
 {
+	/// <summary>
+	/// Odměňovací reklama, která odemkne další průchod hry.
+	/// </summary>
 	public class RewardAds : MonoBehaviour
 	{
 #if UNITY_ANDROID
@@ -26,7 +29,6 @@ namespace Assets.Scripts.Ads
 		[SerializeField] private string adReady = "AdReady";
 		[SerializeField] private string adCooldown = "AdCooldown";
 		private InPurchasingApp InPurchasingApp;
-
 		private LocalizedString localizedString;
 
 		private void Awake()

@@ -2,6 +2,9 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Reklama při pausnutí hry.
+/// </summary>
 public class BannerAdsPause : MonoBehaviour
 {
 	// These ad units are configured to always serve test ads.

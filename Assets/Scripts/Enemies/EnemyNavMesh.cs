@@ -2,9 +2,11 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-
 namespace Assets.Scripts.Enemies
 {
+	/// <summary>
+	/// Nepřítel, který používá navMeshAgenta a pronásleduje cíl.
+	/// </summary>
 	public class EnemyNavMesh: EnemyBase
 	{
 		[SerializeField] private Transform target;

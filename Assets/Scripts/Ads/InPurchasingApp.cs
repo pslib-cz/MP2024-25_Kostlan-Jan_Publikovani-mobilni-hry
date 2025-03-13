@@ -8,7 +8,7 @@ using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Extension;
 
 /// <summary>
-/// Interaguje s třetí stranou ohledně nákupu určitého produktu. Je to připravené pro
+/// Interaguje s třetí stranou ohledně nákupu určitého produktu.
 /// </summary>
 public class InPurchasingApp : MonoBehaviour, IDetailedStoreListener
 {

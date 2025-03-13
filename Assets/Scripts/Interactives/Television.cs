@@ -1,6 +1,9 @@
 ﻿using Assets.Scripts.Minigames;
 using UnityEngine;
 
+/// <summary>
+/// Televize, která mění barvy.
+/// </summary>
 [RequireComponent(typeof(BoxCollider2D))]
 public class Television : MonoBehaviour
 {
@@ -9,7 +12,6 @@ public class Television : MonoBehaviour
 	[SerializeField] private LectvarController lectvarController;
 	[SerializeField] private float colorDisplayInterval = 2f;
 	[SerializeField] private BoxCollider2D boxCollider2D;
-
 	private int currentColorIndex = 0;
 	private bool showColors = false;
 	private float timer = 0f;
@@ -31,7 +33,6 @@ public class Television : MonoBehaviour
 		else
 		{
 			currentColorIndex = 0;
-
 		}
 	}
 

@@ -2,6 +2,9 @@
 
 namespace Assets.Scripts
 {
+	/// <summary>
+	/// Stoupání po ose y nahoru.
+	/// </summary>
 	public class MoveUp : MonoBehaviour
 	{
 		public float slowSpeed = 0.5f;

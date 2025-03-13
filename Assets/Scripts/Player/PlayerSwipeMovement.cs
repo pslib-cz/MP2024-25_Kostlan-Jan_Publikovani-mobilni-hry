@@ -49,11 +49,6 @@ public class PlayerSwipeMovement : MonoBehaviour
 		}
 	}
 
-	private void FixedUpdate()
-	{
-		Debug.Log($"Start: {startTouchPosition}, End: {endTouchPosition}");
-	}
-
 	private void DetectSwipe()
 	{
 		Vector2 swipeDirection = endTouchPosition - startTouchPosition;

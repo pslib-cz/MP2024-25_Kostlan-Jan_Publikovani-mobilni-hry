@@ -1,7 +1,10 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+/// <summary>
+/// Aktivuje všechny světla s maskou Light..
+/// </summary>
 public class ActiveAllLight : MonoBehaviour
 {
 	private List<Light2D> lights = new List<Light2D>();

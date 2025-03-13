@@ -15,8 +15,7 @@ public class PlayerOnTilt : MonoBehaviour
 	[SerializeField] private GameObject howToPlay;
 	[SerializeField] private GameObject generateObjects;
 	[SerializeField] private bool playerClick = false;
-	[SerializeField] private PlayerInput playerInput;
-	[SerializeField] private float tiltSensitivity = 5f;
+	[SerializeField] private float tiltSensitivity = 2f;
 	private Accelerometer accelerometer;
 
 	private void Awake()

@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+/// <summary>
+/// Kontroller světla.
+/// </summary>
 [RequireComponent(typeof(Light2D))]
 public class LightController : MonoBehaviour
 {
