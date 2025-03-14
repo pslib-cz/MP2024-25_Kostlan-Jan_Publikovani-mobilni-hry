@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using Assets.Scripts.Enums;
 
 /// <summary>
-/// 
+/// Pipe skript na otočení trubky a zjištění směru.
 /// </summary>
 public class PipeScript : MonoBehaviour, IPointerClickHandler
 {

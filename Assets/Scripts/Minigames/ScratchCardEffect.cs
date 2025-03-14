@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Effekt na výherní los.
+/// Efekt na výherní los.
 /// </summary>
 public class ScratchCardEffect : MonoBehaviour
 {

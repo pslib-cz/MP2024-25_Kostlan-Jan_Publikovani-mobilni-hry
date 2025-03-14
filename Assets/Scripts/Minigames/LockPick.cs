@@ -2,6 +2,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Skript pro minihru lockpick.
+/// todo tady je problém s newinputsystémem. Napsat unity vyvojářům.
+/// </summary>
 [RequireComponent(typeof(AudioSource))]
 public class Lockpick : MonoBehaviour
 {
@@ -16,25 +20,23 @@ public class Lockpick : MonoBehaviour
 	private Transform lastDetectedPin;
 	private LockController lockController;
 	private AudioSource audioSource;
+	private bool firstInitializationLockpick = true;
 
 	void Awake()
 	{
-		controls = new PlayerInputs();
+		controls = InputManager.Instance.Controls;
 		lockController = FindFirstObjectByType<LockController>();
 		audioSource = GetComponent<AudioSource>();
 	}
 
 	void OnEnable()
 	{
-		controls.Disable(); 
-		controls.Minigames.Enable();
-		controls.Minigames.ClickLockPick.performed += HandleInteraction;
+		controls.Player.Disable();
 	}
 
 	void OnDisable()
 	{
-		controls.Minigames.ClickLockPick.performed -= HandleInteraction;
-		controls.Disable();
+		controls.Player.Enable();
 	}
 
 	void Start()
@@ -58,10 +60,17 @@ public class Lockpick : MonoBehaviour
 			}
 		}
 
+		if (Touchscreen.current == null) return;
+		var touch = Touchscreen.current.primaryTouch;
+
+		if (touch.press.wasPressedThisFrame)
+		{
+			HandleInteraction();
+		}
 		CheckForMissedPin();
 	}
 
-	void HandleInteraction(InputAction.CallbackContext context)
+	void HandleInteraction()
 	{
 		if (pinDetected && lastDetectedPin != null)
 		{
@@ -87,11 +96,20 @@ public class Lockpick : MonoBehaviour
 
 	void ResetGame()
 	{
-		Handheld.Vibrate();
+		if (!firstInitializationLockpick)
+		{
+			Handheld.Vibrate();
+		}
+
+		else
+		{
+			firstInitializationLockpick = false;
+		}
+
 		transform.position = originalPosition;
 		pinDetected = false;
 		lastDetectedPin = null;
-		FindFirstObjectByType<LockController>().ResetPins();
+		lockController.ResetPins();
 	}
 
 	void OnDrawGizmos()

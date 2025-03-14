@@ -1,5 +1,9 @@
 ﻿using Assets.Scripts.Player;
 using UnityEngine;
+
+/// <summary>
+/// Skript pro umístění trubek na herní plochu.
+/// </summary>
 public class PipePlacer : MonoBehaviour
 {
 	public GridManager gridManager;
