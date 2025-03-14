@@ -96,16 +96,6 @@ public class Lockpick : MonoBehaviour
 
 	void ResetGame()
 	{
-		if (!firstInitializationLockpick)
-		{
-			Handheld.Vibrate();
-		}
-
-		else
-		{
-			firstInitializationLockpick = false;
-		}
-
 		transform.position = originalPosition;
 		pinDetected = false;
 		lastDetectedPin = null;
